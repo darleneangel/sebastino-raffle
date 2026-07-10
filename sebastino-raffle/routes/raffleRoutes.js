@@ -1,85 +1,115 @@
 import express from "express";
-import db from "../config/db.js";
-
+import supabase from "../config/supabase.js";
 
 const router = express.Router();
 
 console.log("✅ raffleRoutes.js loaded");
 
+
 router.get("/", (req, res) => {
-  res.send("Raffle API Working!");
+    res.send("Raffle API Working!");
 });
 
-router.post("/register", (req, res) => {
-  const {
-    student_number,
-    full_name,
-    college,
-    course,
-    year_level,
-    facebook_name,
-  } = req.body;
 
-  const checkSql =
-    "SELECT * FROM participants WHERE student_number = ?";
+router.post("/register", async (req, res) => {
 
-  db.query(checkSql, [student_number], (err, result) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({
-        message: "Database Error",
-      });
-    }
-
-    if (result.length > 0) {
-      return res.status(400).json({
-        message: "Student already registered.",
-      });
-    }
-
-    const insertSql = `
-      INSERT INTO participants
-      (
-        student_number,
-        full_name,
-        college,
-        course,
-        year_level,
-        facebook_name
-      )
-      VALUES (?, ?, ?, ?, ?, ?)
-    `;
-
-    db.query(
-      insertSql,
-      [
+    const {
         student_number,
         full_name,
         college,
         course,
         year_level,
         facebook_name,
-      ],
-      (err, result) => {
-        if (err) {
-          console.log("INSERT ERROR");
-          console.log(err);
+    } = req.body;
 
-          return res.status(500).json({
-            message: "Failed to save registration.",
-          });
+
+    try {
+
+        // Check if student already exists
+        const { data: existingStudent, error: checkError } =
+            await supabase
+                .from("participants")
+                .select("*")
+                .eq("student_number", student_number);
+
+
+        if(checkError){
+            console.log(checkError);
+
+            return res.status(500).json({
+                message:"Database Error"
+            });
         }
 
+
+        if(existingStudent.length > 0){
+
+            return res.status(400).json({
+                message:"Student already registered."
+            });
+
+        }
+
+
+
+        // Insert participant
+        const { data, error } =
+            await supabase
+                .from("participants")
+                .insert([
+                    {
+                        student_number,
+                        full_name,
+                        college,
+                        course,
+                        year_level,
+                        facebook_name
+                    }
+                ])
+                .select();
+
+
+
+        if(error){
+
+            console.log("INSERT ERROR");
+            console.log(error);
+
+            return res.status(500).json({
+                message:"Failed to save registration."
+            });
+
+        }
+
+
+
         console.log("✅ Student Registered!");
-        console.log(result);
 
         res.json({
-          success: true,
-          message: "Registration successful!",
+
+            success:true,
+
+            message:"Registration successful!",
+
+            data:data
+
         });
-      }
-    );
-  });
+
+
+
+    } catch(error){
+
+        console.log(error);
+
+        res.status(500).json({
+
+            message:"Server Error"
+
+        });
+
+    }
+
 });
+
 
 export default router;
