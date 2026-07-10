@@ -25,4 +25,8 @@ dist-ssr
 
 .env
 .env.*
+<<<<<<< HEAD
 node_modules/
+=======
+node_modules/
+>>>>>>> c37fb624327dfe00dc911294a992481a2a974210
