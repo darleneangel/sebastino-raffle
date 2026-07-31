@@ -1,94 +1,314 @@
 import { motion } from "framer-motion";
-import { FaUsers, FaGift, FaCalendarAlt } from "react-icons/fa";
+import {
+  FaUsers,
+  FaCalendarCheck,
+  FaHandsHelping,
+  FaAward,
+} from "react-icons/fa";
+
 
 const stats = [
+
   {
-    icon: <FaUsers size={40} />,
-    number: "300+",
-    title: "Freshmen",
-    color: "bg-[#A31621]",
+    icon:<FaUsers size={38}/>,
+    number:"5000+",
+    title:"Students Represented",
   },
+
   {
-    icon: <FaGift size={40} />,
-    number: "10",
-    title: "Totebags to be Won",
-    color: "bg-[#D4AF37]",
+    icon:<FaCalendarCheck size={38}/>,
+    number:"50+",
+    title:"Programs & Events",
   },
+
   {
-    icon: <FaCalendarAlt size={40} />,
-    number: "August 3, 2026",
-    title: "Raffle Draw",
-    color: "bg-[#0F766E]",
+    icon:<FaHandsHelping size={38}/>,
+    number:"100+",
+    title:"Student Volunteers",
   },
+
+  {
+    icon:<FaAward size={38}/>,
+    number:"2026",
+    title:"Year of Leadership",
+  },
+
 ];
 
-export default function EventStats() {
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#A31621] via-[#8F1625] to-[#6F1018] py-28">
 
-      <div className="absolute inset-0">
-        <div className="absolute left-20 top-20 h-80 w-80 rounded-full bg-yellow-300/20 blur-3xl"></div>
-        <div className="absolute right-20 bottom-10 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
-      </div>
 
-      <div className="relative mx-auto max-w-7xl px-6">
+export default function EventStats(){
 
-        <motion.div
-          initial={{opacity:0,y:40}}
-          whileInView={{opacity:1,y:0}}
-          viewport={{once:true}}
-          className="text-center"
-        >
-          <span className="rounded-full bg-yellow-300/20 px-5 py-2 text-sm font-semibold text-yellow-300">
-            EVENT INFORMATION
-          </span>
+return(
 
-          <h2 className="mt-6 text-5xl font-black text-white">
-            Be Part of the Celebration
-          </h2>
+<section
+className="
+relative
+overflow-hidden
+bg-gradient-to-b
+from-white
+via-pink-50
+to-white
+py-28
+"
+>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-white/70">
-            Join hundreds of fellow Sebastinos in welcoming a new academic
-            journey while getting a chance to win exclusive prizes.
-          </p>
 
-        </motion.div>
+{/* Background */}
 
-        <div className="mt-20 grid gap-8 md:grid-cols-3">
+<div className="absolute inset-0">
 
-          {stats.map((item,index)=>(
-            <motion.div
-              key={index}
-              initial={{opacity:0,y:50}}
-              whileInView={{opacity:1,y:0}}
-              viewport={{once:true}}
-              transition={{delay:index*.15}}
-              whileHover={{
-                y:-12,
-                scale:1.03,
-              }}
-              className="rounded-[35px] border border-white/10 bg-white/10 p-10 text-center backdrop-blur-xl shadow-2xl"
-            >
+<div
+className="
+absolute
+-left-20
+top-10
+h-80
+w-80
+rounded-full
+bg-[#DF79B0]/20
+blur-3xl
+"
+/>
 
-              <div className={`mx-auto flex h-20 w-20 items-center justify-center rounded-full text-white ${item.color}`}>
-                {item.icon}
-              </div>
 
-              <h3 className="mt-8 text-5xl font-black text-yellow-300">
-                {item.number}
-              </h3>
+<div
+className="
+absolute
+right-0
+bottom-0
+h-96
+w-96
+rounded-full
+bg-[#CA1F7B]/10
+blur-3xl
+"
+/>
 
-              <p className="mt-3 text-lg text-white">
-                {item.title}
-              </p>
+</div>
 
-            </motion.div>
-          ))}
 
-        </div>
 
-      </div>
+<div className="relative mx-auto max-w-7xl px-6">
 
-    </section>
-  );
+
+
+<motion.div
+
+initial={{
+opacity:0,
+y:40
+}}
+
+whileInView={{
+opacity:1,
+y:0
+}}
+
+viewport={{
+once:true
+}}
+
+className="text-center"
+
+>
+
+
+<span
+className="
+rounded-full
+bg-pink-100
+px-6
+py-2
+text-sm
+font-bold
+tracking-[4px]
+text-[#CA1F7B]
+"
+>
+
+OUR IMPACT
+
+</span>
+
+
+
+<h2
+className="
+mt-6
+text-5xl
+font-black
+text-gray-900
+"
+>
+
+Making A Difference
+
+<span
+className="
+block
+bg-gradient-to-r
+from-[#CA1F7B]
+to-[#DF79B0]
+bg-clip-text
+text-transparent
+"
+>
+
+Through Service
+
+</span>
+
+</h2>
+
+
+
+<p
+className="
+mx-auto
+mt-6
+max-w-3xl
+text-lg
+leading-8
+text-gray-600
+"
+>
+
+Through dedication and collaboration, the Supreme Student Government
+continues to empower students, organize meaningful initiatives,
+and create a stronger Sebastino community.
+
+</p>
+
+
+</motion.div>
+
+
+
+
+<div
+className="
+mt-20
+grid
+gap-8
+sm:grid-cols-2
+lg:grid-cols-4
+"
+>
+
+
+{
+stats.map((item,index)=>(
+
+
+<motion.div
+
+key={index}
+
+initial={{
+opacity:0,
+y:50
+}}
+
+whileInView={{
+opacity:1,
+y:0
+}}
+
+viewport={{
+once:true
+}}
+
+transition={{
+delay:index*.15
+}}
+
+whileHover={{
+y:-10,
+scale:1.04
+}}
+
+className="
+rounded-[35px]
+border
+border-pink-100
+bg-white
+p-10
+text-center
+shadow-xl
+transition
+hover:shadow-2xl
+"
+
+>
+
+
+<div
+className="
+mx-auto
+flex
+h-20
+w-20
+items-center
+justify-center
+rounded-3xl
+bg-[#CA1F7B]
+text-white
+shadow-lg
+"
+>
+
+{item.icon}
+
+</div>
+
+
+
+<h3
+className="
+mt-8
+text-5xl
+font-black
+text-[#CA1F7B]
+"
+>
+
+{item.number}
+
+</h3>
+
+
+
+<p
+className="
+mt-3
+text-lg
+font-semibold
+text-gray-700
+"
+>
+
+{item.title}
+
+</p>
+
+
+</motion.div>
+
+
+))
+}
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+)
+
 }

@@ -1,140 +1,436 @@
 import { motion } from "framer-motion";
-import { FaArrowDown, FaGift } from "react-icons/fa";
+import {
+  FaUsers,
+  FaCalendarAlt,
+  FaBullhorn,
+  FaArrowRight,
+  FaEnvelope,
+} from "react-icons/fa";
 
-export default function Hero() {
-  return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-[#6F1018] via-[#A31621] to-[#C1272D]">
+import ssgTeam from "../../assets/hero/ssg-team.jpg";
 
-      {/* Decorative Background */}
-      <div className="absolute inset-0">
 
-        <motion.div
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 12,
-          }}
-          className="absolute -left-32 top-20 h-80 w-80 rounded-full bg-yellow-300/20 blur-3xl"
-        />
+const highlights = [
+  {
+    icon:<FaCalendarAlt/>,
+    number:"35+",
+    label:"Events Organized",
+  },
+  {
+    icon:<FaUsers/>,
+    number:"5000+",
+    label:"Students Represented",
+  },
+  {
+    icon:<FaBullhorn/>,
+    number:"120+",
+    label:"Announcements",
+  },
+];
 
-        <motion.div
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 15,
-          }}
-          className="absolute right-0 bottom-0 h-[420px] w-[420px] rounded-full bg-white/10 blur-3xl"
-        />
 
-      </div>
+export default function Hero(){
 
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 pt-28 pb-16 lg:grid-cols-2">
+return(
 
-        {/* LEFT */}
-        <motion.div
-          initial={{ opacity: 0, x: -70 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8 }}
-        >
+<section
+id="hero"
+className="
+relative
+min-h-screen
+overflow-hidden
+bg-gradient-to-br
+from-[#8E1457]
+via-[#CA1F7B]
+to-[#DF79B0]
+"
+>
 
-          <span className="rounded-full bg-yellow-400/20 px-4 py-2 text-sm font-semibold text-yellow-300">
-            SUPREME STUDENT GOVERNMENT
-          </span>
 
-          <h1 className="mt-8 text-5xl font-black leading-tight text-white md:text-7xl">
-            Salubong sa
-            <span className="block text-yellow-300">
-              Bagong Sebastino
-            </span>
-          </h1>
+{/* Background */}
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-white/80">
-            Celebrate the beginning of your Sebastino journey and get a chance
-            to win an exclusive SSG Tote Bag by joining our official raffle.
-          </p>
+<div
+className="
+absolute
+-left-32
+top-10
+h-96
+w-96
+rounded-full
+bg-white/20
+blur-3xl
+"
+/>
 
-          <div className="mt-10 flex flex-wrap gap-5">
 
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: .95 }}
-              href="#register"
-              className="rounded-full bg-yellow-400 px-8 py-4 font-bold text-red-900 shadow-xl"
-            >
-              Join the Raffle
-            </motion.a>
+<div
+className="
+absolute
+right-0
+bottom-0
+h-[500px]
+w-[500px]
+rounded-full
+bg-pink-200/30
+blur-3xl
+"
+/>
 
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              href="#how-to-join"
-              className="rounded-full border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-md"
-            >
-              Learn More
-            </motion.a>
 
-          </div>
 
-        </motion.div>
 
-        {/* RIGHT */}
-        <motion.div
-          initial={{ opacity: 0, x: 70 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8 }}
-          className="flex justify-center"
-        >
+<div
+className="
+relative
+z-10
+mx-auto
+grid
+max-w-7xl
+items-center
+gap-14
+px-6
+py-32
+lg:grid-cols-2
+"
+>
 
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              rotate: [-2, 2, -2],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 5,
-            }}
-            className="relative"
-          >
 
-            <div className="absolute inset-0 rounded-[40px] bg-yellow-300 blur-3xl opacity-40" />
 
-            <div className="relative flex h-[420px] w-[340px] items-center justify-center rounded-[40px] border border-white/20 bg-white/10 backdrop-blur-xl shadow-2xl">
+{/* LEFT CONTENT */}
 
-              <FaGift
-                size={150}
-                className="text-yellow-300"
-              />
+<motion.div
 
-            </div>
+initial={{
+opacity:0,
+x:-50
+}}
 
-          </motion.div>
+animate={{
+opacity:1,
+x:0
+}}
 
-        </motion.div>
+transition={{
+duration:.8
+}}
 
-      </div>
+>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{
-          y: [0, 12, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 1.5,
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white"
-      >
 
-        <FaArrowDown size={28} />
+<span
+className="
+rounded-full
+bg-white/20
+px-6
+py-3
+text-sm
+font-bold
+tracking-[3px]
+text-white
+backdrop-blur-md
+"
+>
 
-      </motion.div>
+SUPREME STUDENT GOVERNMENT
 
-    </section>
-  );
+</span>
+
+
+
+
+<h1
+className="
+mt-8
+text-5xl
+font-black
+leading-tight
+text-white
+md:text-7xl
+"
+>
+
+Serving With
+
+<span
+className="
+block
+text-pink-100
+"
+>
+
+Integrity.
+
+</span>
+
+
+Empowering
+
+<span
+className="
+block
+text-white
+"
+>
+
+Sebastinos.
+
+</span>
+
+</h1>
+
+
+
+<p
+className="
+mt-8
+max-w-xl
+text-lg
+leading-8
+text-white/90
+"
+>
+
+The official digital home of the Supreme Student Government.
+Stay connected with campus initiatives, discover student
+programs, participate in events, and be part of meaningful
+change within the Sebastino community.
+
+</p>
+
+
+
+
+<div
+className="
+mt-10
+flex
+flex-wrap
+gap-4
+"
+>
+
+
+<button
+className="
+flex
+items-center
+gap-3
+rounded-full
+bg-white
+px-8
+py-4
+font-bold
+text-[#CA1F7B]
+shadow-xl
+transition
+hover:scale-105
+"
+>
+
+Explore Events
+
+<FaArrowRight/>
+
+</button>
+
+
+
+
+<button
+className="
+flex
+items-center
+gap-3
+rounded-full
+border
+border-white/40
+bg-white/10
+px-8
+py-4
+font-bold
+text-white
+backdrop-blur-md
+transition
+hover:bg-white/20
+"
+>
+
+<FaEnvelope/>
+
+Contact SSG
+
+</button>
+
+
+</div>
+
+
+
+</motion.div>
+
+
+
+
+
+{/* RIGHT SIDE IMAGE + CARD */}
+
+<motion.div
+
+initial={{
+opacity:0,
+x:50
+}}
+
+animate={{
+opacity:1,
+x:0
+}}
+
+transition={{
+duration:.9
+}}
+
+className="relative"
+
+>
+
+
+{/* Image */}
+
+<div
+className="
+overflow-hidden
+rounded-[40px]
+border
+border-white/30
+shadow-2xl
+"
+>
+
+<img
+
+src={ssgTeam}
+
+alt="SSG Team"
+
+className="
+h-[430px]
+w-full
+object-cover
+transition
+duration-700
+hover:scale-110
+"
+
+/>
+
+</div>
+
+
+
+{/* Floating Stats */}
+
+<div
+className="
+absolute
+-bottom-40
+left-5
+right-5
+grid
+grid-cols-3
+gap-3
+rounded-3xl
+border
+border-white/20
+bg-white/20
+p-5
+backdrop-blur-xl
+"
+>
+
+
+{
+highlights.map((item,index)=>(
+
+
+<motion.div
+
+key={index}
+
+whileHover={{
+y:-8
+}}
+
+className="
+text-center
+text-white
+"
+
+>
+
+
+<div
+className="
+mx-auto
+mb-2
+flex
+justify-center
+text-2xl
+text-pink-100
+"
+>
+
+{item.icon}
+
+</div>
+
+
+<h3
+className="
+text-3xl
+font-black
+"
+>
+
+{item.number}
+
+</h3>
+
+
+<p
+className="
+text-xs
+text-white/80
+"
+>
+
+{item.label}
+
+</p>
+
+
+</motion.div>
+
+
+))
+}
+
+
+</div>
+
+
+
+</motion.div>
+
+
+
+
+</div>
+
+
+
+</section>
+
+)
+
 }

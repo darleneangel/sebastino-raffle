@@ -1,50 +1,44 @@
 @import "tailwindcss";
 
-:root{
+:root {
 
---primary:#9E1B32;
---secondary:#D4AF37;
---dark:#5D0E21;
---light:#FFFDF8;
---text:#2D2D2D;
---gold:#E8C547;
---cream:#FFF8EE;
---text:#2C2C2C;
+  /* Primary Brand Colors */
+  --primary: #CA1F7B;      /* Dark Pink */
+  --secondary: #DF79B0;    /* Light Pink */
 
-}
+  /* Supporting Colors */
+  --dark: #8E1457;         /* Darker Pink for hover/navbar */
+  --light: #FFFFFF;        /* White background */
+  --cream: #FFF6FB;        /* Very light pink background */
 
-html{
-
-scroll-behavior:smooth;
-
-}
-
-body{
-
-
-
-margin:0;
-background:var(--light);
-font-family:Inter,sans-serif;
-color:var(--text);
+  /* Neutral Colors */
+  --text: #1F1F1F;         /* Near Black */
+  --black: #000000;
+  --white: #FFFFFF;
+  --silver: #C0C0C0;
 
 }
 
-*{
-
-box-sizing:border-box;
-
+html {
+  scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar{
-
-width:8px;
-
+body {
+  margin: 0;
+  background: var(--light);
+  font-family: Inter, sans-serif;
+  color: var(--text);
 }
 
-::-webkit-scrollbar-thumb{
+* {
+  box-sizing: border-box;
+}
 
-background:var(--primary);
-border-radius:20px;
+::-webkit-scrollbar {
+  width: 8px;
+}
 
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 20px;
 }

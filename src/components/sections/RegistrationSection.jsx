@@ -1,320 +1,365 @@
 import { motion } from "framer-motion";
-import { FaTicketAlt } from "react-icons/fa";
-import { useState } from "react";
-import SuccessModal from "../ui/SuccessModal";
-import api from "../../services/api";
+import {
+  FaUsers,
+  FaArrowRight,
+} from "react-icons/fa";
 
-export default function RegistrationSection() {
-const [form, setForm] = useState({
-  studentNo: "",
-  fullName: "",
-  college: "",
-  course: "",
-  year: "",
-  facebookName: "",
-  agreed: false,
-});
-const [loading, setLoading] = useState(false);
-const [open, setOpen] = useState(false);
+import leadership from "../../assets/projects/ssbs.jpg";
+import outreach from "../../assets/projects/ggb.jpg";
+import campusEvent from "../../assets/projects/leadership.jpg";
+import advocacy from "../../assets/projects/ga.jpg";
 
-const collegeCourses = {
-  "College of Engineering and Information Technology": [
-    "Bachelor of Science in Information Technology",
-    "Bachelor of Science in Computer Science",
-  ],
 
-  "College of Accountancy and Business Management": [
-    "Bachelor of Science in Accountancy",
-    "Bachelor of Science in Management Accounting",
-    "Bachelor of Science in Financial Management",
-    "Bachelor of Science in Marketing Management",
-    "Bachelor of Science in Business Administration",
-  ],
+const projects = [
+  {
+    title: "Leadership Development Seminar",
+    year: "2026",
+    image: leadership,
+    description:
+      "A leadership initiative designed to enhance communication, teamwork, and decision-making skills among student leaders.",
+    participants:
+      "150+ student participants",
+  },
 
-  "College of Nursing": [
-    "Bachelor of Science in Nursing",
-  ],
+  {
+    title: "Community Outreach Program",
+    year: "2025",
+    image: outreach,
+    description:
+      "An SSG-led outreach program focused on extending support and meaningful service to the community.",
+    participants:
+      "300+ beneficiaries",
+  },
 
-  "College of Education": [
-    "Bachelor of Elementary Education",
-    "Bachelor of Secondary Education",
-  ],
-};
+  {
+    title: "Campus Engagement Events",
+    year: "2025",
+    image: campusEvent,
+    description:
+      "Student-centered activities that promote school spirit, collaboration, and memorable campus experiences.",
+    participants:
+      "1000+ students engaged",
+  },
 
-  function handleChange(e) {
-  const { name, value, type, checked } = e.target;
+  {
+    title: "Student Advocacy Campaign",
+    year: "2024",
+    image: advocacy,
+    description:
+      "Campaigns that encourage awareness, responsibility, and active participation among Sebastinos.",
+    participants:
+      "Whole student community",
+  },
+];
 
-  if (name === "college") {
-    setForm({
-      ...form,
-      college: value,
-      course: "",
-    });
 
-    return;
-  }
+export default function ProjectsSection() {
 
-  setForm({
-    ...form,
-    [name]: type === "checkbox" ? checked : value,
-  });
-}
-
-  async function handleSubmit(e) {
-  e.preventDefault();
-
-  if (!form.agreed) {
-    alert("Please like and follow the SSG Facebook Page first.");
-    return;
-  }
-
-  setLoading(true);
-
-  try {
-    const response = await api.post("/raffle/register", {
-      student_number: form.studentNo,
-      full_name: form.fullName,
-      course: form.course,
-      year_level: form.year,
-      facebook_name: form.facebookName,
-    });
-
-    console.log(response.data);
-
-    setOpen(true);
-
-    setForm({
-      studentNo: "",
-      fullName: "",
-      college: "",
-      course: "",
-      year: "",
-      facebookName: "",
-      agreed: false,
-    });
-
-  } catch (error) {
-
-    if (error.response) {
-      alert(error.response.data.message);
-    } else {
-      alert("Unable to connect to the server.");
-    }
-
-  } finally {
-    setLoading(false);
-  }
-}
   return (
+
     <section
-      id="register"
-      className="bg-[#FFF8F2] py-28"
+      id="events"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-pink-50 to-white py-28"
     >
-      <div className="mx-auto max-w-6xl px-6">
+
+
+      {/* Background */}
+
+      <div className="absolute inset-0">
+
+        <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-pink-300/20 blur-3xl"/>
+
+        <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-pink-500/10 blur-3xl"/>
+
+      </div>
+
+
+
+      <div className="relative mx-auto max-w-7xl px-6">
+
+
+        {/* Header */}
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+
+          initial={{
+            opacity:0,
+            y:40
+          }}
+
+          whileInView={{
+            opacity:1,
+            y:0
+          }}
+
+          viewport={{
+            once:true
+          }}
+
           className="text-center"
+
         >
 
-          <span className="rounded-full bg-red-100 px-5 py-2 text-sm font-semibold text-[#A31621]">
-            REGISTRATION
+          <span className="
+            rounded-full 
+            bg-pink-100 
+            px-6 
+            py-2 
+            text-sm 
+            font-bold 
+            tracking-[4px]
+            text-[var(--primary)]
+            dark:bg-pink-500/20
+          ">
+
+            OUR IMPACT
+
           </span>
 
-          <h2 className="mt-6 text-5xl font-black">
-            Join the Grand Raffle
+
+
+          <h2 className="
+            mt-6 
+            text-5xl 
+            font-black 
+            text-gray-900
+          ">
+
+            Projects That
+
+            <span className="
+              block
+              bg-gradient-to-r 
+              from-pink-600 
+              to-pink-400
+              bg-clip-text
+              text-transparent
+            ">
+
+              Made A Difference
+
+            </span>
+
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-gray-600">
-            Complete the form below to officially enter the raffle.
+
+
+          <p className="
+            mx-auto 
+            mt-6 
+            max-w-3xl
+            text-lg
+            leading-8
+            text-gray-600
+            text-gray-600
+          ">
+
+            Discover the initiatives, programs, and activities led by the
+            Supreme Student Government that continue to create meaningful
+            experiences for every Sebastino.
+
           </p>
+
 
         </motion.div>
 
-        <motion.form
-  initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  onSubmit={handleSubmit}
-  className="mx-auto mt-16 max-w-4xl rounded-[35px] bg-white p-10 shadow-2xl"
->
 
-  <div className="mb-8">
-    <h3 className="text-2xl font-bold text-[#A31621]">
-      Student Information
-    </h3>
 
-    <p className="text-gray-500">
-      Fill out all required information.
-    </p>
-  </div>
 
-  <div className="grid gap-6 md:grid-cols-2">
+        {/* Project Cards */}
 
-    {/* Student Number */}
+        <div className="
+          mt-20
+          grid
+          gap-10
+          md:grid-cols-2
+          xl:grid-cols-4
+        ">
 
-    <input
-      type="text"
-      name="studentNo"
-      value={form.studentNo}
-      onChange={handleChange}
-      required
-      placeholder="Student Number"
-      className="rounded-xl border p-4 transition focus:border-[#A31621] focus:ring-2 focus:ring-red-200 outline-none"
-    />
 
-    {/* Name */}
+          {projects.map((project,index)=>(
 
-    <input
-      type="text"
-      name="fullName"
-      value={form.fullName}
-      onChange={handleChange}
-      required
-      placeholder="Full Name"
-      className="rounded-xl border p-4 transition focus:border-[#A31621] focus:ring-2 focus:ring-red-200 outline-none"
-    />
 
-    {/* College */}
+            <motion.div
 
-    <select
-      name="college"
-      value={form.college}
-      onChange={handleChange}
-      required
-      className="rounded-xl border p-4 transition focus:border-[#A31621] focus:ring-2 focus:ring-red-200"
-    >
+              key={index}
 
-      <option value="">Select College</option>
+              initial={{
+                opacity:0,
+                y:50
+              }}
 
-      {Object.keys(collegeCourses).map((college) => (
+              whileInView={{
+                opacity:1,
+                y:0
+              }}
 
-        <option
-          key={college}
-          value={college}
-        >
-          {college}
-        </option>
+              viewport={{
+                once:true
+              }}
 
-      ))}
+              transition={{
+                delay:index*.15
+              }}
 
-    </select>
+              whileHover={{
+                y:-12
+              }}
 
-    {/* Course */}
 
-    <select
-      name="course"
-      value={form.course}
-      onChange={handleChange}
-      required
-      disabled={!form.college}
-      className="rounded-xl border p-4 transition disabled:bg-gray-100 disabled:text-gray-400 focus:border-[#A31621] focus:ring-2 focus:ring-red-200"
-    >
+              className="
+                group
+                overflow-hidden
+                rounded-[35px]
+                border
+                border-pink-100
+                bg-white
+                shadow-xl
+                transition
+                hover:shadow-2xl
+                "
 
-      <option value="">
-        Select Course
-      </option>
+            >
 
-      {form.college &&
-        collegeCourses[form.college].map((course) => (
 
-          <option
-            key={course}
-            value={course}
-          >
-            {course}
-          </option>
+              {/* Image */}
 
-        ))}
+              <div className="
+                relative
+                h-64
+                overflow-hidden
+              ">
 
-    </select>
 
-    {/* Year */}
+                <img
 
-    <select
-      name="year"
-      value={form.year}
-      onChange={handleChange}
-      required
-      className="rounded-xl border p-4 transition focus:border-[#A31621] focus:ring-2 focus:ring-red-200"
-    >
+                  src={project.image}
 
-      <option value="">Year Level</option>
+                  alt={project.title}
 
-      <option>1st Year</option>
-      <option>2nd Year</option>
-      <option>3rd Year</option>
-      <option>4th Year</option>
+                  className="
+                    h-full
+                    w-full
+                    object-cover
+                    transition
+                    duration-700
+                    group-hover:scale-110
+                  "
 
-    </select>
+                />
 
-    {/* Facebook */}
 
-    <input
-      type="text"
-      name="facebookName"
-      value={form.facebookName}
-      onChange={handleChange}
-      required
-      placeholder="Facebook Name"
-      className="rounded-xl border p-4 transition focus:border-[#A31621] focus:ring-2 focus:ring-red-200 outline-none"
-    />
+                <div className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-black/70
+                  to-transparent
+                "/>
 
-  </div>
 
-  <label className="mt-8 flex cursor-pointer items-start gap-3 rounded-xl bg-red-50 p-4">
 
-    <input
-      type="checkbox"
-      name="agreed"
-      checked={form.agreed}
-      onChange={handleChange}
-      required
-      className="mt-1 accent-[#A31621]"
-    />
+                <span className="
+                  absolute
+                  bottom-5
+                  left-5
+                  rounded-full
+                  bg-pink-600
+                  px-4
+                  py-2
+                  text-sm
+                  font-bold
+                  text-white
+                ">
 
-    <span className="text-sm text-gray-700">
-      I confirm that I have
-      <span className="font-semibold text-[#A31621]">
-        {" "}liked and followed{" "}
-      </span>
-      the official SSG Facebook Page and that the information I provided is correct.
-    </span>
+                  {project.year}
 
-  </label>
+                </span>
 
-  <motion.button
 
-    whileHover={{
-      scale: 1.02,
-    }}
+              </div>
 
-    whileTap={{
-      scale: .98,
-    }}
 
-    disabled={loading}
 
-    className="mt-10 flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#A31621] to-[#C62828] py-5 text-lg font-bold text-white shadow-lg transition disabled:cursor-not-allowed disabled:opacity-60"
+              {/* Content */}
 
-  >
+              <div className="p-7">
 
-    <FaTicketAlt />
 
-    {loading ? "Submitting..." : "Join the Grand Raffle"}
+                <h3 className="
+                  text-2xl
+                  font-black
+                  text-gray-900
+                ">
 
-  </motion.button>
+                  {project.title}
 
-</motion.form>
+                </h3>
+
+
+                <p className="
+                  mt-4
+                  leading-7
+                  text-gray-900
+                  dark:text-gray-400
+                ">
+
+                  {project.description}
+
+                </p>
+
+
+
+                <div className="
+                  mt-6
+                  flex
+                  items-center
+                  gap-3
+                  text-sm
+                  font-semibold
+                  text-pink-600
+                ">
+
+                  <FaUsers/>
+
+                  {project.participants}
+
+                </div>
+
+
+
+                <button className="
+                  mt-8
+                  flex
+                  items-center
+                  gap-3
+                  font-bold
+                  text-pink-600
+                ">
+
+                  View Project
+
+                  <FaArrowRight/>
+
+                </button>
+
+
+              </div>
+
+
+            </motion.div>
+
+
+          ))}
+
+
+        </div>
+
 
       </div>
-      <SuccessModal
-  open={open}
-  onClose={() => setOpen(false)}
-/>
+
 
     </section>
+
   );
 }

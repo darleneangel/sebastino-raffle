@@ -1,60 +1,268 @@
 import { motion, AnimatePresence } from "framer-motion";
+import ssgLogo from "../../assets/logos/ssg-logo.jpg";
 
 export default function LoadingScreen({ loading }) {
   return (
     <AnimatePresence>
       {loading && (
         <motion.div
-          className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-gradient-to-br from-[#7A1019] via-[#A31621] to-[#C1272D]"
-          initial={{ opacity: 1 }}
+          className="
+            fixed
+            inset-0
+            z-[999]
+            flex
+            flex-col
+            items-center
+            justify-center
+            overflow-hidden
+            bg-gradient-to-br
+            from-[#FFF1F8]
+            via-[#FBCFE8]
+            to-[#EC4899]
+          "
+          initial={{
+            opacity: 1,
+          }}
           exit={{
             opacity: 0,
+            scale: 1.05,
             transition: {
               duration: 0.8,
             },
           }}
         >
+
+          {/* Floating Background Glow */}
+
+          <motion.div
+            animate={{
+              x: [0, 60, 0],
+              y: [0, -40, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+            }}
+            className="
+              absolute
+              -top-20
+              -left-20
+              h-80
+              w-80
+              rounded-full
+              bg-white/50
+              blur-3xl
+            "
+          />
+
+
+          <motion.div
+            animate={{
+              x: [0, -50, 0],
+              y: [0, 50, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+            }}
+            className="
+              absolute
+              bottom-0
+              right-0
+              h-96
+              w-96
+              rounded-full
+              bg-pink-300/40
+              blur-3xl
+            "
+          />
+
+
+
           {/* Logo */}
+
           <motion.div
             animate={{
               scale: [1, 1.08, 1],
-              rotate: [0, 3, -3, 0],
+              rotate: [0, 4, -4, 0],
             }}
             transition={{
+              duration: 3,
               repeat: Infinity,
-              duration: 2,
             }}
-            className="flex h-36 w-36 items-center justify-center rounded-full border-4 border-yellow-300 bg-white shadow-2xl"
+            className="
+              relative
+              h-44
+              w-44
+              overflow-hidden
+              rounded-full
+              border-4
+              border-white
+              bg-white
+              shadow-[0_0_50px_rgba(236,72,153,.45)]
+            "
           >
-            <span className="text-5xl">🏫</span>
+
+            {/* Glow Behind Logo */}
+            <motion.div
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.5, 0.2, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
+              className="
+                absolute
+                inset-0
+                rounded-full
+                bg-pink-400
+                blur-xl
+              "
+            />
+
+
+            <img
+              src={ssgLogo}
+              alt="SSG Logo"
+              className="
+                relative
+                z-10
+                h-full
+                w-full
+                object-cover
+              "
+            />
+
+
           </motion.div>
 
+
+
+
+
+          {/* Organization Name */}
+
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
             animate={{
               opacity: 1,
               y: 0,
             }}
-            className="mt-10 text-center text-5xl font-black text-white"
+            transition={{
+              delay: 0.4,
+            }}
+            className="
+              mt-10
+              text-center
+              text-4xl
+              font-black
+              text-pink-700
+              md:text-5xl
+            "
           >
-            Salubong sa
+
+            Supreme Student
             <br />
-            Bagong Sebastino
+            Government
+
           </motion.h1>
 
-          <motion.div
+
+
+
+
+          <motion.p
+            initial={{
+              opacity: 0,
+            }}
             animate={{
-              width: ["0%", "100%"],
+              opacity: 1,
             }}
             transition={{
-              duration: 2,
+              delay: 0.7,
             }}
-            className="mt-12 h-2 w-64 rounded-full bg-yellow-300"
-          />
+            className="
+              mt-4
+              max-w-md
+              px-6
+              text-center
+              text-sm
+              font-medium
+              tracking-wide
+              text-pink-800
+            "
+          >
+            San Sebastian College – Recoletos de Cavite
+          </motion.p>
 
-          <p className="mt-6 text-white/80">
-            Preparing your experience...
-          </p>
+
+
+
+
+          {/* Loading Bar */}
+
+          <div
+            className="
+              mt-12
+              h-2
+              w-64
+              overflow-hidden
+              rounded-full
+              bg-white/70
+              shadow-inner
+            "
+          >
+
+            <motion.div
+              initial={{
+                x: "-100%",
+              }}
+              animate={{
+                x: "100%",
+              }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="
+                h-full
+                w-full
+                rounded-full
+                bg-pink-700
+              "
+            />
+
+          </div>
+
+
+
+
+
+          <motion.p
+            animate={{
+              opacity: [0.4, 1, 0.4],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+            }}
+            className="
+              mt-6
+              text-sm
+              font-semibold
+              text-pink-700
+            "
+          >
+            Empowering Students. Serving the Community.
+          </motion.p>
+
+
         </motion.div>
       )}
     </AnimatePresence>

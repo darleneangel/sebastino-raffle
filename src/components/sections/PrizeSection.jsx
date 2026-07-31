@@ -1,129 +1,242 @@
 import { motion } from "framer-motion";
+import { FaImages, FaArrowRight } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
 import {
-  FaGift,
-  FaCheckCircle,
-  FaStar,
-  FaMedal,
-} from "react-icons/fa";
+  Navigation,
+  Pagination,
+  Autoplay,
+} from "swiper/modules";
 
-export default function PrizeSection() {
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// Replace these with your own images
+import img1 from "../../assets/gallery/gallery1.jpg";
+import img2 from "../../assets/gallery/gallery2.jpg";
+import img3 from "../../assets/gallery/gallery3.jpg";
+import img4 from "../../assets/gallery/gallery4.jpg";
+import img5 from "../../assets/gallery/gallery5.jpg";
+import img6 from "../../assets/gallery/gallery6.jpg";
+
+const featured = [
+  {
+    image: img1,
+    title: "General Assembly",
+    subtitle: "Empowering future student leaders.",
+  },
+  {
+    image: img2,
+    title: "Student Well Being Summit",
+    subtitle: "Serving with compassion and purpose.",
+  },
+  {
+    image: img3,
+    title: "Meeting the Officers!",
+    subtitle: "Creating unforgettable Sebastino memories.",
+  },
+  {
+    image: img4,
+    title: "Meeting the Officers!",
+    subtitle: "Creating unforgettable Sebastino memories.",
+  },
+  {
+    image: img5,
+    title: "Meeting the Officers!",
+    subtitle: "Creating unforgettable Sebastino memories.",
+  },
+  {
+    image: img6,
+    title: "Meeting the Officers!",
+    subtitle: "Creating unforgettable Sebastino memories.",
+  },
+];
+
+const gallery = [
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+];
+
+export default function GallerySection() {
   return (
     <section
-      id="prize"
-      className="relative overflow-hidden bg-gradient-to-br from-[#7A1019] via-[#A31621] to-[#C1272D] py-28"
+      id="gallery"
+      className="relative overflow-hidden bg-[var(--cream)] py-28"
     >
-      {/* Background Glow */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -40, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 10,
-          }}
-          className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-yellow-300/20 blur-3xl"
-        />
+
+      {/* Background Blobs */}
+
+      <div className="absolute -left-32 top-0 h-80 w-80 rounded-full bg-pink-200/30 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-pink-100 blur-3xl opacity-50"></div>
+
+      <div className="relative mx-auto max-w-7xl px-6">
+
+        {/* Heading */}
 
         <motion.div
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 13,
-          }}
-          className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-white/10 blur-3xl"
-        />
-      </div>
-
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
-
-        {/* LEFT SIDE */}
-        <motion.div
-          initial={{ opacity: 0, x: -70 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="text-center"
         >
-          <span className="rounded-full bg-yellow-400/20 px-5 py-2 text-sm font-semibold text-yellow-300">
-            GRAND PRIZE
+
+          <span className="inline-flex items-center gap-2 rounded-full bg-pink-100 px-5 py-2 text-sm font-semibold text-[var(--primary)]">
+
+            <FaImages />
+
+            CAMPUS LIFE
+
           </span>
 
-          <h2 className="mt-6 text-5xl font-black text-white">
-            Win an Exclusive
-            <span className="block text-yellow-300">
-              SSG Tote Bag
+          <h2 className="mt-6 text-5xl font-black text-[var(--text)] md:text-6xl">
+
+            Every Moment.
+            <span className="block text-[var(--primary)]">
+              Every Memory.
             </span>
+
           </h2>
 
-          <p className="mt-8 text-lg leading-8 text-white/80">
-            Participate in the Salubong sa Bagong Sebastino Grand Raffle and
-            take home our exclusive limited-edition tote bag prepared by the
-            Supreme Student Government.
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-600">
+
+            Discover the vibrant moments that define the
+            Supreme Student Government. From leadership
+            programs and outreach initiatives to campus
+            celebrations and student engagement activities,
+            every event reflects our commitment to serving
+            the Sebastino community.
+
           </p>
 
-          <div className="mt-10 space-y-5">
+        </motion.div>
 
-            <div className="flex items-center gap-4 text-white">
-              <FaCheckCircle className="text-yellow-300" />
-              Official SSG Merchandise
-            </div>
+        {/* Featured Carousel */}
 
-            <div className="flex items-center gap-4 text-white">
-              <FaStar className="text-yellow-300" />
-              Limited Edition Design
-            </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-20"
+        >
 
-            <div className="flex items-center gap-4 text-white">
-              <FaMedal className="text-yellow-300" />
-              Exclusive for Event Participants
-            </div>
+          <Swiper
+            modules={[
+              Navigation,
+              Pagination,
+              Autoplay,
+            ]}
+            navigation
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 4000,
+            }}
+            loop
+            className="rounded-[35px]"
+          >
 
-          </div>
+            {featured.map((item, index) => (
+
+              <SwiperSlide key={index}>
+
+                <div className="relative overflow-hidden rounded-[35px]">
+
+                  <img
+                    src={item.image}
+                    className="h-[600px] w-full object-cover"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+                  <div className="absolute bottom-12 left-10 max-w-xl">
+
+                    <span className="rounded-full bg-white/20 px-4 py-2 text-sm text-white backdrop-blur-xl">
+
+                      Supreme Student Government
+
+                    </span>
+
+                    <h3 className="mt-5 text-5xl font-black text-white">
+
+                      {item.title}
+
+                    </h3>
+
+                    <p className="mt-4 text-lg text-white/90">
+
+                      {item.subtitle}
+
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </SwiperSlide>
+
+            ))}
+
+          </Swiper>
 
         </motion.div>
 
-        {/* RIGHT SIDE */}
-        <motion.div
-          initial={{ opacity: 0, scale: .8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center"
-        >
-          <motion.div
-            animate={{
-              y: [0, -15, 0],
-              rotate: [-2, 2, -2],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 5,
-            }}
-            whileHover={{
-              scale: 1.05,
-              rotate: 4,
-            }}
-            className="relative"
-          >
-            {/* Glow */}
-            <div className="absolute inset-0 rounded-[40px] bg-yellow-300 blur-3xl opacity-40" />
+        {/* Gallery */}
 
-            {/* Card */}
-            <div className="relative flex h-[450px] w-[340px] items-center justify-center rounded-[40px] border border-white/20 bg-white/10 backdrop-blur-xl shadow-2xl">
+        <div className="mt-20 grid grid-cols-2 gap-6 lg:grid-cols-3">
 
-              {/* Replace this with your tote bag image later */}
-              <FaGift
-                size={170}
-                className="text-yellow-300"
+          {gallery.map((image, index) => (
+
+            <motion.div
+              key={index}
+              whileHover={{
+                y: -8,
+              }}
+              className="group relative overflow-hidden rounded-3xl shadow-xl"
+            >
+
+              <img
+                src={image}
+                className="h-80 w-full object-cover transition duration-700 group-hover:scale-110"
               />
 
-            </div>
-          </motion.div>
-        </motion.div>
+              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[var(--primary)]/90 via-transparent to-transparent p-6 opacity-0 transition duration-500 group-hover:opacity-100">
+
+                <h3 className="text-xl font-bold text-white">
+
+                  Student Activity
+
+                </h3>
+
+                <p className="mt-2 text-white/90">
+
+                  Creating memorable experiences
+                  for every Sebastino.
+
+                </p>
+
+                <button className="mt-5 flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2 font-semibold text-[var(--primary)]">
+
+                  View Photo
+
+                  <FaArrowRight />
+
+                </button>
+
+              </div>
+
+            </motion.div>
+
+          ))}
+
+        </div>
 
       </div>
+
     </section>
   );
 }

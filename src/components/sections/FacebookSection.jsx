@@ -1,157 +1,256 @@
 import { motion } from "framer-motion";
-import { FaFacebookF, FaArrowRight, FaCheckCircle } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaArrowRight,
+  FaCheckCircle,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaClock,
+} from "react-icons/fa";
 
 export default function FacebookSection() {
   return (
     <section
-      id="facebook"
-      className="relative overflow-hidden bg-[#FFF8F2] py-28"
+      id="contact"
+      className="relative overflow-hidden bg-[var(--cream)] py-28"
     >
-      {/* Background Glow */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 top-20 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl"></div>
+      {/* Background Decorations */}
+      <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-pink-200/30 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-pink-100 blur-3xl opacity-60"></div>
 
-        <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-yellow-300/20 blur-3xl"></div>
-      </div>
+      <div className="relative mx-auto max-w-7xl px-6">
 
-      <div className="relative mx-auto max-w-6xl px-6">
-
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="rounded-full bg-blue-100 px-5 py-2 text-sm font-semibold text-blue-700">
-            STEP 1
+          <span className="rounded-full bg-pink-100 px-5 py-2 text-sm font-semibold tracking-wider text-[var(--primary)]">
+            CONNECT WITH US
           </span>
 
-          <h2 className="mt-6 text-5xl font-black text-[#2D2D2D]">
-            Follow Our Official Facebook Page
+          <h2 className="mt-6 text-5xl font-black text-[var(--text)] md:text-6xl">
+            Stay Connected
+            <span className="block text-[var(--primary)]">
+              Beyond the Campus
+            </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600">
-            Before joining the raffle, please like and follow the official
-            Supreme Student Government Facebook page to stay updated on campus
-            events, announcements, and the raffle winner.
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-600">
+            Follow our official social media accounts to stay informed about
+            announcements, student opportunities, campus activities, and the
+            latest updates from the Supreme Student Government.
           </p>
         </motion.div>
 
-        <div className="mt-16 grid items-center gap-12 lg:grid-cols-2">
+        {/* Social Cards */}
+        <div className="mt-20 grid gap-8 lg:grid-cols-2">
 
-          {/* LEFT CARD */}
+          {/* Facebook */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-[35px] bg-gradient-to-br from-blue-600 to-blue-800 p-10 text-white shadow-2xl"
+            whileHover={{ y: -8 }}
+            className="group rounded-[32px] border border-pink-100 bg-white p-10 shadow-xl transition-all duration-300 hover:shadow-2xl"
           >
-            <div className="flex items-center gap-4">
-              <div className="rounded-full bg-white/20 p-5">
-                <FaFacebookF size={40} />
+            <div className="flex items-center gap-5">
+
+              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white shadow-lg transition duration-300 group-hover:scale-110">
+
+                <FaFacebookF size={36} />
+
               </div>
 
               <div>
-                <h3 className="text-3xl font-black">
-                  SSC-R de Cavite
+
+                <h3 className="text-3xl font-black text-[var(--text)]">
+                  Facebook
                 </h3>
 
-                <p className="opacity-80">
-                  Supreme Student Government
+                <p className="text-gray-500">
+                  SSC-R de Cavite Supreme Student Government
                 </p>
+
               </div>
+
             </div>
 
-            <div className="mt-10 space-y-5">
+            <div className="mt-10 space-y-4">
 
-              <div className="flex items-center gap-4">
-                <FaCheckCircle className="text-yellow-300" />
-                Official SSG Announcements
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Official Announcements
               </div>
 
-              <div className="flex items-center gap-4">
-                <FaCheckCircle className="text-yellow-300" />
-                Event Updates
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Campus Events
               </div>
 
-              <div className="flex items-center gap-4">
-                <FaCheckCircle className="text-yellow-300" />
-                Raffle Winner Posting
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Student Opportunities
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Organization Updates
               </div>
 
             </div>
 
             <motion.a
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: .95,
-              }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               href="https://www.facebook.com/BasteCaviteSSG"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 flex w-fit items-center gap-3 rounded-full bg-white px-8 py-4 font-bold text-blue-700 shadow-xl"
+              className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-[var(--dark)]"
             >
-              Open Facebook
+              Visit Facebook
 
               <FaArrowRight />
             </motion.a>
 
           </motion.div>
 
-          {/* RIGHT SIDE */}
+          {/* Instagram */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            whileHover={{ y: -8 }}
+            className="group rounded-[32px] border border-pink-100 bg-white p-10 shadow-xl transition-all duration-300 hover:shadow-2xl"
           >
-            <div className="rounded-[35px] border border-yellow-200 bg-white p-10 shadow-xl">
+            <div className="flex items-center gap-5">
 
-              <h3 className="text-3xl font-black text-[#A31621]">
-                Mission
-              </h3>
+              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-pink-500 via-fuchsia-500 to-purple-500 text-white shadow-lg transition duration-300 group-hover:scale-110">
 
-              <p className="mt-5 text-lg leading-8 text-gray-600">
-                Complete the following before registering:
-              </p>
+                <FaInstagram size={36} />
 
-              <div className="mt-8 space-y-5">
+              </div>
 
-                <div className="flex items-center gap-4 rounded-xl bg-gray-50 p-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white">
-                    1
-                  </div>
+              <div>
 
-                  Like the Facebook Page
-                </div>
+                <h3 className="text-3xl font-black text-[var(--text)]">
+                  Instagram
+                </h3>
 
-                <div className="flex items-center gap-4 rounded-xl bg-gray-50 p-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white">
-                    2
-                  </div>
-
-                  Follow the Facebook Page
-                </div>
-
-                <div className="flex items-center gap-4 rounded-xl bg-gray-50 p-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white">
-                    3
-                  </div>
-
-                  Return here and continue to registration
-                </div>
+                <p className="text-gray-500">
+                  @bastecavitessg
+                </p>
 
               </div>
 
             </div>
 
+            <div className="mt-10 space-y-4">
+
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Campus Highlights
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Event Photos
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Student Stories
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FaCheckCircle className="text-[var(--primary)]" />
+                Behind-the-Scenes Updates
+              </div>
+
+            </div>
+
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-[var(--dark)]"
+            >
+              Follow on Instagram
+
+              <FaArrowRight />
+            </motion.a>
+
           </motion.div>
 
         </div>
 
-      </div>
+        {/* Contact Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 rounded-[32px] border border-pink-100 bg-white p-10 shadow-xl"
+        >
 
+          <h3 className="text-3xl font-black text-[var(--primary)]">
+            Need Assistance?
+          </h3>
+
+          <p className="mt-3 text-gray-600">
+            You may also reach us through our official office and email.
+          </p>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+
+            <div className="flex items-center gap-4">
+              <div className="rounded-2xl bg-pink-100 p-4 text-[var(--primary)]">
+                <FaMapMarkerAlt size={22} />
+              </div>
+
+              <div>
+                <h4 className="font-bold">Office</h4>
+                <p className="text-sm text-gray-500">
+                  Student Affairs Office
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="rounded-2xl bg-pink-100 p-4 text-[var(--primary)]">
+                <FaEnvelope size={22} />
+              </div>
+
+              <div>
+                <h4 className="font-bold">Email</h4>
+                <p className="text-sm text-gray-500">
+                  ssg@sscrdecavite.edu.ph
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="rounded-2xl bg-pink-100 p-4 text-[var(--primary)]">
+                <FaClock size={22} />
+              </div>
+
+              <div>
+                <h4 className="font-bold">Office Hours</h4>
+                <p className="text-sm text-gray-500">
+                  Monday – Friday • 8:00 AM – 5:00 PM
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </motion.div>
+
+      </div>
     </section>
   );
 }
