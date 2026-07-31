@@ -12,8 +12,8 @@ import advocacy from "../../assets/projects/ga.jpg";
 
 const projects = [
   {
-    title: "Leadership Development Seminar",
-    year: "2026",
+    title: "Salubong sa Bagong Sebastino",
+    year: "2025",
     image: leadership,
     description:
       "A leadership initiative designed to enhance communication, teamwork, and decision-making skills among student leaders.",
@@ -22,18 +22,18 @@ const projects = [
   },
 
   {
-    title: "Community Outreach Program",
+    title: "Go Green Baste",
     year: "2025",
     image: outreach,
     description:
-      "An SSG-led outreach program focused on extending support and meaningful service to the community.",
+      "An SSG-led program focused on extending support and meaningful service to the community and environment.",
     participants:
       "300+ beneficiaries",
   },
 
   {
-    title: "Campus Engagement Events",
-    year: "2025",
+    title: "Leadership Seminar",
+    year: "2026",
     image: campusEvent,
     description:
       "Student-centered activities that promote school spirit, collaboration, and memorable campus experiences.",
@@ -42,11 +42,11 @@ const projects = [
   },
 
   {
-    title: "Student Advocacy Campaign",
-    year: "2024",
+    title: "Grand Almusalan Station",
+    year: "2026",
     image: advocacy,
     description:
-      "Campaigns that encourage awareness, responsibility, and active participation among Sebastinos.",
+      "Station that encourage awareness, responsibility, and active participation among Sebastinos.",
     participants:
       "Whole student community",
   },
