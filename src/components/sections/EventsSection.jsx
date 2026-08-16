@@ -39,7 +39,7 @@ const prizes = [
   {
     image: prize1,
     title: "Prize #1",
-    description: "One of our exciting prizes prepared for Sebastinos.",
+    description: "One of our exciting prizes prepared for Sebastinos!",
   },
   {
     image: prize2,
