@@ -4,7 +4,6 @@ import {
   FaCamera,
   FaMusic,
   FaBookOpen,
-  FaUsers,
   FaArrowRight,
   FaPlay,
   FaCalendarAlt,
@@ -23,7 +22,6 @@ import prize3 from "../../assets/events/prize-3.jpg";
 
 import freebies from "../../assets/events/freebies.jpg";
 import photobooth from "../../assets/events/photobooth.jpg";
-import jjc from "../../assets/events/jjc.jpg";
 import asop from "../../assets/events/asop.jpg";
 import brochure from "../../assets/events/brochure.jpg";
 
@@ -75,13 +73,7 @@ const features = [
       "Capture your Salubong sa Bagong Sebastino memories with our fun photobooth.",
   },
 
-  {
-    image: jjc,
-    icon: <FaUsers />,
-    title: "JJC",
-    description:
-      "Enjoy activities and experiences prepared for the Sebastino community.",
-  },
+  
 
   {
     image: asop,
