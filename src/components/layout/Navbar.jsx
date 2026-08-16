@@ -361,7 +361,7 @@ export default function Navbar({
                   text-[#CA1F7B]
                 "
               >
-                Join SSG
+                Join SSG!
                 <FaArrowRight size={14} />
               </button>
 
