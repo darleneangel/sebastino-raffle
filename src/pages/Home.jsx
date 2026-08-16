@@ -6,7 +6,6 @@ import Footer from "../components/layout/Footer";
 import Hero from "../components/sections/Hero";
 import AboutUs from "../components/sections/AboutUs";
 import EventsSection from "../components/sections/EventsSection";
-import OfficersSection from "../components/sections/OfficersSection";
 import EventStats from "../components/sections/EventStats";
 import FacebookSection from "../components/sections/FacebookSection";
 import RegistrationSection from "../components/sections/RegistrationSection";
@@ -19,37 +18,40 @@ export default function Home() {
   function renderSection() {
     switch (activeSection) {
       case "hero":
-        return <Hero />;
+  return <Hero setActiveSection={setActiveSection} />;
 
       case "aboutus":
-        return <AboutUs />;
+        return <AboutUs setActiveSection={setActiveSection} />;
 
       case "happening-now":
-        return <EventsSection />;
+        return <EventsSection setActiveSection={setActiveSection} />;
 
       case "events":
-        return <EventsSection />;
+        return <EventsSection setActiveSection={setActiveSection} />;
 
-      case "officers":
-        return <OfficersSection />;
+      case "footer":
+        return <Footer setActiveSection={setActiveSection} />;
+
 
       case "gallery":
-        return <EventStats />;
+        return <EventStats setActiveSection={setActiveSection} />;
 
       case "contact":
-        return <FacebookSection />;
+        return <FacebookSection setActiveSection={setActiveSection} />;
 
       case "registration":
-        return <RegistrationSection />;
+        return <RegistrationSection setActiveSection={setActiveSection} />;
 
       case "how-to-join":
-        return <HowToJoin />;
+        return <HowToJoin setActiveSection={setActiveSection} />;
 
       case "prizes":
-        return <PrizeSection />;
+        return <PrizeSection setActiveSection={setActiveSection} />;
 
       default:
         return <Hero />;
+
+
     }
   }
 

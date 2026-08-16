@@ -1,23 +1,22 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');@import "tailwindcss";
 
 :root {
+  /* =========================================
+     SSG OFFICIAL COLOR PALETTE
+  ========================================= */
 
-  /* Primary Brand Colors */
   --primary: #CA1F7B;      /* Dark Pink */
   --secondary: #DF79B0;    /* Light Pink */
 
-  /* Supporting Colors */
-  --dark: #8E1457;         /* Darker Pink for hover/navbar */
-  --light: #FFFFFF;        /* White background */
-  --cream: #FFF6FB;        /* Very light pink background */
-
-  /* Neutral Colors */
-  --text: #1F1F1F;         /* Near Black */
-  --black: #000000;
-  --white: #FFFFFF;
-  --silver: #C0C0C0;
-
+  --white: #FFFFFF;        /* White */
+  --black: #000000;        /* Black */
+  --silver: #C0C0C0;       /* Silver */
 }
+
+
+/* =========================================
+   GLOBAL STYLES
+========================================= */
 
 html {
   scroll-behavior: smooth;
@@ -25,20 +24,33 @@ html {
 
 body {
   margin: 0;
-  background: var(--light);
-  font-family: Inter, sans-serif;
-  color: var(--text);
+  background: var(--white);
+  font-family: 'Poppins', sans-serif;
+  color: var(--black);
 }
 
 * {
   box-sizing: border-box;
 }
 
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--secondary);
   border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }
