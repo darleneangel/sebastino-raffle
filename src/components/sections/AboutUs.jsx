@@ -1711,7 +1711,7 @@ export default function AboutUs() {
                 relative
                 max-h-[92vh]
                 w-full
-                max-w-5xl
+                max-w-4xl
                 overflow-y-auto
                 rounded-[30px]
                 bg-white
@@ -1749,94 +1749,20 @@ export default function AboutUs() {
 
               <div
                 className="
-                  grid
-                  lg:grid-cols-[.85fr_1.15fr]
+                  p-7 sm:p-9 lg:p-12
                 "
               >
-
-                {/* =================================================
-                    OFFICER IMAGE
-                ================================================= */}
-
-                <div
-                  className="
-                    relative
-                    min-h-[350px]
-                    overflow-hidden
-                    bg-[#F7E8EF]
-                    lg:min-h-[650px]
-                  "
-                >
-
-                  <img
-                    src={selectedOfficer.image}
-                    alt={selectedOfficer.position}
-                    className="
-                      h-full
-                      w-full
-                      object-cover
-                    "
-                  />
-
-                  <div
-                    className="
-                      absolute
-                      inset-x-0
-                      bottom-0
-                      h-48
-                      bg-gradient-to-t
-                      from-black/80
-                      to-transparent
-                    "
-                  />
-
-                  <div
-                    className="
-                      absolute
-                      bottom-7
-                      left-7
-                      right-7
-                      text-white
-                    "
-                  >
-
-                    <p
-                      className="
-                        text-xs
-                        font-black
-                        uppercase
-                        tracking-[2px]
-                        text-[#DF79B0]
-                      "
-                    >
-                      Executive Board
-                    </p>
-
-                    <h2
-                      className="
-                        mt-2
-                        text-3xl
-                        font-black
-                        leading-tight
-                      "
-                    >
-                      {selectedOfficer.name}
-                    </h2>
-
-                    <p className="mt-1 font-bold">
-                      {selectedOfficer.position}
-                    </p>
-
-                  </div>
-
-                </div>
 
 
                 {/* =================================================
                     PROFILE CONTENT
                 ================================================= */}
 
-                <div className="p-7 sm:p-9 lg:p-12">
+                <div>
+
+                  
+                    
+                  
 
                   <span
                     className="
@@ -1851,6 +1777,7 @@ export default function AboutUs() {
                       uppercase
                       tracking-wider
                       text-[#CA1F7B]
+                      mt-6
                     "
                   >
                     Official SSG Officer
@@ -2206,7 +2133,7 @@ export default function AboutUs() {
                               }`}
                               loading="lazy"
                               className="
-                                h-40
+                                h-full
                                 w-full
                                 object-cover
                                 transition
