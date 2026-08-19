@@ -95,11 +95,10 @@ export default function LoadingScreen({ loading }) {
               h-44
               w-44
               overflow-hidden
-              rounded-full
-              border-4
-              border-white
-              bg-white
-              shadow-[0_0_50px_rgba(236,72,153,.45)]
+            
+            
+            
+              
             "
           >
 
@@ -116,8 +115,8 @@ export default function LoadingScreen({ loading }) {
               className="
                 absolute
                 inset-0
-                rounded-full
-                bg-pink-400
+                
+               
                 blur-xl
               "
             />
