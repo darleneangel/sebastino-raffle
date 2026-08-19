@@ -244,7 +244,7 @@ const events = [
 
     status: "Completed",
 
-    date: "August 24, 2026",
+    date: "August 24, 2025",
 
     month: 7,
 
