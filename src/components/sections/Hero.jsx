@@ -442,11 +442,11 @@ export default function Hero({ setActiveSection }) {
       text-transparent
     "
   >
-    One Studentry. One Voice,
+    One Pulse. One Purpose,
   </span>
 
   <span className="block text-[#171717]">
-    One Purpose.
+    One Studentry.
   </span>
 </h1>
 
