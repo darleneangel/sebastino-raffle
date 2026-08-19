@@ -86,7 +86,7 @@ const officers = [
     responsibility:
       "Builds connections with organizations, offices, and external stakeholders while supporting collaborative student initiatives.",
     advocacy:
-      "Creating stronger partnerships and opportunities that benefit the wider Sebastino community.",
+      "Creating stronger partnerships and opportunities that benefit the wider Sebastinians community.",
     gallery: [vpExternal],
   },
 
@@ -237,7 +237,7 @@ const committees = [
   {
     title: "Committee on Campus Events & Culture",
     description:
-      "Supports campus activities, student engagement, cultural programs, and initiatives that strengthen Sebastino campus life.",
+      "Supports campus activities, student engagement, cultural programs, and initiatives that strengthen Sebastinians campus life.",
   },
 
   {
@@ -451,7 +451,7 @@ export default function AboutUs() {
             Recoletos de Cavite. Through servant leadership,
             student advocacy, and meaningful programs, the SSG
             works to represent student concerns and strengthen
-            the Sebastino community.
+            the Sebastinians community.
           </p>
         </motion.div>
 
@@ -616,7 +616,7 @@ export default function AboutUs() {
                 sm:text-3xl
               "
             >
-              A United and Empowered Sebastino Community
+              A United and Empowered Sebastinians Community
             </h2>
 
             <p
@@ -930,7 +930,7 @@ export default function AboutUs() {
                 text-black/55
               "
             >
-              The values that inspire the Sebastino community to
+              The values that inspire the Sebastinians community to
               serve with compassion, lead with truth, and work
               together in unity.
             </p>
@@ -1118,7 +1118,7 @@ export default function AboutUs() {
               "
             >
               Meet the student leaders entrusted with serving,
-              representing, and strengthening the Sebastino
+              representing, and strengthening the Sebastinians
               community.
             </p>
 
@@ -1645,7 +1645,7 @@ export default function AboutUs() {
             >
               The Supreme Student Government remains committed
               to listening, serving, and creating meaningful
-              opportunities for every Sebastino.
+              opportunities for every Sebastinians.
             </p>
 
           </div>

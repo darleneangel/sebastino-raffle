@@ -56,7 +56,7 @@ const salubongPrizes = [
     image: prize1,
     title: "Orashare E-Fan",
     description:
-      "One of the exciting prize packages prepared for participating Sebastinos.",
+      "One of the exciting prize packages prepared for participating Sebastinianss.",
     type: "Special Prize",
   },
 
@@ -87,7 +87,7 @@ const salubongGallery = [
     image: eventPoster,
     title: "Official Salubong Poster",
     description:
-      "The official visual material introducing Salubong sa Bagong Sebastino.",
+      "The official visual material introducing Salubong sa Bagong Sebastinians.",
   },
 
   {
@@ -101,7 +101,7 @@ const salubongGallery = [
     image: photobooth,
     title: "Photobooth Setup",
     description:
-      "A dedicated space where Sebastinos can capture memories from the celebration.",
+      "A dedicated space where Sebastinianss can capture memories from the celebration.",
   },
 
   {
@@ -130,7 +130,7 @@ const events = [
 
     schoolYear: "2026–2027",
 
-    title: "Salubong sa Bagong Sebastino",
+    title: "Salubong sa Bagong Sebastinians",
 
     category: "Campus Welcome",
 
@@ -154,10 +154,10 @@ const events = [
     coHead: "SSG Committees and Volunteers",
 
     description:
-      "Salubong sa Bagong Sebastino is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinos, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
+      "Salubong sa Bagong Sebastinians is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinianss, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
 
     rationale:
-      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinos. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
+      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinianss. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
 
     featuredImage: eventPoster,
 
@@ -208,10 +208,10 @@ const events = [
     coHead: "SSG Committees and Volunteers",
 
     description:
-      "Salubong sa Bagong Sebastino is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinos, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
+      "Salubong sa Bagong Sebastinians is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinianss, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
 
     rationale:
-      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinos. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
+      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinianss. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
 
     featuredImage: eventPoster,
 
@@ -283,7 +283,7 @@ const events = [
 
     schoolYear: "2026–2027",
 
-    title: "Salubong sa Bagong Sebastino",
+    title: "Salubong sa Bagong Sebastinians",
 
     category: "Campus Welcome",
 
@@ -307,10 +307,10 @@ const events = [
     coHead: "SSG Committees and Volunteers",
 
     description:
-      "Salubong sa Bagong Sebastino is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinos, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
+      "Salubong sa Bagong Sebastinians is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinianss, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
 
     rationale:
-      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinos. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
+      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinianss. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
 
     featuredImage: eventPoster,
 
@@ -701,7 +701,7 @@ export default function EventsSection({
             >
               Salubong sa
               <span className="block text-[#DF79B0]">
-                Bagong Sebastino
+                Bagong Sebastinians
               </span>
             </h2>
 
@@ -720,7 +720,7 @@ export default function EventsSection({
               Welcome the new academic year with
               the Supreme Student Government through
               exciting activities, freebies, games,
-              prizes, and memorable Sebastino moments.
+              prizes, and memorable Sebastinians moments.
             </p>
 
           </div>
@@ -764,7 +764,7 @@ export default function EventsSection({
 
                 <img
                   src={eventPoster}
-                  alt="Salubong sa Bagong Sebastino"
+                  alt="Salubong sa Bagong Sebastinians"
                   className="
                     h-full
                     w-full
@@ -835,7 +835,7 @@ export default function EventsSection({
                 >
                   Salubong sa
                   <span className="block text-[#CA1F7B]">
-                    Bagong Sebastino
+                    Bagong Sebastinians
                   </span>
                 </h3>
 
@@ -851,7 +851,7 @@ export default function EventsSection({
                 >
                   An exciting campus welcome
                   celebration created to bring
-                  Sebastinos together at the beginning
+                  Sebastinianss together at the beginning
                   of the academic year.
                 </p>
 
@@ -1163,7 +1163,7 @@ export default function EventsSection({
 
               <img
                 src={eventPoster}
-                alt="Salubong sa Bagong Sebastino"
+                alt="Salubong sa Bagong Sebastinians"
                 className="
                   absolute
                   inset-0
@@ -1246,7 +1246,7 @@ export default function EventsSection({
                 >
                   Salubong sa
                   <span className="block text-[#DF79B0]">
-                    Bagong Sebastino
+                    Bagong Sebastinians
                   </span>
                 </h3>
 
@@ -1291,7 +1291,7 @@ export default function EventsSection({
                 "
               >
                 Welcome to a New
-                Sebastino Journey
+                Sebastinians Journey
               </h3>
 
 
@@ -1305,7 +1305,7 @@ export default function EventsSection({
                 "
               >
                 Salubong brings new and returning
-                Sebastinos together through welcoming
+                Sebastinianss together through welcoming
                 activities, student engagement,
                 giveaways, games, and memorable
                 campus experiences.
@@ -2666,7 +2666,7 @@ export default function EventsSection({
                       >
                         Salubong sa
                         <span className="block text-[#DF79B0]">
-                          Bagong Sebastino
+                          Bagong Sebastinians
                         </span>
                       </h2>
 
@@ -2838,7 +2838,7 @@ export default function EventsSection({
                                   sm:text-3xl
                                 "
                               >
-                                Welcome, Sebastinos.
+                                Welcome, Sebastinianss.
                               </h3>
 
 
@@ -3333,7 +3333,7 @@ export default function EventsSection({
                             "
                           >
                             Discover the prizes prepared
-                            for participating Sebastinos
+                            for participating Sebastinians
                             throughout the celebration.
                           </p>
 

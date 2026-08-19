@@ -49,7 +49,7 @@ const galleryItems = [
     department: "Academic Student Organizations",
     image: null,
     description:
-      "Academic and student organizations provide Sebastinos with opportunities to develop leadership skills, pursue shared interests, participate in academic activities, and contribute to the wider school community.",
+      "Academic and student organizations provide Sebastinianss with opportunities to develop leadership skills, pursue shared interests, participate in academic activities, and contribute to the wider school community.",
     link: "#",
   },
 
@@ -62,7 +62,7 @@ const galleryItems = [
     department: "SSCR Campus",
     image: null,
     description:
-      "Campus life at San Sebastian College – Recoletos de Cavite brings together academics, student organizations, community activities, and meaningful experiences that shape the Sebastino experience.",
+      "Campus life at San Sebastian College – Recoletos de Cavite brings together academics, student organizations, community activities, and meaningful experiences that shape the Sebastinians experience.",
     link: "#",
   },
 
@@ -491,7 +491,7 @@ export default function Gallery() {
               text-transparent
               "
             >
-              Sebastino Life
+              Sebastinians Life
             </span>
           </h2>
 
@@ -999,7 +999,7 @@ export default function Gallery() {
           >
             Meet the student leaders committed to
             serving, representing, and empowering
-            the Sebastino community.
+            the Sebastinians community.
           </p>
 
         </motion.div>

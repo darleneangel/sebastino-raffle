@@ -32,7 +32,7 @@ const officers = [
   {
     name: "Cristian Lasara",
     position: "President",
-    quote: "Leading with integrity and serving every Sebastino.",
+    quote: "Leading with integrity and serving every Sebastinians.",
     image: president,
     description:
       "As President of the Supreme Student Government, Cristian leads the executive board in planning, coordinating, and implementing student-centered programs and initiatives.",
@@ -134,7 +134,7 @@ const officers = [
   {
     name: "Charisse Batayola",
     position: "Public Relations Officer",
-    quote: "Connecting the SSG with every Sebastino.",
+    quote: "Connecting the SSG with every Sebastinians.",
     image: pro,
     description:
       "The Public Relations Officer communicates SSG activities, announcements, and initiatives to students while helping strengthen the organization's connection with the student community.",
@@ -237,7 +237,7 @@ export default function OfficersSection() {
           <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-gray-600">
             Dedicated leaders committed to empowering students,
             promoting excellence, and creating meaningful opportunities
-            for every Sebastino.
+            for every Sebastinians.
           </p>
 
         </motion.div>
@@ -460,7 +460,7 @@ export default function OfficersSection() {
 
                 <p className="mt-3 max-w-xl text-white/90">
                   United by leadership. Driven by service. Inspired by every
-                  Sebastino.
+                  Sebastinians.
                 </p>
 
               </div>

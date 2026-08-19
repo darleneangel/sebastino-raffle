@@ -33,22 +33,22 @@ const featured = [
   {
     image: img3,
     title: "Meeting the Officers!",
-    subtitle: "Creating unforgettable Sebastino memories.",
+    subtitle: "Creating unforgettable Sebastinians memories.",
   },
   {
     image: img4,
     title: "Meeting the Officers!",
-    subtitle: "Creating unforgettable Sebastino memories.",
+    subtitle: "Creating unforgettable Sebastinians memories.",
   },
   {
     image: img5,
     title: "Meeting the Officers!",
-    subtitle: "Creating unforgettable Sebastino memories.",
+    subtitle: "Creating unforgettable Sebastinians memories.",
   },
   {
     image: img6,
     title: "Meeting the Officers!",
-    subtitle: "Creating unforgettable Sebastino memories.",
+    subtitle: "Creating unforgettable Sebastinians memories.",
   },
 ];
 
@@ -108,7 +108,7 @@ export default function GallerySection() {
             programs and outreach initiatives to campus
             celebrations and student engagement activities,
             every event reflects our commitment to serving
-            the Sebastino community.
+            the Sebastinians community.
 
           </p>
 
@@ -215,7 +215,7 @@ export default function GallerySection() {
                 <p className="mt-2 text-white/90">
 
                   Creating memorable experiences
-                  for every Sebastino.
+                  for every Sebastinians.
 
                 </p>
 

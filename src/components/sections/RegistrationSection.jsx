@@ -12,7 +12,7 @@ import advocacy from "../../assets/projects/ga.jpg";
 
 const projects = [
   {
-    title: "Salubong sa Bagong Sebastino",
+    title: "Salubong sa Bagong Sebastinians",
     year: "2025",
     image: leadership,
     description:
@@ -46,7 +46,7 @@ const projects = [
     year: "2026",
     image: advocacy,
     description:
-      "Station that encourage awareness, responsibility, and active participation among Sebastinos.",
+      "Station that encourage awareness, responsibility, and active participation among Sebastinianss.",
     participants:
       "Whole student community",
   },
@@ -156,7 +156,7 @@ export default function ProjectsSection() {
 
             Discover the initiatives, programs, and activities led by the
             Supreme Student Government that continue to create meaningful
-            experiences for every Sebastino.
+            experiences for every Sebastinians.
 
           </p>
 

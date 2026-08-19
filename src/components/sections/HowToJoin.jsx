@@ -29,7 +29,7 @@ const officers = [
   {
     name: "Cristian Lasara",
     position: "President",
-    quote: "Leading with integrity and serving every Sebastino.",
+    quote: "Leading with integrity and serving every Sebastinians.",
     image: president,
   },
   {
@@ -65,7 +65,7 @@ const officers = [
   {
     name: "Charisse Batayola",
     position: "Public Relations Officer",
-    quote: "Connecting the SSG with every Sebastino.",
+    quote: "Connecting the SSG with every Sebastinians.",
     image: pro,
   },
 ];
@@ -139,7 +139,7 @@ export default function OfficersSection() {
 
             Dedicated leaders committed to empowering students,
             promoting excellence, and creating meaningful opportunities
-            for every Sebastino.
+            for every Sebastinians.
 
           </p>
 
@@ -312,7 +312,7 @@ export default function OfficersSection() {
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-600 text-gray-600">
               Behind every successful student initiative is a team dedicated to
               leadership, collaboration, and service. Together, we continue to
-              create programs that empower every Sebastino.
+              create programs that empower every Sebastinians.
             </p>
 
           </div>
@@ -359,7 +359,7 @@ export default function OfficersSection() {
 
                 <p className="mt-3 max-w-xl text-white/90">
                   United by leadership. Driven by service. Inspired by every
-                  Sebastino.
+                  Sebastinians.
                 </p>
 
               </div>
@@ -386,7 +386,7 @@ export default function OfficersSection() {
               The Supreme Student Government remains committed to representing
               the student body with integrity, transparency, innovation, and
               excellence. Every project, event, and initiative is centered on
-              creating a better campus experience for all Sebastinos.
+              creating a better campus experience for all Sebastinianss.
             </p>
 
           </motion.div>
