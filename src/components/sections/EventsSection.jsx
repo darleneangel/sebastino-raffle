@@ -179,7 +179,60 @@ const events = [
     registrationLink:
       "https://docs.google.com/forms/d/e/1FAIpQLSdzsuUTBsJXqFAJFVFq3-kXU2ytpHo4jPLwUJktIKmfCTZw6Q/viewform?usp=publish-editor",
   },
+{
+    id: "avishala-2026",
 
+    schoolYear: "2026–2027",
+
+    title: "Avishala 2026",
+
+    category: "Campus Welcome",
+
+    status: "Upcoming",
+
+    date: "August 28, 2026",
+
+    month: 7,
+
+    day: 28,
+
+    year: 2026,
+
+    time: "7:00 AM – 11:00 AM",
+
+    location:
+      "San Sebastian College – Recoletos de Cavite",
+
+    head: "SSG Executive Board",
+
+    coHead: "SSG Committees and Volunteers",
+
+    description:
+      "Salubong sa Bagong Sebastino is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinos, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
+
+    rationale:
+      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinos. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
+
+    featuredImage: eventPoster,
+
+    galleryImages: salubongGallery.map(
+      (item) => item.image
+    ),
+
+    preparationImages: [
+      freebies,
+      photobooth,
+      brochure,
+      asop,
+      eventPoster,
+    ],
+
+    registrationText:
+      "WANT TO WIN A TOTE BAG OR AN E-FAN? REGISTER HERE",
+
+    registrationLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdzsuUTBsJXqFAJFVFq3-kXU2ytpHo4jPLwUJktIKmfCTZw6Q/viewform?usp=publish-editor",
+  },
   {
     id: "student-engagement-2025",
 
@@ -191,7 +244,7 @@ const events = [
 
     status: "Completed",
 
-    date: "S.Y. 2025–2026",
+    date: "August 24, 2026",
 
     month: 7,
 
@@ -224,6 +277,62 @@ const events = [
       brochure,
     ],
   },
+
+  {
+    id: "salubong-2026",
+
+    schoolYear: "2026–2027",
+
+    title: "Salubong sa Bagong Sebastino",
+
+    category: "Campus Welcome",
+
+    status: "Upcoming",
+
+    date: "August 24, 2026",
+
+    month: 7,
+
+    day: 17,
+
+    year: 2026,
+
+    time: "7:00 AM – 11:00 AM",
+
+    location:
+      "San Sebastian College – Recoletos de Cavite",
+
+    head: "SSG Executive Board",
+
+    coHead: "SSG Committees and Volunteers",
+
+    description:
+      "Salubong sa Bagong Sebastino is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinos, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
+
+    rationale:
+      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinos. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
+
+    featuredImage: eventPoster,
+
+    galleryImages: salubongGallery.map(
+      (item) => item.image
+    ),
+
+    preparationImages: [
+      freebies,
+      photobooth,
+      brochure,
+      asop,
+      eventPoster,
+    ],
+
+    registrationText:
+      "WANT TO WIN A TOTE BAG OR AN E-FAN? REGISTER HERE",
+
+    registrationLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdzsuUTBsJXqFAJFVFq3-kXU2ytpHo4jPLwUJktIKmfCTZw6Q/viewform?usp=publish-editor",
+  },
+
 ];
 
 
@@ -977,7 +1086,12 @@ export default function EventsSection({
           >
             What's Happening
 
-            <span className="block text-[#CA1F7B]">
+            <span className="block bg-gradient-to-r
+      from-[#8E1457]
+      via-[#CA1F7B]
+      to-[#DF79B0]
+      bg-clip-text
+      text-transparent">
               at SSG
             </span>
           </h2>
@@ -3343,6 +3457,8 @@ export default function EventsSection({
                 </>
 
               ) : (
+
+              
 
                 /* =================================================
                    NORMAL ARCHIVE EVENT MODAL

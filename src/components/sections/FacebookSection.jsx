@@ -34,7 +34,12 @@ export default function FacebookSection() {
 
           <h2 className="mt-6 text-5xl font-black text-[var(--text)] md:text-6xl">
             Stay Connected
-            <span className="block text-[var(--primary)]">
+            <span className="block bg-gradient-to-r
+      from-[#8E1457]
+      via-[#CA1F7B]
+      to-[#DF79B0]
+      bg-clip-text
+      text-transparent">
               Beyond the Campus
             </span>
           </h2>

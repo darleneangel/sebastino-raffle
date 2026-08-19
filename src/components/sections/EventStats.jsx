@@ -482,13 +482,13 @@ export default function Gallery() {
             Celebrating
             <span
               className="
-                ml-2
+              block
                 bg-gradient-to-r
-                from-[#8E1457]
-                via-[#CA1F7B]
-                to-[#DF79B0]
-                bg-clip-text
-                text-transparent
+              from-[#8E1457]
+              via-[#CA1F7B]
+              to-[#DF79B0]
+              bg-clip-text
+              text-transparent
               "
             >
               Sebastino Life
