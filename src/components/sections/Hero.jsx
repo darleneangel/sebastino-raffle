@@ -745,191 +745,318 @@ export default function Hero({ setActiveSection }) {
           ADMISSIONS BANNER
       ================================================= */}
 
-      <section className="bg-white px-6 py-20 sm:px-8 lg:px-12">
+<section className="bg-white px-4 py-14 sm:px-6 sm:py-16 lg:px-12 lg:py-20">
+
+  <div
+    className="
+      mx-auto
+      max-w-7xl
+      overflow-hidden
+      rounded-[28px]
+      bg-[#8E1457]
+      shadow-[0_20px_60px_rgba(142,20,87,0.20)]
+      sm:rounded-[40px]
+    "
+  >
+
+    <div
+      className="
+        grid
+        items-center
+        gap-6
+        px-6
+        py-8
+        sm:gap-8
+        sm:px-8
+        sm:py-10
+        md:grid-cols-[220px_1fr]
+        md:px-10
+        lg:grid-cols-[280px_1fr]
+        lg:gap-12
+        lg:px-14
+        lg:py-12
+      "
+    >
+
+      {/* =====================================================
+          SSCR LOGO
+      ===================================================== */}
+
+      <div
+        className="
+          flex
+          justify-center
+          md:justify-start
+        "
+      >
 
         <div
           className="
-            mx-auto
-            max-w-7xl
-            overflow-hidden
-            rounded-[64px]
-            bg-[#8E1457]
-            shadow-2xl
+            flex
+            h-36
+            w-36
+            items-center
+            justify-center
+            sm:h-44
+            sm:w-44
+            lg:h-56
+            lg:w-56
           "
         >
 
-          <div
+          <img
+            src={sscrLogo}
+            alt="San Sebastian College – Recoletos de Cavite Logo"
             className="
-              grid
-              items-center
-              gap-10
-              px-7
-              py-10
-              sm:px-10
-              lg:grid-cols-[.8fr_1.2fr]
-              lg:px-14
-              lg:py-14
+              h-full
+              w-full
+              object-contain
             "
-          >
-
-            {/* LOGO */}
-
-            <div
-              className="
-                flex
-                justify-center
-                lg:justify-start
-              "
-            >
-
-              <div
-                className="
-                  flex
-                  h-100
-                  w-100
-                  items-center
-                  justify-center
-                  rounded-full
-                  
-                  bg-none
-                  p-7
-                  
-                "
-              >
-
-                <img
-                  src={sscrLogo}
-                  alt="SSCR Logo"
-                  className="h-full w-full object-contain"
-                />
-
-              </div>
-
-            </div>
-
-
-            {/* INFORMATION */}
-
-            <div>
-
-              <span
-                className="
-                  inline-flex
-                  rounded-full
-                  bg-[#DF79B0]
-                  px-4
-                  py-2
-                  text-xs
-                  font-black
-                  uppercase
-                  tracking-[2px]
-                  text-white
-                "
-              >
-                Admissions
-              </span>
-
-              <h2
-                className="
-                  mt-5
-                  text-3xl
-                  font-black
-                  leading-tight
-                  text-white
-                  sm:text-4xl
-                  lg:text-4xl
-                "
-              >
-                Admissions Still Ongoing —
-
-                <span className="block text-[#DF79B0]">
-                  Secure Your Future at SSCR
-                </span>
-              </h2>
-
-              <p
-                className="
-                  mt-5
-                  max-w-2xl
-                  text-base
-                  leading-7
-                  text-white/80
-                "
-              >
-                Discover quality Recoletos education,
-                industry-aligned curricula, and a vibrant
-                student life designed to prepare Sebastinos
-                for meaningful careers and service.
-              </p>
-
-
-              <div
-                className="
-                  mt-7
-                  flex
-                  flex-col
-                  gap-3
-                  sm:flex-row
-                "
-              >
-
-                <a
-                  href="https://sscr.edu/Beta/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-full
-                    bg-white
-                    px-6
-                    py-3.5
-                    font-black
-                    text-[#CA1F7B]
-                    transition
-                    hover:bg-[#DF79B0]
-                    hover:text-white
-                  "
-                >
-                  View SSCR Official Page
-                  <FaArrowRight size={13} />
-                </a>
-
-                <a
-                  href="https://sscr.edu/Beta/Admission.html"
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-full
-                    border
-                    border-white/40
-                    px-6
-                    py-3.5
-                    font-black
-                    text-white
-                    transition
-                    hover:bg-white
-                    hover:text-[#CA1F7B]
-                  "
-                >
-                  Explore Offered Courses
-                  <FaSearch size={13} />
-                </a>
-
-              </div>
-
-            </div>
-
-          </div>
+          />
 
         </div>
 
-      </section>
+      </div>
 
+
+      {/* =====================================================
+          INFORMATION
+      ===================================================== */}
+
+      <div className="text-center md:text-left">
+
+        {/* LABEL */}
+
+        <span
+          className="
+            inline-flex
+            rounded-full
+            bg-[#DF79B0]
+            px-4
+            py-1.5
+            text-[10px]
+            font-black
+            uppercase
+            tracking-[2px]
+            text-white
+            sm:px-5
+            sm:py-2
+            sm:text-xs
+          "
+        >
+          Admissions
+        </span>
+
+
+        {/* HEADLINE */}
+
+        <h2
+          className="
+            mt-4
+            text-2xl
+            font-black
+            leading-tight
+            text-white
+            sm:mt-5
+            sm:text-3xl
+            lg:text-4xl
+          "
+        >
+          Admissions Still Ongoing —
+
+          <span
+            className="
+              block
+              text-[#DF79B0]
+            "
+          >
+            Secure Your Future at SSCR
+          </span>
+        </h2>
+
+
+        {/* DESCRIPTION */}
+
+        <p
+          className="
+            mx-auto
+            mt-4
+            max-w-2xl
+            text-sm
+            leading-6
+            text-white/80
+            sm:mt-5
+            sm:text-base
+            sm:leading-7
+            md:mx-0
+          "
+        >
+          Discover quality Recoletos education,
+          industry-aligned curricula, and a vibrant
+          student life designed to prepare Sebastinos
+          for meaningful careers and service.
+        </p>
+
+
+        {/* =================================================
+            CORE VALUES
+        ================================================= */}
+
+        <div
+          className="
+            mt-5
+            flex
+            flex-wrap
+            justify-center
+            gap-2
+            sm:gap-3
+            md:justify-start
+          "
+        >
+
+          <span
+            className="
+              rounded-full
+              border
+              border-white/20
+              bg-white/10
+              px-3
+              py-1.5
+              text-xs
+              font-bold
+              text-white
+            "
+          >
+            Caritas
+          </span>
+
+          <span
+            className="
+              rounded-full
+              border
+              border-white/20
+              bg-white/10
+              px-3
+              py-1.5
+              text-xs
+              font-bold
+              text-white
+            "
+          >
+            Veritas
+          </span>
+
+          <span
+            className="
+              rounded-full
+              border
+              border-white/20
+              bg-white/10
+              px-3
+              py-1.5
+              text-xs
+              font-bold
+              text-white
+            "
+          >
+            Unitas
+          </span>
+
+        </div>
+
+
+        {/* =================================================
+            BUTTONS
+        ================================================= */}
+
+        <div
+          className="
+            mt-6
+            flex
+            flex-col
+            gap-3
+            sm:flex-row
+            md:justify-start
+          "
+        >
+
+          {/* OFFICIAL PAGE */}
+
+          <a
+            href="https://sscr.edu/Beta/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-full
+              bg-white
+              px-5
+              py-3
+              text-sm
+              font-black
+              text-[#8E1457]
+              transition
+              duration-300
+              hover:bg-[#DF79B0]
+              hover:text-white
+              sm:w-auto
+              sm:px-6
+              sm:py-3.5
+            "
+          >
+            View SSCR Official Page
+
+            <FaArrowRight size={12} />
+          </a>
+
+
+          {/* COURSES */}
+
+          <a
+            href="https://sscr.edu/Beta/Admission.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex
+              w-full
+              items-center
+              justify-center
+              gap-2
+              rounded-full
+              border
+              border-white/40
+              px-5
+              py-3
+              text-sm
+              font-black
+              text-white
+              transition
+              duration-300
+              hover:bg-white
+              hover:text-[#8E1457]
+              sm:w-auto
+              sm:px-6
+              sm:py-3.5
+            "
+          >
+            Explore Offered Courses
+
+            <FaSearch size={12} />
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* =================================================
           STUDENT INQUIRY DIRECTORY
