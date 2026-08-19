@@ -99,55 +99,16 @@ const institutionalGallery = [
 
 const directory = [
   {
-    category: "Academic Departments & Colleges",
-    items: [
-      {
-        icon: <FaGraduationCap />,
-        name: "College of Arts and Sciences",
-        shortName: "CAS",
-        link: "https://www.facebook.com/profile.php?id=100057338234555",
-      },
-      {
-        icon: <FaUserShield />,
-        name: "College of Criminal Justice Education",
-        shortName: "CCJE",
-        link: "https://www.facebook.com/profile.php?id=100057209479524",
-      },
-      {
-        icon: <FaUniversity />,
-        name: "College of Accountancy, Business Administration, Hospitality Management, and Tourism Management",
-        shortName: "CABAHM",
-        link: "https://www.facebook.com/profile.php?id=61571699486206",
-      },
-      {
-        icon: <FaLaptop />,
-        name: "College of Engineering and Information Technology",
-        shortName: "CEIT",
-        link: "https://www.facebook.com/profile.php?id=61563950141860",
-      },
-      {
-        icon: <FaHeart />,
-        name: "College of Nursing",
-        shortName: "CON",
-        link: "https://www.facebook.com/profile.php?id=100063998951244",
-      },
-      {
-        icon: <FaGraduationCap />,
-        name: "Senior High School",
-        shortName: "SHS",
-        link: "https://www.facebook.com/sscrdecaviteshs",
-      },
-      {
-        icon: <FaUniversity />,
-        name: "Basic Education",
-        shortName: "BE",
-        link: "https://www.facebook.com/profile.php?id=100057579094442",
-      },
-    ],
-  },
-  {
     category: "Administrative Offices & Student Services",
     items: [
+      {
+        icon: <FaLaptop />,
+        name: "Student Affairs and Services",
+        shortName: "Student Affairs",
+        description:
+          "Technical assistance, records, and billing clearances",
+        link: "https://www.facebook.com/profile.php?id=100057615902479",
+      },
       {
         icon: <FaChurch />,
         name: "Campus Ministry Office",
@@ -159,7 +120,7 @@ const directory = [
       {
         icon: <FaLaptop />,
         name: "ICT Center",
-        shortName: "STUDENT SERVICES",
+        shortName: "ICT",
         description:
           "Technical assistance, records, and billing clearances",
         link: "https://www.facebook.com/BasteICT",
@@ -206,14 +167,6 @@ const directory = [
       },
       {
         icon: <FaLaptop />,
-        name: "Student Affairs and Services",
-        shortName: "Student Affairs",
-        description:
-          "Technical assistance, records, and billing clearances",
-        link: "https://www.facebook.com/profile.php?id=100057615902479",
-      },
-      {
-        icon: <FaLaptop />,
         name: "Center for Research and Creative Works",
         shortName: "CRCW",
         description:
@@ -230,6 +183,54 @@ const directory = [
       },
     ],
   },
+  {
+    category: "Academic Departments & Colleges",
+    items: [
+      {
+        icon: <FaGraduationCap />,
+        name: "College of Arts and Sciences",
+        shortName: "CAS",
+        link: "https://www.facebook.com/profile.php?id=100057338234555",
+      },
+      {
+        icon: <FaUserShield />,
+        name: "College of Criminal Justice Education",
+        shortName: "CCJE",
+        link: "https://www.facebook.com/profile.php?id=100057209479524",
+      },
+      {
+        icon: <FaUniversity />,
+        name: "College of Accountancy, Business Administration, Hospitality Management, and Tourism Management",
+        shortName: "CABAHM",
+        link: "https://www.facebook.com/profile.php?id=61571699486206",
+      },
+      {
+        icon: <FaLaptop />,
+        name: "College of Engineering and Information Technology",
+        shortName: "CEIT",
+        link: "https://www.facebook.com/profile.php?id=61563950141860",
+      },
+      {
+        icon: <FaHeart />,
+        name: "College of Nursing",
+        shortName: "CON",
+        link: "https://www.facebook.com/profile.php?id=100063998951244",
+      },
+      {
+        icon: <FaGraduationCap />,
+        name: "Senior High School",
+        shortName: "SHS",
+        link: "https://www.facebook.com/sscrdecaviteshs",
+      },
+      {
+        icon: <FaUniversity />,
+        name: "Basic Education",
+        shortName: "BE",
+        link: "https://www.facebook.com/profile.php?id=100057579094442",
+      },
+    ],
+  },
+  
   {
     category: "School Portal",
     items: [
@@ -633,7 +634,7 @@ export default function Hero({ setActiveSection }) {
                         sm:text-3xl
                       "
                     >
-                      Caritas. Scientia. 
+                      Caritas et Scientia
                     </h2>
 
                     <p

@@ -54,7 +54,7 @@ import preparationVideo from "../../assets/events/preparation.mp4";
 const salubongPrizes = [
   {
     image: prize1,
-    title: "Prize #1",
+    title: "Orashare E-Fan",
     description:
       "One of the exciting prize packages prepared for participating Sebastinos.",
     type: "Special Prize",
@@ -62,7 +62,7 @@ const salubongPrizes = [
 
   {
     image: prize2,
-    title: "Prize #2",
+    title: "Salubong Tote Bag",
     description:
       "Another special reward prepared as part of the Salubong celebration.",
     type: "Event Prize",
@@ -70,7 +70,7 @@ const salubongPrizes = [
 
   {
     image: prize3,
-    title: "Prize #3",
+    title: "Salubong Tote Bag",
     description:
       "A special reward prepared by the Supreme Student Government.",
     type: "Special Award",
