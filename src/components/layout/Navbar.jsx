@@ -168,8 +168,8 @@ export default function Navbar({
 
                 ${
                   scrolled
-                    ? "h-20 w-20"
-                    : "h-20 w-20"
+                    ? "h-11 w-11"
+                    : "h-12 w-12"
                 }
 
                 sm:h-12
