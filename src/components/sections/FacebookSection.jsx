@@ -133,9 +133,9 @@ export default function FacebookSection() {
           >
             <div className="flex items-center gap-5">
 
-              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-pink-500 via-fuchsia-500 to-purple-500 text-white shadow-lg transition duration-300 group-hover:scale-110">
+              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white shadow-lg transition duration-300 group-hover:scale-110">
 
-                <FaInstagram size={36} />
+                <FaInstagram size={50} />
 
               </div>
 
