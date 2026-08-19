@@ -114,7 +114,7 @@ export default function FacebookSection() {
               href="https://www.facebook.com/BasteCaviteSSG"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-[var(--dark)]"
+              className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-black]]"
             >
               Visit Facebook
 
@@ -183,7 +183,7 @@ export default function FacebookSection() {
               href="https://www.instagram.com/bastecavitessg?fbclid=IwY2xjawTypzZwZG9mBWV4dG4DYWVtAjEwAGJyaWQRMVZNc2hZdjhKaUxBd01JNFdzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe6nlKMfZ2pas_as7T6vY8K5xYd5YROCHUBB-74o1BVx6BecGJYtEa7sMj_ng_aem_JwEd7Qjqd6WnGOhFmZhl9g"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-[var(--dark)]"
+              className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-black]"
             >
               Follow on Instagram
 
@@ -193,6 +193,43 @@ export default function FacebookSection() {
           </motion.div>
 
         </div>
+
+        {/* Contact Card */}
+        <motion.div
+        
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 rounded-[32px] border border-pink-100 bg-white p-10 shadow-xl"
+        >
+
+          <h3 className="text-3xl font-black text-[var(--primary)]">
+            Student Grievances
+          </h3>
+
+          <p className="mt-3 text-gray-600">
+            Always Remember that your voice matters. You may also reach us by filling out the form below for any concerns, complaints, or suggestions. We are committed to addressing your grievances promptly and ensuring a positive student experience.
+          </p>
+
+          <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              href="https://www.instagram.com/bastecavitessg?fbclid=IwY2xjawTypzZwZG9mBWV4dG4DYWVtAjEwAGJyaWQRMVZNc2hZdjhKaUxBd01JNFdzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe6nlKMfZ2pas_as7T6vY8K5xYd5YROCHUBB-74o1BVx6BecGJYtEa7sMj_ng_aem_JwEd7Qjqd6WnGOhFmZhl9g"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-black]]"
+            >
+              Link to the Form
+
+              <FaArrowRight />
+            </motion.a>
+
+
+    
+
+        </motion.div>
+
+      
 
         {/* Contact Card */}
         <motion.div

@@ -83,8 +83,8 @@ export default function LoadingScreen({ loading }) {
 
           <motion.div
             animate={{
-              scale: [1, 1.08, 1],
-              rotate: [0, 4, -4, 0],
+              scale: [1, 1.20, 1.20],
+              
             }}
             transition={{
               duration: 3,
