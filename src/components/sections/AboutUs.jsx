@@ -15,7 +15,7 @@ import {
   FaFacebookF,
   FaLock,
   FaHeart,
-  FaHandshake,
+
   FaBalanceScale,
 } from "react-icons/fa";
 
@@ -159,6 +159,14 @@ const officers = [
   },
 ];
 
+// ============================================================
+// ANIMATION VARIANTS
+// ============================================================
+
+
+
+
+
 // =====================================================
 // AUGUSTINIAN VALUES
 // =====================================================
@@ -173,19 +181,11 @@ const augustinianValues = [
   },
 
   {
-    title: "Veritas",
-    subtitle: "Truth",
+    title: "Scientia",
+    subtitle: "Knowledge",
     icon: <FaBalanceScale />,
     description:
-      "Veritas calls student leaders to uphold truth, honesty, integrity, and accountability. It guides the SSG toward transparent communication and responsible decision-making.",
-  },
-
-  {
-    title: "Unitas",
-    subtitle: "Unity",
-    icon: <FaHandshake />,
-    description:
-      "Unitas emphasizes unity and collaboration. It encourages students, organizations, officers, and institutional partners to work together toward a stronger and more inclusive Sebastino community.",
+      "Scientia calls student leaders to pursue knowledge, understanding, and intellectual growth. It guides the SSG toward evidence-based decision-making and continuous learning.",
   },
 ];
 
@@ -943,7 +943,7 @@ export default function AboutUs() {
               mt-10
               grid
               gap-5
-              md:grid-cols-3
+              md:grid-cols-2
             "
           >
 
@@ -1129,11 +1129,13 @@ export default function AboutUs() {
 
           <div
             className="
-              mt-12
+              mt-10
               grid
               gap-6
               sm:grid-cols-2
-              lg:grid-cols-4
+              lg:grid-cols-3
+              
+              
             "
           >
 
@@ -1186,7 +1188,7 @@ export default function AboutUs() {
                 <div
                   className="
                     relative
-                    h-72
+                    h-90
                     overflow-hidden
                     bg-[#F6E8EE]
                   "
@@ -1326,7 +1328,6 @@ export default function AboutUs() {
 
         </motion.div>
 
-
         {/* =================================================
             COMMITTEES — COMING SOON
         ================================================= */}
@@ -1338,7 +1339,6 @@ export default function AboutUs() {
           transition={{ duration: 0.7 }}
           className="mt-28"
         >
-
           <div className="text-center">
 
             <div
@@ -1548,6 +1548,8 @@ export default function AboutUs() {
           </div>
 
         </motion.div>
+
+
 
 
         {/* =================================================

@@ -69,7 +69,7 @@ const institutionalGallery = [
     title: "Student Leadership in Action",
 
     description:
-      "Student leadership goes beyond holding an organizational position. The SSG provides opportunities for students to work together, organize activities, communicate with their fellow Sebastinos, and contribute to the improvement of the school community. Through collaboration with students, administrators, organizations, and different offices, the SSG helps transform student ideas and concerns into meaningful programs and initiatives.",
+      "Student leadership goes beyond holding an organizational position. The SSG provides opportunities for students to work together, organize activities, communicate with their fellow Sebastinians, and contribute to the improvement of the school community. Through collaboration with students, administrators, organizations, and different offices, the SSG helps transform student ideas and concerns into meaningful programs and initiatives.",
 
   },
 
@@ -481,7 +481,7 @@ export default function Hero({ setActiveSection }) {
                 The Supreme Student Government serves as the voice
                 of the student body by promoting student welfare,
                 encouraging meaningful participation, and facilitating
-                programs and activities that strengthen the Sebastino
+                programs and activities that strengthen the Sebastinian
                 community.
               </p>
 
@@ -967,7 +967,7 @@ export default function Hero({ setActiveSection }) {
         >
           Discover quality Recoletos education,
           industry-aligned curricula, and a vibrant
-          student life designed to prepare Sebastinos
+          student life designed to prepare Sebastinians
           for meaningful careers and service.
         </p>
 

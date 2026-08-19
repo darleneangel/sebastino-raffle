@@ -110,6 +110,7 @@ const galleryItems = [
 // OFFICER DATA
 // ============================================================
 
+
 const executiveOfficers = [
   {
     id: 101,
