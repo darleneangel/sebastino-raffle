@@ -442,7 +442,21 @@ export default function Hero({ setActiveSection }) {
       text-transparent
     "
   >
-    One Pulse. One Purpose,
+  One Pulse.
+  </span>
+
+  <span
+    className="
+    block
+      bg-gradient-to-r
+      from-[#8E1457]
+      via-[#CA1F7B]
+      to-[#DF79B0]
+      bg-clip-text
+      text-transparent
+    "
+  >
+  One Purpose.
   </span>
 
   <span className="block text-[#171717]">
