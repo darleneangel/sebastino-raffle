@@ -87,7 +87,7 @@ export default function AboutEvent() {
                 y: -10,
                 scale: 1.03,
               }}
-              className="group rounded-3xl border border-pink-100 bg-white p-8 shadow-lg transition-all duration-300 hover:border-[var(--secondary)] hover:shadow-2xl"
+              className="group rounded-3xl border border-pink-100 bg-[#FDF0F5] p-8 shadow-lg transition-all duration-300 hover:border-[var(--secondary)] hover:shadow-2xl"
             >
 
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white shadow-lg transition duration-300 group-hover:scale-110">

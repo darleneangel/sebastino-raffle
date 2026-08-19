@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
-  FaGift,
-  FaCamera,
-  FaMusic,
-  FaBookOpen,
   FaArrowRight,
-  FaPlay,
   FaCalendarAlt,
   FaMapMarkerAlt,
   FaUserTie,
   FaTimes,
+  FaChevronLeft,
   FaChevronRight,
+  FaImages,
+  FaPlay,
+  FaTrophy,
+  FaClock,
+  FaInfoCircle,
 } from "react-icons/fa";
 
 // =====================================================
@@ -33,7 +34,7 @@ import brochure from "../../assets/events/brochure.jpg";
 import preparationVideo from "../../assets/events/preparation.mp4";
 
 // =====================================================
-// OFFICIAL SSG COLOR PALETTE
+// OFFICIAL SSG COLORS
 // =====================================================
 //
 // White      #FFFFFF
@@ -41,27 +42,30 @@ import preparationVideo from "../../assets/events/preparation.mp4";
 // Dark Pink  #CA1F7B
 // Light Pink #DF79B0
 // Silver     #C0C0C0
+// Dark       #8E1457
 //
 // =====================================================
 
 
 // =====================================================
-// PRIZES
+// SALUBONG PRIZES
 // =====================================================
 
-const prizes = [
+const salubongPrizes = [
   {
     image: prize1,
     title: "Prize #1",
     description:
-      "One of the exciting prizes prepared by the SSG for Sebastinos.",
+      "One of the exciting prize packages prepared for participating Sebastinos.",
+    type: "Special Prize",
   },
 
   {
     image: prize2,
     title: "Prize #2",
     description:
-      "Another special prize prepared as part of the celebration.",
+      "Another special reward prepared as part of the Salubong celebration.",
+    type: "Event Prize",
   },
 
   {
@@ -69,48 +73,55 @@ const prizes = [
     title: "Prize #3",
     description:
       "A special reward prepared by the Supreme Student Government.",
+    type: "Special Award",
   },
 ];
 
 
 // =====================================================
-// EVENT FEATURES
+// SALUBONG GALLERY
 // =====================================================
 
-const features = [
+const salubongGallery = [
+  {
+    image: eventPoster,
+    title: "Official Salubong Poster",
+    description:
+      "The official visual material introducing Salubong sa Bagong Sebastino.",
+  },
+
   {
     image: freebies,
-    icon: <FaGift />,
-    title: "Freebies",
+    title: "Welcome Freebies",
     description:
-      "Get your hands on exciting freebies prepared especially for our Sebastinos.",
+      "Prepared freebies and welcome materials for students.",
   },
 
   {
     image: photobooth,
-    icon: <FaCamera />,
-    title: "Photobooth",
+    title: "Photobooth Setup",
     description:
-      "Capture your Salubong sa Bagong Sebastino memories with our fun photobooth.",
+      "A dedicated space where Sebastinos can capture memories from the celebration.",
   },
 
   {
     image: asop,
-    icon: <FaMusic />,
     title: "ASOP",
     description:
-      "Experience another exciting part of our celebration through ASOP.",
+      "Academic Student Orientation Program materials and activities.",
+  },
+
+  {
+    image: brochure,
+    title: "Event Brochure",
+    description:
+      "Official event information, schedules, and activity details.",
   },
 ];
 
 
 // =====================================================
-// EVENT DATA
-// =====================================================
-//
-// galleryImages currently reuse your available local assets.
-// You can replace these with the actual event photos later.
-//
+// EVENT ARCHIVE
 // =====================================================
 
 const events = [
@@ -121,17 +132,19 @@ const events = [
 
     title: "Salubong sa Bagong Sebastino",
 
-    description:
-      "Salubong sa Bagong Sebastino is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinos, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
+    category: "Campus Welcome",
 
-      
-    registrationText:
-      "WANT TO WIN A TOTE BAG OR AN E-FAN? REGISTER HERE",
-
-    registrationLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLSdzsuUTBsJXqFAJFVFq3-kXU2ytpHo4jPLwUJktIKmfCTZw6Q/viewform?usp=publish-editor",
+    status: "Upcoming",
 
     date: "August 17, 2026",
+
+    month: 7,
+
+    day: 17,
+
+    year: 2026,
+
+    time: "7:00 AM – 11:00 AM",
 
     location:
       "San Sebastian College – Recoletos de Cavite",
@@ -140,131 +153,53 @@ const events = [
 
     coHead: "SSG Committees and Volunteers",
 
+    description:
+      "Salubong sa Bagong Sebastino is an SSG-led welcome celebration designed to officially open the new academic year. The activity provides students with opportunities to connect with fellow Sebastinos, participate in engaging activities, enjoy prepared freebies, capture memorable moments, and become familiar with the programs and initiatives of the Supreme Student Government.",
+
+    rationale:
+      "The Salubong initiative was designed to create a welcoming and engaging environment for both new and returning Sebastinos. Beyond welcoming students to a new academic year, the event introduces the SSG as an accessible student organization committed to student engagement, campus participation, and service.",
+
     featuredImage: eventPoster,
 
-    galleryImages: [
-      eventPoster,
+    galleryImages: salubongGallery.map(
+      (item) => item.image
+    ),
+
+    preparationImages: [
       freebies,
       photobooth,
-      asop,
-      brochure,
-    ],
-  },
-
-
-  {
-    id: "freebies-2026",
-
-    schoolYear: "2026–2027",
-
-    title: "example",
-
-    description:
-      "The Salubong Freebies initiative is part of the SSG's effort to welcome students into the new academic year. The preparation includes organizing giveaways and materials that students can receive during the opening activities.",
-
-    date: "August 17, 2026",
-
-    location:
-      "San Sebastian College – Recoletos de Cavite",
-
-    head: "SSG Executive Board",
-
-    coHead: "SSG Volunteers",
-
-    featuredImage: freebies,
-
-    galleryImages: [
-      freebies,
-      eventPoster,
-      prize1,
-      prize2,
-      prize3,
-    ],
-  },
-
-
-  {
-    id: "photobooth-2026",
-
-    schoolYear: "2026–2027",
-
-    title: "example",
-
-    description:
-      "The Salubong Photobooth provides students with a dedicated space to capture and preserve their memories during the opening celebration. The SSG prepares the booth design, materials, and setup to create an engaging experience for the Sebastino community.",
-
-    date: "August 17, 2026",
-
-    location:
-      "San Sebastian College – Recoletos de Cavite",
-
-    head: "SSG Creatives and Events Team",
-
-    coHead: "SSG Volunteers",
-
-    featuredImage: photobooth,
-
-    galleryImages: [
-      photobooth,
-      eventPoster,
-      freebies,
       brochure,
       asop,
-    ],
-  },
-
-
-  {
-    id: "asop-2026",
-
-    schoolYear: "2026–2027",
-
-    title: "example",
-
-    description:
-      "The Academic Student Orientation Program provides students with important information and guidance as they begin the new academic year. The activity supports student awareness, participation, and familiarity with the academic and student-life environment of the institution.",
-
-    date: "August 2026",
-
-    location:
-      "San Sebastian College – Recoletos de Cavite",
-
-    head: "SSG Executive Board",
-
-    coHead: "Academic and Student Affairs Committees",
-
-    featuredImage: asop,
-
-    galleryImages: [
-      asop,
       eventPoster,
-      brochure,
-      freebies,
-      photobooth,
     ],
+
+    registrationText:
+      "WANT TO WIN A TOTE BAG OR AN E-FAN? REGISTER HERE",
+
+    registrationLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdzsuUTBsJXqFAJFVFq3-kXU2ytpHo4jPLwUJktIKmfCTZw6Q/viewform?usp=publish-editor",
   },
-
-
-  // ===================================================
-  // 2025–2026 SAMPLE / PLACEHOLDER EVENT
-  // ===================================================
-  //
-  // Replace the assets and information below once
-  // the actual 2025–2026 event records are available.
-  //
-  // ===================================================
 
   {
     id: "student-engagement-2025",
 
     schoolYear: "2025–2026",
 
-    title: "example",
+    title: "Student Engagement Activities",
 
-    description:
-      "A collection of student-centered activities conducted during the academic year to encourage participation, collaboration, and active involvement within the school community.",
+    category: "Student Engagement",
+
+    status: "Completed",
 
     date: "S.Y. 2025–2026",
+
+    month: 7,
+
+    day: 15,
+
+    year: 2025,
+
+    time: "School Year 2025–2026",
 
     location:
       "San Sebastian College – Recoletos de Cavite",
@@ -272,6 +207,12 @@ const events = [
     head: "SSG Executive Board",
 
     coHead: "SSG Committees",
+
+    description:
+      "A collection of student-centered activities conducted during the academic year to encourage participation, collaboration, and active involvement within the school community.",
+
+    rationale:
+      "These activities supported the SSG's role in encouraging student participation and creating opportunities for collaboration throughout the academic year.",
 
     featuredImage: eventPoster,
 
@@ -297,6 +238,26 @@ const schoolYears = [
 
 
 // =====================================================
+// CALENDAR MONTHS
+// =====================================================
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+
+// =====================================================
 // COMPONENT
 // =====================================================
 
@@ -309,52 +270,167 @@ export default function EventsSection({
   // STATE
   // ===================================================
 
-  const [selectedYear, setSelectedYear] = useState("2026–2027");
+  const [selectedYear, setSelectedYear] =
+    useState("2026–2027");
 
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] =
+    useState(null);
+
+  const [calendarDate, setCalendarDate] =
+    useState(new Date(2026, 7, 1));
+
+  const [calendarEvent, setCalendarEvent] =
+    useState(null);
+
+  const [salubongTab, setSalubongTab] =
+    useState("overview");
+
+  const [galleryImage, setGalleryImage] =
+    useState(null);
 
 
   // ===================================================
   // NAVIGATION
   // ===================================================
-const goToSection = (section) => {
-  if (setActiveSection) {
-    setActiveSection(section);
-  }
 
-  // wait a tick for React to render the new section before scrolling
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      const element = document.getElementById(section);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 50);
-  });
-};
-
-  const goToHappeningNow = () => {
+  const goToSection = (section) => {
 
     if (setActiveSection) {
-      setActiveSection("happening-now");
+      setActiveSection(section);
     }
 
-    const section = document.getElementById("happening-now");
+    requestAnimationFrame(() => {
 
-    if (section) {
+      setTimeout(() => {
 
-      section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+        const element =
+          document.getElementById(section);
 
-    }
+        if (element) {
+
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+        }
+
+      }, 50);
+
+    });
 
   };
 
 
+  const goToHappeningNow = () => {
+    goToSection("happening-now");
+  };
+
+
   // ===================================================
-  // OPEN EVENT MODAL
+  // EVENT FILTER
+  // ===================================================
+
+  const filteredEvents = events.filter(
+    (event) =>
+      event.schoolYear === selectedYear
+  );
+
+
+  // ===================================================
+  // CALENDAR
+  // ===================================================
+
+  const calendarYear =
+    calendarDate.getFullYear();
+
+  const calendarMonth =
+    calendarDate.getMonth();
+
+  const firstDay =
+    new Date(
+      calendarYear,
+      calendarMonth,
+      1
+    ).getDay();
+
+  const daysInMonth =
+    new Date(
+      calendarYear,
+      calendarMonth + 1,
+      0
+    ).getDate();
+
+
+  const calendarDays = useMemo(() => {
+
+    const days = [];
+
+    for (let i = 0; i < firstDay; i++) {
+      days.push(null);
+    }
+
+    for (
+      let day = 1;
+      day <= daysInMonth;
+      day++
+    ) {
+      days.push(day);
+    }
+
+    return days;
+
+  }, [
+    firstDay,
+    daysInMonth,
+  ]);
+
+
+  const getEventsForDay = (day) => {
+
+    if (!day) {
+      return [];
+    }
+
+    return events.filter(
+      (event) =>
+        event.year === calendarYear &&
+        event.month === calendarMonth &&
+        event.day === day
+    );
+  };
+
+
+  const previousMonth = () => {
+
+    setCalendarDate(
+      new Date(
+        calendarYear,
+        calendarMonth - 1,
+        1
+      )
+    );
+
+    setCalendarEvent(null);
+  };
+
+
+  const nextMonth = () => {
+
+    setCalendarDate(
+      new Date(
+        calendarYear,
+        calendarMonth + 1,
+        1
+      )
+    );
+
+    setCalendarEvent(null);
+  };
+
+
+  // ===================================================
+  // OPEN / CLOSE MODALS
   // ===================================================
 
   const openEvent = (event) => {
@@ -362,26 +438,57 @@ const goToSection = (section) => {
   };
 
 
-  // ===================================================
-  // CLOSE EVENT MODAL
-  // ===================================================
-
   const closeEvent = () => {
     setSelectedEvent(null);
   };
 
 
+  const openSalubong = () => {
+
+    setSalubongTab("overview");
+
+    setSelectedEvent(events[0]);
+
+  };
+
+
   // ===================================================
-  // FILTER EVENTS
+  // ESCAPE KEY
   // ===================================================
 
-  const filteredEvents = events.filter(
-    (event) => event.schoolYear === selectedYear
-  );
+  useEffect(() => {
+
+    const handleKeyDown = (event) => {
+
+      if (event.key === "Escape") {
+
+        setSelectedEvent(null);
+        setGalleryImage(null);
+        setCalendarEvent(null);
+
+      }
+
+    };
+
+    window.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
+
+    return () => {
+
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+
+    };
+
+  }, []);
 
 
   // ===================================================
-  // HOME PAGE PREVIEW
+  // PREVIEW
   // ===================================================
 
   if (preview) {
@@ -393,19 +500,20 @@ const goToSection = (section) => {
           relative
           overflow-hidden
           bg-[#CA1F7B]
-          py-6
+          px-6
+          py-16
+          sm:px-8
+          lg:px-12
         "
       >
 
-        {/* ==========================================
-            BACKGROUND DECORATIONS
-        ========================================== */}
+        {/* BACKGROUND */}
 
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
 
           <motion.div
             animate={{
-              x: [0, 40, 0],
+              x: [0, 50, 0],
               y: [0, -20, 0],
             }}
             transition={{
@@ -417,8 +525,8 @@ const goToSection = (section) => {
               absolute
               -left-32
               top-10
-              h-72
-              w-72
+              h-80
+              w-80
               rounded-full
               bg-[#DF79B0]/30
               blur-3xl
@@ -427,11 +535,11 @@ const goToSection = (section) => {
 
           <motion.div
             animate={{
-              x: [0, -30, 0],
+              x: [0, -40, 0],
               y: [0, 30, 0],
             }}
             transition={{
-              duration: 14,
+              duration: 15,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -439,8 +547,8 @@ const goToSection = (section) => {
               absolute
               -right-20
               bottom-0
-              h-72
-              w-72
+              h-80
+              w-80
               rounded-full
               bg-white/10
               blur-3xl
@@ -450,30 +558,26 @@ const goToSection = (section) => {
         </div>
 
 
-        <div className="relative z-10">
+        <div className="relative z-10 mx-auto max-w-7xl">
 
-          {/* ==========================================
-              HEADER
-          ========================================== */}
+          {/* HEADER */}
 
           <div className="text-center">
 
             <span
               className="
-                inline-block
+                inline-flex
                 rounded-full
-                border
-                border-white
                 bg-white
                 px-5
                 py-2
-                text-sm
-                font-bold
+                text-xs
+                font-black
                 tracking-[3px]
                 text-[#CA1F7B]
               "
             >
-              WHAT'S NEW?
+              WHAT'S HAPPENING
             </span>
 
 
@@ -486,7 +590,10 @@ const goToSection = (section) => {
                 sm:text-5xl
               "
             >
-              Happening Now
+              Salubong sa
+              <span className="block text-[#DF79B0]">
+                Bagong Sebastino
+              </span>
             </h2>
 
 
@@ -497,20 +604,20 @@ const goToSection = (section) => {
                 max-w-2xl
                 text-sm
                 leading-7
-                text-white
+                text-white/85
                 sm:text-base
               "
             >
-              Get a glimpse of the latest activities, events,
-              and initiatives from the Supreme Student Government.
+              Welcome the new academic year with
+              the Supreme Student Government through
+              exciting activities, freebies, games,
+              prizes, and memorable Sebastino moments.
             </p>
 
           </div>
 
 
-          {/* ==========================================
-              FEATURED EVENT
-          ========================================== */}
+          {/* FEATURE CARD */}
 
           <motion.div
             initial={{
@@ -524,9 +631,6 @@ const goToSection = (section) => {
             viewport={{
               once: true,
             }}
-            transition={{
-              duration: 0.8,
-            }}
             className="
               mt-10
               overflow-hidden
@@ -538,14 +642,14 @@ const goToSection = (section) => {
             "
           >
 
-            <div className="grid items-center lg:grid-cols-2">
+            <div className="grid lg:grid-cols-2">
 
               <div
                 className="
                   relative
-                  h-64
+                  h-72
                   overflow-hidden
-                  sm:h-80
+                  sm:h-96
                 "
               >
 
@@ -566,11 +670,14 @@ const goToSection = (section) => {
                   className="
                     absolute
                     inset-0
-                    bg-black/30
+                    bg-gradient-to-t
+                    from-black/70
+                    via-transparent
+                    to-transparent
                   "
                 />
 
-                <div
+                <span
                   className="
                     absolute
                     left-5
@@ -580,30 +687,31 @@ const goToSection = (section) => {
                     px-4
                     py-2
                     text-xs
-                    font-bold
+                    font-black
+                    uppercase
+                    tracking-wider
                     text-white
-                    shadow-lg
                   "
                 >
-                  FEATURED
-                </div>
+                  Featured
+                </span>
 
               </div>
 
 
-              <div className="p-7 sm:p-9">
+              <div className="p-7 sm:p-10">
 
-                <p
+                <span
                   className="
-                    text-sm
-                    font-bold
+                    text-xs
+                    font-black
                     uppercase
                     tracking-[2px]
                     text-[#CA1F7B]
                   "
                 >
-                  Latest SSG Activity
-                </p>
+                  SSG FLAGSHIP EVENT
+                </span>
 
 
                 <h3
@@ -617,7 +725,6 @@ const goToSection = (section) => {
                   "
                 >
                   Salubong sa
-
                   <span className="block text-[#CA1F7B]">
                     Bagong Sebastino
                   </span>
@@ -628,48 +735,74 @@ const goToSection = (section) => {
                   className="
                     mt-4
                     text-sm
-                    leading-6
-                    text-black
+                    leading-7
+                    text-black/65
                     sm:text-base
                   "
                 >
-                  Welcome the new academic year with the SSG
-                  through exciting activities, freebies, games,
-                  prizes, and unforgettable Sebastino moments.
+                  An exciting campus welcome
+                  celebration created to bring
+                  Sebastinos together at the beginning
+                  of the academic year.
                 </p>
 
 
-                <div
-                  className="
-                    mt-5
-                    flex
-                    flex-col
-                    gap-3
-                    text-sm
-                    text-black
-                    sm:flex-row
-                    sm:gap-6
-                  "
-                >
+                <div className="mt-6 space-y-3">
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 text-sm font-semibold">
 
-                    <FaCalendarAlt className="text-[#CA1F7B]" />
+                    <FaCalendarAlt
+                      className="text-[#CA1F7B]"
+                    />
 
                     August 17, 2026
 
                   </div>
 
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 text-sm font-semibold">
 
-                    <FaMapMarkerAlt className="text-[#CA1F7B]" />
+                    <FaMapMarkerAlt
+                      className="text-[#CA1F7B]"
+                    />
 
-                    SSC-R Cavite
+                    San Sebastian College –
+                    Recoletos de Cavite
 
                   </div>
 
                 </div>
+
+
+                <motion.button
+                  onClick={openSalubong}
+                  whileHover={{
+                    scale: 1.03,
+                  }}
+                  whileTap={{
+                    scale: 0.97,
+                  }}
+                  className="
+                    mt-7
+                    inline-flex
+                    items-center
+                    gap-3
+                    rounded-full
+                    bg-[#CA1F7B]
+                    px-6
+                    py-3.5
+                    text-sm
+                    font-black
+                    text-white
+                    shadow-lg
+                    transition
+                    hover:bg-[#DF79B0]
+                  "
+                >
+                  View Full Salubong Showcase
+                  <FaArrowRight />
+
+                </motion.button>
 
               </div>
 
@@ -678,153 +811,28 @@ const goToSection = (section) => {
           </motion.div>
 
 
-          {/* ==========================================
-              QUICK HIGHLIGHTS
-          ========================================== */}
-
-          <div
-            className="
-              mt-6
-              grid
-              gap-4
-              sm:grid-cols-3
-            "
-          >
-
-            {features.map((feature, index) => (
-
-              <motion.div
-                key={index}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  delay: index * 0.1,
-                }}
-                whileHover={{
-                  y: -5,
-                }}
-                className="
-                  flex
-                  items-center
-                  gap-4
-                  rounded-2xl
-                  border
-                  border-white
-                  bg-white
-                  p-4
-                  shadow-md
-                "
-              >
-
-                <div
-                  className="
-                    h-14
-                    w-14
-                    shrink-0
-                    overflow-hidden
-                    rounded-xl
-                  "
-                >
-
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="
-                      h-full
-                      w-full
-                      object-cover
-                    "
-                  />
-
-                </div>
-
-
-                <div>
-
-                  <div className="flex items-center gap-2">
-
-                    <span className="text-[#CA1F7B]">
-                      {feature.icon}
-                    </span>
-
-
-                    <h4
-                      className="
-                        text-sm
-                        font-black
-                        text-black
-                      "
-                    >
-                      {feature.title}
-                    </h4>
-
-                  </div>
-
-
-                  <p
-                    className="
-                      mt-1
-                      line-clamp-2
-                      text-xs
-                      leading-5
-                      text-black
-                    "
-                  >
-                    {feature.description}
-                  </p>
-
-                </div>
-
-              </motion.div>
-
-            ))}
-
-          </div>
-
-
-          {/* ==========================================
-              VIEW MORE
-          ========================================== */}
-
-          <div className="mt-8 flex justify-center">
+          <div className="mt-7 flex justify-center">
 
             <motion.button
               onClick={goToHappeningNow}
               whileHover={{
-                scale: 1.05,
+                scale: 1.04,
               }}
               whileTap={{
-                scale: 0.96,
+                scale: 0.97,
               }}
               className="
-                flex
-                items-center
-                gap-3
                 rounded-full
                 bg-white
                 px-7
-                py-4
-                font-bold
+                py-3.5
+                font-black
                 text-[#CA1F7B]
                 shadow-xl
-                transition
-                hover:bg-[#C0C0C0]
               "
             >
-
-              View What's Happening
-
-              <FaArrowRight />
-
+              Explore Events
+              <FaArrowRight className="ml-2 inline" />
             </motion.button>
 
           </div>
@@ -834,13 +842,12 @@ const goToSection = (section) => {
       </section>
 
     );
-
   }
 
 
-  // ============================================================
-  // FULL HAPPENING NOW SECTION
-  // ============================================================
+  // ===================================================
+  // MAIN SECTION
+  // ===================================================
 
   return (
 
@@ -849,23 +856,15 @@ const goToSection = (section) => {
       className="
         relative
         overflow-hidden
-        bg-white
-        py-28
+        bg-[#FDF0F5]
+        py-24
+        sm:py-28
       "
     >
 
-      {/* ==========================================
-          BACKGROUND DECORATIONS
-      ========================================== */}
+      {/* BACKGROUND */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          overflow-hidden
-        "
-      >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
         <motion.div
           animate={{
@@ -873,7 +872,7 @@ const goToSection = (section) => {
             y: [0, -30, 0],
           }}
           transition={{
-            duration: 14,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -889,20 +888,19 @@ const goToSection = (section) => {
           "
         />
 
-
         <motion.div
           animate={{
             x: [0, -50, 0],
             y: [0, 40, 0],
           }}
           transition={{
-            duration: 16,
+            duration: 17,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           className="
             absolute
-            -right-32
+            -right-40
             bottom-0
             h-[450px]
             w-[450px]
@@ -922,13 +920,14 @@ const goToSection = (section) => {
           mx-auto
           max-w-7xl
           px-6
+          sm:px-8
           lg:px-12
         "
       >
 
-        {/* ==========================================
-            SECTION HEADING
-        ========================================== */}
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
         <motion.div
           initial={{
@@ -942,51 +941,43 @@ const goToSection = (section) => {
           viewport={{
             once: true,
           }}
-          transition={{
-            duration: 0.7,
-          }}
           className="text-center"
         >
 
           <span
             className="
               inline-flex
-              items-center
               rounded-full
               border
               border-[#DF79B0]
               bg-[#DF79B0]/10
-              px-6
+              px-5
               py-2
-              text-sm
-              font-bold
+              text-xs
+              font-black
               tracking-[3px]
               text-[#CA1F7B]
+              sm:text-sm
             "
           >
-            EVENTS
+            EVENTS & PROJECTS
           </span>
 
 
           <h2
             className="
-              mt-6
+              mt-5
               text-4xl
               font-black
               leading-tight
-              text-[#000000]
+              text-black
               sm:text-5xl
               md:text-6xl
             "
           >
             What's Happening
 
-            <span
-              className="
-                block
-                text-[#CA1F7B]
-              "
-            >
+            <span className="block text-[#CA1F7B]">
               at SSG
             </span>
           </h2>
@@ -995,25 +986,26 @@ const goToSection = (section) => {
           <p
             className="
               mx-auto
-              mt-6
+              mt-5
               max-w-3xl
-              text-base
-              leading-8
-              text-[#000000]/65
+              text-sm
+              leading-7
+              text-black/60
               sm:text-lg
+              sm:leading-8
             "
           >
-            Stay updated with the latest activities, programs,
-            and celebrations organized by the Supreme Student
-            Government for the Sebastino community.
+            Discover upcoming activities, explore the
+            SSG calendar, and revisit programs and
+            initiatives from previous academic years.
           </p>
 
         </motion.div>
 
 
-        {/* ==========================================
-            FEATURED EVENT
-        ========================================== */}
+        {/* =================================================
+            SALUBONG FEATURED SHOWCASE
+        ================================================= */}
 
         <motion.div
           initial={{
@@ -1028,28 +1020,30 @@ const goToSection = (section) => {
             once: true,
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.7,
           }}
           className="
-            mt-20
+            mt-16
             overflow-hidden
-            rounded-[32px]
+            rounded-[36px]
             border
             border-[#C0C0C0]
             bg-white
-            shadow-[0_20px_60px_rgba(0,0,0,0.10)]
+            shadow-[0_25px_70px_rgba(0,0,0,0.10)]
           "
         >
 
-          <div className="grid items-center lg:grid-cols-2">
+          <div className="grid lg:grid-cols-[1.15fr_.85fr]">
+
+            {/* IMAGE */}
 
             <div
               className="
                 relative
-                h-[380px]
+                min-h-[330px]
                 overflow-hidden
-                sm:h-[450px]
-                lg:h-[520px]
+                sm:min-h-[430px]
+                lg:min-h-[540px]
               "
             >
 
@@ -1057,27 +1051,27 @@ const goToSection = (section) => {
                 src={eventPoster}
                 alt="Salubong sa Bagong Sebastino"
                 className="
+                  absolute
+                  inset-0
                   h-full
                   w-full
                   object-cover
                   transition
-                  duration-700
+                  duration-1000
                   hover:scale-105
                 "
               />
-
 
               <div
                 className="
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-black/60
-                  via-black/10
+                  from-black/80
+                  via-black/20
                   to-transparent
                 "
               />
-
 
               <div
                 className="
@@ -1089,108 +1083,126 @@ const goToSection = (section) => {
                   px-5
                   py-2
                   text-xs
-                  font-bold
+                  font-black
                   uppercase
-                  tracking-[1.5px]
+                  tracking-wider
                   text-white
-                  shadow-lg
+                  shadow-xl
+                  sm:left-8
+                  sm:top-8
                 "
               >
                 Featured Event
               </div>
 
-            </div>
-
-
-            <div
-              className="
-                relative
-                bg-white
-                p-8
-                sm:p-10
-                lg:p-14
-              "
-            >
 
               <div
                 className="
                   absolute
-                  left-0
-                  top-10
-                  hidden
-                  h-20
-                  w-1
-                  rounded-r-full
-                  bg-[#CA1F7B]
-                  lg:block
+                  bottom-7
+                  left-6
+                  right-6
+                  sm:bottom-10
+                  sm:left-10
                 "
-              />
+              >
+
+                <p
+                  className="
+                    text-xs
+                    font-black
+                    uppercase
+                    tracking-[2px]
+                    text-[#DF79B0]
+                  "
+                >
+                  SSG • AY 2026–2027
+                </p>
 
 
-              <p
+                <h3
+                  className="
+                    mt-2
+                    text-3xl
+                    font-black
+                    leading-tight
+                    text-white
+                    sm:text-5xl
+                  "
+                >
+                  Salubong sa
+                  <span className="block text-[#DF79B0]">
+                    Bagong Sebastino
+                  </span>
+                </h3>
+
+              </div>
+
+            </div>
+
+
+            {/* INFORMATION */}
+
+            <div
+              className="
+                flex
+                flex-col
+                justify-center
+                p-7
+                sm:p-10
+                lg:p-12
+              "
+            >
+
+              <span
                 className="
-                  text-sm
-                  font-bold
+                  text-xs
+                  font-black
                   uppercase
                   tracking-[2px]
                   text-[#CA1F7B]
                 "
               >
-                Latest SSG Activity
-              </p>
+                SSG FLAGSHIP SHOWCASE
+              </span>
 
 
               <h3
                 className="
-                  mt-4
-                  text-3xl
+                  mt-3
+                  text-2xl
                   font-black
-                  leading-tight
-                  text-[#000000]
-                  sm:text-4xl
+                  text-black
+                  sm:text-3xl
                 "
               >
-                Salubong sa
-
-                <span
-                  className="
-                    block
-                    text-[#CA1F7B]
-                  "
-                >
-                  Bagong Sebastino
-                </span>
+                Welcome to a New
+                Sebastino Journey
               </h3>
 
 
               <p
                 className="
                   mt-5
-                  text-base
+                  text-sm
                   leading-7
-                  text-[#000000]/65
-                  sm:text-lg
+                  text-black/65
+                  sm:text-base
                 "
               >
-                Welcome the new academic year with the Supreme
-                Student Government through exciting activities,
-                freebies, games, prizes, and memorable Sebastino
-                moments.
+                Salubong brings new and returning
+                Sebastinos together through welcoming
+                activities, student engagement,
+                giveaways, games, and memorable
+                campus experiences.
               </p>
 
 
+              {/* META */}
+
               <div className="mt-7 space-y-4">
 
-                <div
-                  className="
-                    flex
-                    items-center
-                    gap-4
-                    text-sm
-                    font-semibold
-                    text-[#000000]
-                  "
-                >
+                <div className="flex items-start gap-4">
 
                   <div
                     className="
@@ -1208,21 +1220,38 @@ const goToSection = (section) => {
                     <FaCalendarAlt />
                   </div>
 
-                  August 17, 2026
+
+                  <div>
+
+                    <p
+                      className="
+                        text-[10px]
+                        font-black
+                        uppercase
+                        tracking-wider
+                        text-black/40
+                      "
+                    >
+                      Date & Time
+                    </p>
+
+                    <p
+                      className="
+                        mt-1
+                        text-sm
+                        font-bold
+                        text-black
+                      "
+                    >
+                      August 17, 2026
+                    </p>
+
+                  </div>
 
                 </div>
 
 
-                <div
-                  className="
-                    flex
-                    items-center
-                    gap-4
-                    text-sm
-                    font-semibold
-                    text-[#000000]
-                  "
-                >
+                <div className="flex items-start gap-4">
 
                   <div
                     className="
@@ -1240,7 +1269,34 @@ const goToSection = (section) => {
                     <FaMapMarkerAlt />
                   </div>
 
-                  San Sebastian College – Recoletos de Cavite
+
+                  <div>
+
+                    <p
+                      className="
+                        text-[10px]
+                        font-black
+                        uppercase
+                        tracking-wider
+                        text-black/40
+                      "
+                    >
+                      Venue
+                    </p>
+
+                    <p
+                      className="
+                        mt-1
+                        text-sm
+                        font-bold
+                        text-black
+                      "
+                    >
+                      Main Campus Quadrangle &
+                      School Lobby
+                    </p>
+
+                  </div>
 
                 </div>
 
@@ -1248,7 +1304,7 @@ const goToSection = (section) => {
 
 
               <motion.button
-                onClick={() => openEvent(events[0])}
+                onClick={openSalubong}
                 whileHover={{
                   scale: 1.03,
                   y: -2,
@@ -1257,24 +1313,25 @@ const goToSection = (section) => {
                   scale: 0.97,
                 }}
                 className="
-                  mt-9
+                  mt-8
                   inline-flex
+                  w-fit
                   items-center
                   gap-3
                   rounded-full
                   bg-[#CA1F7B]
-                  px-7
-                  py-4
-                  font-bold
+                  px-6
+                  py-3.5
+                  text-sm
+                  font-black
                   text-white
                   shadow-lg
                   transition
                   hover:bg-[#DF79B0]
                 "
               >
-                Explore the Event
-
-                <FaArrowRight size={14} />
+                View Full Salubong Showcase
+                <FaArrowRight />
 
               </motion.button>
 
@@ -1285,14 +1342,14 @@ const goToSection = (section) => {
         </motion.div>
 
 
-        {/* =====================================================
-            SCHOOL YEAR FILTER
-        ===================================================== */}
+        {/* =================================================
+            COMPACT CALENDAR
+        ================================================= */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 30,
+            y: 40,
           }}
           whileInView={{
             opacity: 1,
@@ -1313,10 +1370,555 @@ const goToSection = (section) => {
                 border
                 border-[#DF79B0]
                 bg-[#DF79B0]/10
-                px-6
+                px-5
                 py-2
+                text-xs
+                font-black
+                tracking-[3px]
+                text-[#CA1F7B]
+                sm:text-sm
+              "
+            >
+              SSG CALENDAR
+            </span>
+
+
+            <h3
+              className="
+                mt-5
+                text-3xl
+                font-black
+                text-black
+                sm:text-4xl
+              "
+            >
+              Events Calendar
+            </h3>
+
+
+            <p
+              className="
+                mx-auto
+                mt-3
+                max-w-xl
                 text-sm
-                font-bold
+                leading-7
+                text-black/55
+              "
+            >
+              Check scheduled SSG activities and
+              important student government dates.
+            </p>
+
+          </div>
+
+
+          {/* CALENDAR CARD */}
+
+          <div
+            className="
+              mx-auto
+              mt-10
+              max-w-5xl
+              overflow-hidden
+              rounded-[28px]
+              border
+              border-[#C0C0C0]
+              bg-white
+              shadow-xl
+            "
+          >
+
+            {/* CALENDAR HEADER */}
+
+            <div
+              className="
+                flex
+                items-center
+                justify-between
+                border-b
+                border-[#C0C0C0]
+                bg-[#CA1F7B]
+                px-5
+                py-5
+                text-white
+                sm:px-7
+              "
+            >
+
+              <button
+                type="button"
+                onClick={previousMonth}
+                className="
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-white/10
+                  transition
+                  hover:bg-white
+                  hover:text-[#CA1F7B]
+                "
+                aria-label="Previous month"
+              >
+                <FaChevronLeft />
+              </button>
+
+
+              <div className="text-center">
+
+                <p
+                  className="
+                    text-xl
+                    font-black
+                    sm:text-2xl
+                  "
+                >
+                  {months[calendarMonth]}
+                </p>
+
+                <p className="text-xs font-bold text-white/70">
+                  {calendarYear}
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                onClick={nextMonth}
+                className="
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-white/10
+                  transition
+                  hover:bg-white
+                  hover:text-[#CA1F7B]
+                "
+                aria-label="Next month"
+              >
+                <FaChevronRight />
+              </button>
+
+            </div>
+
+
+            {/* DAYS OF WEEK */}
+
+            <div
+              className="
+                grid
+                grid-cols-7
+                border-b
+                border-[#C0C0C0]
+                bg-[#DF79B0]/10
+              "
+            >
+
+              {[
+                "Sun",
+                "Mon",
+                "Tue",
+                "Wed",
+                "Thu",
+                "Fri",
+                "Sat",
+              ].map((day) => (
+
+                <div
+                  key={day}
+                  className="
+                    px-1
+                    py-3
+                    text-center
+                    text-[10px]
+                    font-black
+                    uppercase
+                    tracking-wider
+                    text-[#CA1F7B]
+                    sm:text-xs
+                  "
+                >
+                  {day}
+                </div>
+
+              ))}
+
+            </div>
+
+
+            {/* NUMBERED CALENDAR */}
+
+            <div
+              className="
+                grid
+                grid-cols-7
+              "
+            >
+
+              {calendarDays.map(
+                (day, index) => {
+
+                  const dayEvents =
+                    getEventsForDay(day);
+
+                  const hasEvent =
+                    dayEvents.length > 0;
+
+                  return (
+
+                    <div
+                      key={index}
+                      className="
+                        relative
+                        min-h-[70px]
+                        border-b
+                        border-r
+                        border-[#C0C0C0]/60
+                        p-2
+                        sm:min-h-[90px]
+                        sm:p-3
+                      "
+                    >
+
+                      {day && (
+
+                        <button
+                          type="button"
+                          onClick={() => {
+
+                            if (hasEvent) {
+                              setCalendarEvent(
+                                dayEvents[0]
+                              );
+                            }
+
+                          }}
+                          className={`
+                            flex
+                            h-7
+                            w-7
+                            items-center
+                            justify-center
+                            rounded-full
+                            text-xs
+                            font-bold
+                            transition
+                            sm:h-8
+                            sm:w-8
+                            sm:text-sm
+                            ${
+                              hasEvent
+                                ? "bg-[#CA1F7B] text-white shadow-md hover:bg-[#DF79B0]"
+                                : "text-black hover:bg-[#DF79B0]/10"
+                            }
+                          `}
+                        >
+                          {day}
+                        </button>
+
+                      )}
+
+
+                      {hasEvent && (
+
+                        <div className="mt-2">
+
+                          <div
+                            className="
+                              hidden
+                              truncate
+                              text-[10px]
+                              font-bold
+                              text-[#CA1F7B]
+                              sm:block
+                            "
+                          >
+                            {dayEvents[0].title}
+                          </div>
+
+
+                          <div
+                            className="
+                              flex
+                              gap-1
+                              sm:hidden
+                            "
+                          >
+
+                            {dayEvents.map(
+                              (_, eventIndex) => (
+
+                                <span
+                                  key={eventIndex}
+                                  className="
+                                    h-1.5
+                                    w-1.5
+                                    rounded-full
+                                    bg-[#CA1F7B]
+                                  "
+                                />
+
+                              )
+                            )}
+
+                          </div>
+
+                        </div>
+
+                      )}
+
+                    </div>
+
+                  );
+
+                }
+              )}
+
+            </div>
+
+
+            {/* LEGEND */}
+
+            <div
+              className="
+                flex
+                flex-wrap
+                items-center
+                gap-5
+                border-t
+                border-[#C0C0C0]
+                px-5
+                py-4
+                text-xs
+                font-semibold
+                text-black/55
+              "
+            >
+
+              <div className="flex items-center gap-2">
+
+                <span
+                  className="
+                    h-3
+                    w-3
+                    rounded-full
+                    bg-[#CA1F7B]
+                  "
+                />
+
+                SSG Event
+
+              </div>
+
+
+              <div className="flex items-center gap-2">
+
+                <FaInfoCircle
+                  className="text-[#DF79B0]"
+                />
+
+                Click a marked date for details
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </motion.div>
+
+
+        {/* =================================================
+            CALENDAR EVENT TOOLTIP / POPUP
+        ================================================= */}
+
+        <AnimatePresence>
+
+          {calendarEvent && (
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 10,
+                scale: 0.96,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                y: 10,
+                scale: 0.96,
+              }}
+              className="
+                fixed
+                bottom-6
+                left-1/2
+                z-50
+                w-[calc(100%-32px)]
+                max-w-md
+                -translate-x-1/2
+                rounded-2xl
+                border
+                border-[#C0C0C0]
+                bg-white
+                p-5
+                shadow-2xl
+              "
+            >
+
+              <button
+                type="button"
+                onClick={() =>
+                  setCalendarEvent(null)
+                }
+                className="
+                  absolute
+                  right-4
+                  top-4
+                  text-black/40
+                  transition
+                  hover:text-[#CA1F7B]
+                "
+              >
+                <FaTimes />
+              </button>
+
+
+              <span
+                className="
+                  inline-flex
+                  rounded-full
+                  bg-[#DF79B0]/15
+                  px-3
+                  py-1
+                  text-[10px]
+                  font-black
+                  uppercase
+                  tracking-wider
+                  text-[#CA1F7B]
+                "
+              >
+                {calendarEvent.status}
+              </span>
+
+
+              <h4
+                className="
+                  mt-3
+                  pr-6
+                  text-lg
+                  font-black
+                  text-black
+                "
+              >
+                {calendarEvent.title}
+              </h4>
+
+
+              <div className="mt-3 space-y-2 text-xs text-black/60">
+
+                <div className="flex items-center gap-2">
+
+                  <FaClock
+                    className="text-[#CA1F7B]"
+                  />
+
+                  {calendarEvent.time}
+
+                </div>
+
+
+                <div className="flex items-center gap-2">
+
+                  <FaMapMarkerAlt
+                    className="text-[#CA1F7B]"
+                  />
+
+                  {calendarEvent.location}
+
+                </div>
+
+              </div>
+
+
+              <button
+                type="button"
+                onClick={() => {
+
+                  openEvent(calendarEvent);
+                  setCalendarEvent(null);
+
+                }}
+                className="
+                  mt-4
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  bg-[#CA1F7B]
+                  px-4
+                  py-2
+                  text-xs
+                  font-bold
+                  text-white
+                  transition
+                  hover:bg-[#DF79B0]
+                "
+              >
+                View Details
+                <FaArrowRight />
+
+              </button>
+
+            </motion.div>
+
+          )}
+
+        </AnimatePresence>
+
+
+        {/* =================================================
+            EVENT ARCHIVE
+        ================================================= */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="mt-28"
+        >
+
+          <div className="text-center">
+
+            <span
+              className="
+                inline-flex
+                rounded-full
+                border
+                border-[#DF79B0]
+                bg-[#DF79B0]/10
+                px-5
+                py-2
+                text-xs
+                font-black
                 tracking-[3px]
                 text-[#CA1F7B]
               "
@@ -1330,32 +1932,32 @@ const goToSection = (section) => {
                 mt-5
                 text-3xl
                 font-black
-                text-[#000000]
+                text-black
                 sm:text-4xl
               "
             >
-              Explore SSG Events
+              Explore SSG Projects
             </h3>
 
 
             <p
               className="
                 mx-auto
-                mt-4
+                mt-3
                 max-w-2xl
-                text-[#000000]/60
+                text-sm
+                leading-7
+                text-black/55
               "
             >
-              Browse activities and programs organized by the
-              Supreme Student Government by academic year.
+              Browse student government programs and
+              activities organized by academic year.
             </p>
 
           </div>
 
 
-          {/* ==========================================
-              YEAR TABS
-          ========================================== */}
+          {/* YEAR TABS */}
 
           <div
             className="
@@ -1364,7 +1966,7 @@ const goToSection = (section) => {
               flex
               max-w-xl
               flex-col
-              gap-3
+              gap-2
               rounded-2xl
               border
               border-[#C0C0C0]
@@ -1373,34 +1975,33 @@ const goToSection = (section) => {
               shadow-sm
               sm:flex-row
             "
-            role="tablist"
-            aria-label="Academic Year"
           >
 
             {schoolYears.map((year) => {
 
-              const active = selectedYear === year;
+              const active =
+                selectedYear === year;
 
               return (
 
                 <button
                   key={year}
                   type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => setSelectedYear(year)}
+                  onClick={() =>
+                    setSelectedYear(year)
+                  }
                   className={`
                     flex-1
                     rounded-xl
                     px-5
                     py-3
                     text-sm
-                    font-bold
+                    font-black
                     transition
                     ${
                       active
                         ? "bg-[#CA1F7B] text-white shadow-md"
-                        : "bg-white text-black hover:bg-[#DF79B0]/15"
+                        : "text-black hover:bg-[#DF79B0]/10"
                     }
                   `}
                 >
@@ -1416,9 +2017,7 @@ const goToSection = (section) => {
         </motion.div>
 
 
-        {/* =====================================================
-            EVENT GRID
-        ===================================================== */}
+        {/* ARCHIVE GRID */}
 
         <AnimatePresence mode="wait">
 
@@ -1453,7 +2052,9 @@ const goToSection = (section) => {
               <motion.button
                 key={event.id}
                 type="button"
-                onClick={() => openEvent(event)}
+                onClick={() =>
+                  openEvent(event)
+                }
                 whileHover={{
                   y: -7,
                 }}
@@ -1475,7 +2076,6 @@ const goToSection = (section) => {
                   focus:outline-none
                   focus:ring-2
                   focus:ring-[#CA1F7B]
-                  focus:ring-offset-2
                 "
               >
 
@@ -1484,7 +2084,7 @@ const goToSection = (section) => {
                 <div
                   className="
                     relative
-                    h-60
+                    h-56
                     overflow-hidden
                   "
                 >
@@ -1492,6 +2092,7 @@ const goToSection = (section) => {
                   <img
                     src={event.featuredImage}
                     alt={event.title}
+                    loading="lazy"
                     className="
                       h-full
                       w-full
@@ -1508,7 +2109,7 @@ const goToSection = (section) => {
                       absolute
                       inset-0
                       bg-gradient-to-t
-                      from-black/70
+                      from-black/75
                       via-black/10
                       to-transparent
                     "
@@ -1524,13 +2125,15 @@ const goToSection = (section) => {
                       bg-white
                       px-3
                       py-1.5
-                      text-xs
-                      font-bold
+                      text-[10px]
+                      font-black
+                      uppercase
+                      tracking-wider
                       text-[#CA1F7B]
-                      shadow-md
+                      shadow
                     "
                   >
-                    {event.schoolYear}
+                    {event.category}
                   </span>
 
 
@@ -1559,23 +2162,54 @@ const goToSection = (section) => {
                 </div>
 
 
-                {/* CARD INFORMATION */}
+                {/* CARD BODY */}
 
-                <div className="p-6">
+                <div className="p-5">
 
                   <div
                     className="
                       flex
                       items-center
-                      gap-2
-                      text-sm
-                      font-semibold
-                      text-[#CA1F7B]
+                      justify-between
+                      gap-3
                     "
                   >
-                    <FaCalendarAlt />
 
-                    {event.date}
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-2
+                        text-xs
+                        font-bold
+                        text-[#CA1F7B]
+                      "
+                    >
+
+                      <FaCalendarAlt />
+
+                      {event.date}
+
+                    </div>
+
+
+                    <span
+                      className={`
+                        rounded-full
+                        px-2.5
+                        py-1
+                        text-[9px]
+                        font-black
+                        uppercase
+                        ${
+                          event.status === "Upcoming"
+                            ? "bg-[#DF79B0]/15 text-[#CA1F7B]"
+                            : "bg-black/5 text-black/50"
+                        }
+                      `}
+                    >
+                      {event.status}
+                    </span>
 
                   </div>
 
@@ -1583,10 +2217,10 @@ const goToSection = (section) => {
                   <p
                     className="
                       mt-3
-                      line-clamp-3
+                      line-clamp-2
                       text-sm
                       leading-6
-                      text-black/60
+                      text-black/55
                     "
                   >
                     {event.description}
@@ -1607,16 +2241,18 @@ const goToSection = (section) => {
 
                     <span
                       className="
-                        text-sm
-                        font-bold
+                        text-xs
+                        font-black
+                        uppercase
+                        tracking-wider
                         text-[#CA1F7B]
                       "
                     >
-                      View Event
+                      View Project
                     </span>
 
 
-                    <FaChevronRight
+                    <FaArrowRight
                       className="
                         text-[#CA1F7B]
                         transition
@@ -1637,602 +2273,9 @@ const goToSection = (section) => {
         </AnimatePresence>
 
 
-        {/* =====================================================
-            PRIZES
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="
-            mt-28
-            text-center
-          "
-        >
-
-          <span
-            className="
-              inline-flex
-              rounded-full
-              border
-              border-[#DF79B0]
-              bg-[#DF79B0]/10
-              px-6
-              py-2
-              text-sm
-              font-bold
-              tracking-[3px]
-              text-[#CA1F7B]
-            "
-          >
-            EXCITING PRIZES
-          </span>
-
-
-          <h3
-            className="
-              mt-5
-              text-3xl
-              font-black
-              text-[#000000]
-              sm:text-4xl
-            "
-          >
-            Win Something Special
-          </h3>
-
-
-          <p
-            className="
-              mx-auto
-              mt-4
-              max-w-2xl
-              text-[#000000]/60
-            "
-          >
-            Check out some of the prizes prepared for
-            our Sebastinos.
-          </p>
-
-        </motion.div>
-
-
-        {/* PRIZE CARDS */}
-
-        <div
-          className="
-            mt-10
-            grid
-            gap-6
-            md:grid-cols-3
-          "
-        >
-
-          {prizes.map((prize, index) => (
-
-            <motion.div
-              key={index}
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: index * 0.12,
-              }}
-              whileHover={{
-                y: -7,
-              }}
-              className="
-                group
-                overflow-hidden
-                rounded-3xl
-                border
-                border-[#C0C0C0]
-                bg-white
-                shadow-sm
-                transition
-                hover:shadow-xl
-              "
-            >
-
-              <div className="h-72 overflow-hidden">
-
-                <img
-                  src={prize.image}
-                  alt={prize.title}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition
-                    duration-700
-                    group-hover:scale-105
-                  "
-                />
-
-              </div>
-
-
-              <div className="p-6">
-
-                <div
-                  className="
-                    mb-4
-                    h-1
-                    w-10
-                    rounded-full
-                    bg-[#CA1F7B]
-                  "
-                />
-
-
-                <h4
-                  className="
-                    text-xl
-                    font-black
-                    text-[#000000]
-                  "
-                >
-                  {prize.title}
-                </h4>
-
-
-                <p
-                  className="
-                    mt-3
-                    text-sm
-                    leading-7
-                    text-[#000000]/60
-                  "
-                >
-                  {prize.description}
-                </p>
-
-              </div>
-
-            </motion.div>
-
-          ))}
-
-        </div>
-
-
-        {/* =====================================================
-            EVENT FEATURES
-        ===================================================== */}
-
-        <div
-          className="
-            mt-28
-            grid
-            gap-6
-            md:grid-cols-3
-          "
-        >
-
-          {features.map((feature, index) => (
-
-            <motion.div
-              key={index}
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: index * 0.1,
-              }}
-              whileHover={{
-                y: -7,
-              }}
-              className="
-                group
-                overflow-hidden
-                rounded-3xl
-                border
-                border-[#C0C0C0]
-                bg-white
-                shadow-sm
-                transition
-                hover:shadow-xl
-              "
-            >
-
-              <div
-                className="
-                  relative
-                  h-64
-                  overflow-hidden
-                "
-              >
-
-                <img
-                  src={feature.image}
-                  alt={feature.title}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition
-                    duration-700
-                    group-hover:scale-105
-                  "
-                />
-
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black/70
-                    via-black/10
-                    to-transparent
-                  "
-                />
-
-
-                <div
-                  className="
-                    absolute
-                    bottom-5
-                    left-5
-                    right-5
-                    flex
-                    items-center
-                    gap-3
-                  "
-                >
-
-                  <div
-                    className="
-                      flex
-                      h-11
-                      w-11
-                      items-center
-                      justify-center
-                      rounded-xl
-                      bg-[#CA1F7B]
-                      text-white
-                      shadow-lg
-                    "
-                  >
-                    {feature.icon}
-                  </div>
-
-
-                  <h4
-                    className="
-                      text-xl
-                      font-black
-                      text-white
-                    "
-                  >
-                    {feature.title}
-                  </h4>
-
-                </div>
-
-              </div>
-
-
-              <div className="p-6">
-
-                <p
-                  className="
-                    text-sm
-                    leading-7
-                    text-[#000000]/60
-                  "
-                >
-                  {feature.description}
-                </p>
-
-              </div>
-
-            </motion.div>
-
-          ))}
-
-        </div>
-
-
-        {/* =====================================================
-            BROCHURE
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="mt-28"
-        >
-
-          <div
-            className="
-              grid
-              items-center
-              gap-10
-              overflow-hidden
-              rounded-[32px]
-              border
-              border-[#C0C0C0]
-              bg-[#DF79B0]/10
-              p-6
-              md:p-10
-              lg:grid-cols-2
-            "
-          >
-
-            <div
-              className="
-                overflow-hidden
-                rounded-3xl
-                border
-                border-[#C0C0C0]
-                bg-white
-                shadow-lg
-              "
-            >
-
-              <img
-                src={brochure}
-                alt="Salubong sa Bagong Sebastino Brochure"
-                className="
-                  w-full
-                  object-cover
-                  transition
-                  duration-700
-                  hover:scale-105
-                "
-              />
-
-            </div>
-
-
-            <div className="p-2 md:p-4">
-
-              <span
-                className="
-                  inline-flex
-                  rounded-full
-                  border
-                  border-[#DF79B0]
-                  bg-white
-                  px-5
-                  py-2
-                  text-sm
-                  font-bold
-                  tracking-wider
-                  text-[#CA1F7B]
-                "
-              >
-                EVENT BROCHURE
-              </span>
-
-
-              <h3
-                className="
-                  mt-5
-                  text-3xl
-                  font-black
-                  text-[#000000]
-                  sm:text-4xl
-                "
-              >
-                Everything You Need to Know
-              </h3>
-
-
-              <p
-                className="
-                  mt-4
-                  text-base
-                  leading-8
-                  text-[#000000]/60
-                  sm:text-lg
-                "
-              >
-                Check the official event brochure for the
-                complete schedule, activities, games, and
-                other important information.
-              </p>
-
-
-              <button
-                type="button"
-                className="
-                  mt-7
-                  flex
-                  items-center
-                  gap-3
-                  rounded-full
-                  bg-[#CA1F7B]
-                  px-7
-                  py-4
-                  font-bold
-                  text-white
-                  shadow-lg
-                  transition
-                  hover:bg-[#DF79B0]
-                "
-              >
-
-                <FaBookOpen />
-
-                View Brochure
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </motion.div>
-
-
-        {/* =====================================================
-            PREPARATION VIDEO
-        ===================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="mt-28"
-        >
-
-          <div className="text-center">
-
-            <span
-              className="
-                inline-flex
-                rounded-full
-                border
-                border-[#DF79B0]
-                bg-[#DF79B0]/10
-                px-6
-                py-2
-                text-sm
-                font-bold
-                tracking-[3px]
-                text-[#CA1F7B]
-              "
-            >
-              BEHIND THE SCENES
-            </span>
-
-
-            <h3
-              className="
-                mt-5
-                text-3xl
-                font-black
-                text-[#000000]
-                sm:text-4xl
-              "
-            >
-              Preparing for the Celebration
-            </h3>
-
-
-            <p
-              className="
-                mx-auto
-                mt-4
-                max-w-2xl
-                text-[#000000]/60
-              "
-            >
-              Take a look behind the scenes as the SSG
-              prepares everything for our fellow Sebastinos.
-            </p>
-
-          </div>
-
-
-          <div
-            className="
-              relative
-              mx-auto
-              mt-10
-              max-w-5xl
-              overflow-hidden
-              rounded-[32px]
-              border
-              border-[#C0C0C0]
-              bg-[#000000]
-              shadow-xl
-            "
-          >
-
-            <video
-              controls
-              playsInline
-              className="h-auto w-full"
-            >
-
-              <source
-                src={preparationVideo}
-                type="video/mp4"
-              />
-
-              Your browser does not support the video tag.
-
-            </video>
-
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-0
-                flex
-                items-center
-                justify-center
-              "
-            >
-
-              <div
-                className="
-                  rounded-full
-                  bg-[#CA1F7B]/90
-                  p-6
-                  text-white
-                  shadow-xl
-                "
-              >
-                <FaPlay size={25} />
-              </div>
-
-            </div>
-
-          </div>
-
-        </motion.div>
-
-
-        {/* =====================================================
+        {/* =================================================
             FINAL CTA
-        ===================================================== */}
+        ================================================= */}
 
         <motion.div
           initial={{
@@ -2247,84 +2290,87 @@ const goToSection = (section) => {
             once: true,
           }}
           className="
-            mt-28
+            mt-24
             overflow-hidden
             rounded-[32px]
             bg-[#CA1F7B]
-            p-10
+            p-8
             text-center
             shadow-xl
-            md:p-14
+            sm:p-12
           "
         >
 
           <h3
             className="
-              text-3xl
+              text-2xl
               font-black
               text-white
-              sm:text-4xl
+              sm:text-3xl
             "
           >
-            Ready to Welcome a New Sebastino Journey?
+            Stay Connected With SSG
           </h3>
 
 
           <p
             className="
               mx-auto
-              mt-5
+              mt-4
               max-w-2xl
-              text-base
+              text-sm
               leading-7
-              text-white/85
-              sm:text-lg
+              text-white/80
+              sm:text-base
             "
           >
-            Follow the SSG and stay connected with everything
-            happening around campus.
+            Keep up with student activities,
+            announcements, programs, and future
+            SSG initiatives.
           </p>
 
 
-            <motion.button
-              onClick={() => goToSection("contact")}
-              whileHover={{
-                scale: 1.03,
-              }}
-              whileTap={{
-                scale: 0.97,
-              }}
-              className="
-                mt-7
-                inline-flex
-                items-center
-                gap-3
-                rounded-full
-                bg-[#CA1F7B]
-                px-7
-                py-4
-                font-bold
-                text-white
-                shadow-lg
-                transition
-                hover:bg-[#8E1457]
-              "
-            >
+          <motion.button
+            onClick={() =>
+              goToSection("contact")
+            }
+            whileHover={{
+              scale: 1.04,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            className="
+              mt-6
+              inline-flex
+              items-center
+              gap-3
+              rounded-full
+              bg-white
+              px-6
+              py-3.5
+              text-sm
+              font-black
+              text-[#CA1F7B]
+              shadow-lg
+              transition
+              hover:bg-[#DF79B0]
+              hover:text-white
+            "
+          >
+            Connect With SSG
+            <FaArrowRight />
 
-              Connect With SSG
+          </motion.button>
 
-              <FaArrowRight size={14} />
-
-            </motion.button>
-
-          </motion.div>
+        </motion.div>
 
       </div>
 
 
-      {/* =====================================================
+      {/* =================================================
           EVENT MODAL
-      ===================================================== */}
+      ================================================= */}
 
       <AnimatePresence>
 
@@ -2340,6 +2386,7 @@ const goToSection = (section) => {
             exit={{
               opacity: 0,
             }}
+            onClick={closeEvent}
             className="
               fixed
               inset-0
@@ -2347,22 +2394,20 @@ const goToSection = (section) => {
               flex
               items-center
               justify-center
-              bg-black/70
-              p-4
+              bg-black/75
+              p-3
               backdrop-blur-sm
               sm:p-6
             "
-            onClick={closeEvent}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="event-modal-title"
           >
 
             <motion.div
               initial={{
                 opacity: 0,
                 y: 30,
-                scale: 0.96,
+                scale: 0.97,
               }}
               animate={{
                 opacity: 1,
@@ -2372,17 +2417,16 @@ const goToSection = (section) => {
               exit={{
                 opacity: 0,
                 y: 20,
-                scale: 0.96,
+                scale: 0.97,
               }}
-              transition={{
-                duration: 0.25,
-              }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) =>
+                e.stopPropagation()
+              }
               className="
                 relative
-                max-h-[92vh]
+                max-h-[94vh]
                 w-full
-                max-w-5xl
+                max-w-6xl
                 overflow-y-auto
                 rounded-[28px]
                 bg-white
@@ -2390,406 +2434,1087 @@ const goToSection = (section) => {
               "
             >
 
-              {/* ==========================================
-                  CLOSE BUTTON
-              ========================================== */}
+              {/* CLOSE */}
 
               <button
                 type="button"
                 onClick={closeEvent}
-                aria-label="Close event preview"
                 className="
                   absolute
-                  right-5
-                  top-5
-                  z-20
+                  right-4
+                  top-4
+                  z-30
                   flex
-                  h-11
-                  w-11
+                  h-10
+                  w-10
                   items-center
                   justify-center
                   rounded-full
                   bg-white
-                  text-[#000000]
-                  shadow-lg
+                  text-black
+                  shadow-xl
                   transition
                   hover:bg-[#CA1F7B]
                   hover:text-white
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-[#CA1F7B]
                 "
+                aria-label="Close"
               >
-
                 <FaTimes />
-
               </button>
 
 
-              {/* ==========================================
-                  MODAL HERO IMAGE
-              ========================================== */}
+              {/* =================================================
+                  SALUBONG SPECIAL SHOWCASE
+              ================================================= */}
 
-              <div
-                className="
-                  relative
-                  h-64
-                  overflow-hidden
-                  sm:h-80
-                  lg:h-[400px]
-                "
-              >
+              {selectedEvent.id ===
+                "salubong-2026" ? (
 
-                <img
-                  src={selectedEvent.featuredImage}
-                  alt={selectedEvent.title}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                  "
-                />
+                <>
 
-
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black/80
-                    via-black/20
-                    to-transparent
-                  "
-                />
-
-
-                <div
-                  className="
-                    absolute
-                    bottom-7
-                    left-6
-                    right-16
-                    sm:left-10
-                  "
-                >
-
-                  <span
-                    className="
-                      inline-flex
-                      rounded-full
-                      bg-[#CA1F7B]
-                      px-4
-                      py-2
-                      text-xs
-                      font-bold
-                      uppercase
-                      tracking-[1.5px]
-                      text-white
-                    "
-                  >
-                    S.Y. {selectedEvent.schoolYear}
-                  </span>
-
-
-                  <h2
-                    id="event-modal-title"
-                    className="
-                      mt-4
-                      text-3xl
-                      font-black
-                      leading-tight
-                      text-white
-                      sm:text-4xl
-                      lg:text-5xl
-                    "
-                  >
-                    {selectedEvent.title}
-                  </h2>
-
-                </div>
-
-              </div>
-
-
-              {/* ==========================================
-                  MODAL CONTENT
-              ========================================== */}
-
-              <div className="p-6 sm:p-10">
-
-                <div
-                  className="
-                    grid
-                    gap-8
-                    lg:grid-cols-[1.2fr_.8fr]
-                  "
-                >
-
-                  {/* DESCRIPTION */}
-
-                  <div>
-
-                    <p
-                      className="
-                        text-sm
-                        font-bold
-                        uppercase
-                        tracking-[2px]
-                        text-[#CA1F7B]
-                      "
-                    >
-                      Event Overview
-                    </p>
-
-
-                    <p
-                      className="
-                        mt-4
-                        text-base
-                        leading-8
-                        text-[#000000]/70
-                      "
-                    >
-                      {selectedEvent.description}
-                    </p>
-{/* Raffle Registration */}
-{selectedEvent.registrationText && (
-  <p className="mt-5 text-sm font-semibold leading-6 text-[#000000]">
-    {selectedEvent.registrationText.split("REGISTER HERE")[0]}
-
-    <a
-      href={selectedEvent.registrationLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="font-black text-[#CA1F7B] underline decoration-2 underline-offset-4 transition hover:text-[#DF79B0]"
-    >
-      REGISTER HERE
-    </a>
-  </p>
-)}
-
-<div>
-  <strong>Date:</strong> {selectedEvent.date}
-</div>
-                  </div>
-
-
-                  {/* EVENT DETAILS */}
+                  {/* HERO */}
 
                   <div
                     className="
-                      rounded-2xl
-                      border
-                      border-[#C0C0C0]
-                      bg-[#DF79B0]/10
-                      p-6
+                      relative
+                      h-64
+                      overflow-hidden
+                      sm:h-80
+                      lg:h-[420px]
                     "
                   >
 
-                    <h3
+                    <img
+                      src={
+                        selectedEvent.featuredImage
+                      }
+                      alt={
+                        selectedEvent.title
+                      }
                       className="
-                        text-lg
-                        font-black
-                        text-[#000000]
+                        h-full
+                        w-full
+                        object-cover
+                      "
+                    />
+
+
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-black/85
+                        via-black/20
+                        to-transparent
+                      "
+                    />
+
+
+                    <div
+                      className="
+                        absolute
+                        bottom-7
+                        left-6
+                        right-16
+                        sm:bottom-10
+                        sm:left-10
                       "
                     >
-                      Event Details
-                    </h3>
+
+                      <span
+                        className="
+                          inline-flex
+                          rounded-full
+                          bg-[#CA1F7B]
+                          px-4
+                          py-2
+                          text-[10px]
+                          font-black
+                          uppercase
+                          tracking-wider
+                          text-white
+                        "
+                      >
+                        S.Y. 2026–2027
+                      </span>
 
 
-                    <div className="mt-5 space-y-5">
+                      <h2
+                        className="
+                          mt-4
+                          text-3xl
+                          font-black
+                          leading-tight
+                          text-white
+                          sm:text-5xl
+                        "
+                      >
+                        Salubong sa
+                        <span className="block text-[#DF79B0]">
+                          Bagong Sebastino
+                        </span>
+                      </h2>
 
-                      <div className="flex items-start gap-4">
+                    </div>
 
-                        <div
-                          className="
-                            flex
-                            h-10
-                            w-10
-                            shrink-0
-                            items-center
-                            justify-center
-                            rounded-xl
-                            bg-[#CA1F7B]
-                            text-white
-                          "
+                  </div>
+
+
+                  {/* TABS */}
+
+                  <div
+                    className="
+                      sticky
+                      top-0
+                      z-20
+                      flex
+                      overflow-x-auto
+                      border-b
+                      border-[#C0C0C0]
+                      bg-white
+                      px-4
+                      sm:px-8
+                    "
+                  >
+
+                    {[
+                      {
+                        id: "overview",
+                        label: "Overview",
+                        icon: <FaInfoCircle />,
+                      },
+
+                      {
+                        id: "preparation",
+                        label: "Preparation",
+                        icon: <FaImages />,
+                      },
+
+                      {
+                        id: "videos",
+                        label: "Videos",
+                        icon: <FaPlay />,
+                      },
+
+                      {
+                        id: "prizes",
+                        label: "Prizes",
+                        icon: <FaTrophy />,
+                      },
+                    ].map((tab) => (
+
+                      <button
+                        key={tab.id}
+                        type="button"
+                        onClick={() =>
+                          setSalubongTab(
+                            tab.id
+                          )
+                        }
+                        className={`
+                          relative
+                          flex
+                          shrink-0
+                          items-center
+                          gap-2
+                          px-4
+                          py-4
+                          text-xs
+                          font-black
+                          transition
+                          sm:px-6
+                          sm:text-sm
+                          ${
+                            salubongTab ===
+                            tab.id
+                              ? "text-[#CA1F7B]"
+                              : "text-black/45 hover:text-[#CA1F7B]"
+                          }
+                        `}
+                      >
+
+                        {tab.icon}
+
+                        {tab.label}
+
+                        {salubongTab ===
+                          tab.id && (
+
+                          <motion.div
+                            layoutId="salubong-tab"
+                            className="
+                              absolute
+                              bottom-0
+                              left-0
+                              right-0
+                              h-1
+                              rounded-t-full
+                              bg-[#CA1F7B]
+                            "
+                          />
+
+                        )}
+
+                      </button>
+
+                    ))}
+
+                  </div>
+
+
+                  {/* TAB CONTENT */}
+
+                  <div className="p-6 sm:p-10">
+
+                    <AnimatePresence
+                      mode="wait"
+                    >
+
+                      {/* OVERVIEW */}
+
+                      {salubongTab ===
+                        "overview" && (
+
+                        <motion.div
+                          key="overview"
+                          initial={{
+                            opacity: 0,
+                            y: 10,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            y: -10,
+                          }}
                         >
-                          <FaCalendarAlt />
-                        </div>
+
+                          <div
+                            className="
+                              grid
+                              gap-10
+                              lg:grid-cols-[1.2fr_.8fr]
+                            "
+                          >
+
+                            <div>
+
+                              <span
+                                className="
+                                  text-xs
+                                  font-black
+                                  uppercase
+                                  tracking-[2px]
+                                  text-[#CA1F7B]
+                                "
+                              >
+                                Event Overview
+                              </span>
 
 
-                        <div>
+                              <h3
+                                className="
+                                  mt-3
+                                  text-2xl
+                                  font-black
+                                  text-black
+                                  sm:text-3xl
+                                "
+                              >
+                                Welcome, Sebastinos.
+                              </h3>
 
-                          <p
+
+                              <p
+                                className="
+                                  mt-5
+                                  text-sm
+                                  leading-8
+                                  text-black/65
+                                  sm:text-base
+                                "
+                              >
+                                {
+                                  selectedEvent.description
+                                }
+                              </p>
+
+
+                              <p
+                                className="
+                                  mt-5
+                                  text-sm
+                                  leading-8
+                                  text-black/65
+                                  sm:text-base
+                                "
+                              >
+                                {
+                                  selectedEvent.rationale
+                                }
+                              </p>
+
+
+                              {selectedEvent.registrationText && (
+
+                                <div
+                                  className="
+                                    mt-6
+                                    rounded-2xl
+                                    border
+                                    border-[#DF79B0]
+                                    bg-[#DF79B0]/10
+                                    p-5
+                                  "
+                                >
+
+                                  <p
+                                    className="
+                                      text-sm
+                                      font-black
+                                      text-[#CA1F7B]
+                                    "
+                                  >
+                                    Registration
+                                  </p>
+
+
+                                  <p
+                                    className="
+                                      mt-2
+                                      text-sm
+                                      leading-6
+                                      text-black/70
+                                    "
+                                  >
+                                    {
+                                      selectedEvent
+                                        .registrationText
+                                        .split(
+                                          "REGISTER HERE"
+                                        )[0]
+                                    }
+
+                                    <a
+                                      href={
+                                        selectedEvent.registrationLink
+                                      }
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="
+                                        ml-1
+                                        font-black
+                                        text-[#CA1F7B]
+                                        underline
+                                      "
+                                    >
+                                      REGISTER HERE
+                                    </a>
+
+                                  </p>
+
+                                </div>
+
+                              )}
+
+                            </div>
+
+
+                            {/* DETAILS */}
+
+                            <div
+                              className="
+                                rounded-3xl
+                                border
+                                border-[#C0C0C0]
+                                bg-[#FDF0F5]
+                                p-6
+                              "
+                            >
+
+                              <h4
+                                className="
+                                  text-lg
+                                  font-black
+                                  text-black
+                                "
+                              >
+                                Event Details
+                              </h4>
+
+
+                              <div className="mt-6 space-y-5">
+
+                                <DetailRow
+                                  icon={<FaCalendarAlt />}
+                                  label="Date"
+                                  value={
+                                    selectedEvent.date
+                                  }
+                                />
+
+                                <DetailRow
+                                  icon={<FaClock />}
+                                  label="Schedule"
+                                  value={
+                                    selectedEvent.time
+                                  }
+                                />
+
+                                <DetailRow
+                                  icon={<FaMapMarkerAlt />}
+                                  label="Venue"
+                                  value="Main Campus Quadrangle & School Lobby"
+                                />
+
+                                <DetailRow
+                                  icon={<FaUserTie />}
+                                  label="Organizing Body"
+                                  value={
+                                    selectedEvent.head
+                                  }
+                                />
+
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </motion.div>
+
+                      )}
+
+
+                      {/* PREPARATION */}
+
+                      {salubongTab ===
+                        "preparation" && (
+
+                        <motion.div
+                          key="preparation"
+                          initial={{
+                            opacity: 0,
+                            y: 10,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            y: -10,
+                          }}
+                        >
+
+                          <span
                             className="
                               text-xs
-                              font-bold
+                              font-black
                               uppercase
-                              tracking-wider
-                              text-black/50
+                              tracking-[2px]
+                              text-[#CA1F7B]
                             "
                           >
-                            Date
-                          </p>
+                            Behind The Scenes
+                          </span>
+
+
+                          <h3
+                            className="
+                              mt-3
+                              text-2xl
+                              font-black
+                              text-black
+                              sm:text-3xl
+                            "
+                          >
+                            Preparing the Celebration
+                          </h3>
+
 
                           <p
                             className="
-                              mt-1
+                              mt-4
+                              max-w-3xl
                               text-sm
-                              font-bold
-                              text-black
+                              leading-7
+                              text-black/60
                             "
                           >
-                            {selectedEvent.date}
+                            Explore the preparation,
+                            materials, installations,
+                            and creative work behind
+                            the Salubong celebration.
                           </p>
 
-                        </div>
+
+                          <div
+                            className="
+                              mt-8
+                              grid
+                              grid-cols-2
+                              gap-4
+                              sm:grid-cols-3
+                            "
+                          >
+
+                            {selectedEvent.preparationImages.map(
+                              (image, index) => (
+
+                                <motion.button
+                                  key={index}
+                                  type="button"
+                                  whileHover={{
+                                    scale: 1.03,
+                                  }}
+                                  onClick={() =>
+                                    setGalleryImage(
+                                      image
+                                    )
+                                  }
+                                  className="
+                                    group
+                                    relative
+                                    aspect-square
+                                    overflow-hidden
+                                    rounded-2xl
+                                    border
+                                    border-[#C0C0C0]
+                                    bg-white
+                                  "
+                                >
+
+                                  <img
+                                    src={image}
+                                    alt={`Salubong preparation ${index + 1}`}
+                                    loading="lazy"
+                                    className="
+                                      h-full
+                                      w-full
+                                      object-cover
+                                      transition
+                                      duration-500
+                                      group-hover:scale-105
+                                    "
+                                  />
+
+
+                                  <div
+                                    className="
+                                      absolute
+                                      inset-0
+                                      flex
+                                      items-center
+                                      justify-center
+                                      bg-black/0
+                                      text-white
+                                      transition
+                                      group-hover:bg-black/30
+                                    "
+                                  >
+
+                                    <FaImages
+                                      className="
+                                        opacity-0
+                                        transition
+                                        group-hover:opacity-100
+                                      "
+                                    />
+
+                                  </div>
+
+                                </motion.button>
+
+                              )
+                            )}
+
+                          </div>
+
+                        </motion.div>
+
+                      )}
+
+
+                      {/* VIDEOS */}
+
+                      {salubongTab ===
+                        "videos" && (
+
+                        <motion.div
+                          key="videos"
+                          initial={{
+                            opacity: 0,
+                            y: 10,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            y: -10,
+                          }}
+                        >
+
+                          <span
+                            className="
+                              text-xs
+                              font-black
+                              uppercase
+                              tracking-[2px]
+                              text-[#CA1F7B]
+                            "
+                          >
+                            Media Recap
+                          </span>
+
+
+                          <h3
+                            className="
+                              mt-3
+                              text-2xl
+                              font-black
+                              text-black
+                              sm:text-3xl
+                            "
+                          >
+                            Salubong Video Highlights
+                          </h3>
+
+
+                          <p
+                            className="
+                              mt-4
+                              max-w-3xl
+                              text-sm
+                              leading-7
+                              text-black/60
+                            "
+                          >
+                            Watch the preparation and
+                            promotional materials
+                            created for Salubong.
+                          </p>
+
+
+                          <div
+                            className="
+                              mt-8
+                              overflow-hidden
+                              rounded-3xl
+                              bg-black
+                              shadow-xl
+                            "
+                          >
+
+                            <video
+                              controls
+                              playsInline
+                              className="
+                                max-h-[600px]
+                                w-full
+                              "
+                            >
+
+                              <source
+                                src={
+                                  preparationVideo
+                                }
+                                type="video/mp4"
+                              />
+
+                              Your browser does not
+                              support the video tag.
+
+                            </video>
+
+                          </div>
+
+
+                          <div
+                            className="
+                              mt-4
+                              flex
+                              items-center
+                              gap-2
+                              text-xs
+                              font-semibold
+                              text-black/45
+                            "
+                          >
+
+                            <FaPlay
+                              className="text-[#CA1F7B]"
+                            />
+
+                            Salubong preparation
+                            and behind-the-scenes
+                            video
+
+                          </div>
+
+                        </motion.div>
+
+                      )}
+
+
+                      {/* PRIZES */}
+
+                      {salubongTab ===
+                        "prizes" && (
+
+                        <motion.div
+                          key="prizes"
+                          initial={{
+                            opacity: 0,
+                            y: 10,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          exit={{
+                            opacity: 0,
+                            y: -10,
+                          }}
+                        >
+
+                          <span
+                            className="
+                              text-xs
+                              font-black
+                              uppercase
+                              tracking-[2px]
+                              text-[#CA1F7B]
+                            "
+                          >
+                            Contest & Rewards
+                          </span>
+
+
+                          <h3
+                            className="
+                              mt-3
+                              text-2xl
+                              font-black
+                              text-black
+                              sm:text-3xl
+                            "
+                          >
+                            Salubong Prizes
+                          </h3>
+
+
+                          <p
+                            className="
+                              mt-4
+                              max-w-3xl
+                              text-sm
+                              leading-7
+                              text-black/60
+                            "
+                          >
+                            Discover the prizes prepared
+                            for participating Sebastinos
+                            throughout the celebration.
+                          </p>
+
+
+                          <div
+                            className="
+                              mt-8
+                              grid
+                              gap-5
+                              sm:grid-cols-3
+                            "
+                          >
+
+                            {salubongPrizes.map(
+                              (prize, index) => (
+
+                                <motion.div
+                                  key={index}
+                                  whileHover={{
+                                    y: -5,
+                                  }}
+                                  className="
+                                    overflow-hidden
+                                    rounded-2xl
+                                    border
+                                    border-[#C0C0C0]
+                                    bg-white
+                                    shadow-sm
+                                  "
+                                >
+
+                                  <div
+                                    className="
+                                      h-52
+                                      overflow-hidden
+                                    "
+                                  >
+
+                                    <img
+                                      src={
+                                        prize.image
+                                      }
+                                      alt={
+                                        prize.title
+                                      }
+                                      className="
+                                        h-full
+                                        w-full
+                                        object-cover
+                                        transition
+                                        duration-500
+                                        hover:scale-105
+                                      "
+                                    />
+
+                                  </div>
+
+
+                                  <div className="p-5">
+
+                                    <span
+                                      className="
+                                        inline-flex
+                                        rounded-full
+                                        bg-[#DF79B0]/15
+                                        px-3
+                                        py-1
+                                        text-[9px]
+                                        font-black
+                                        uppercase
+                                        tracking-wider
+                                        text-[#CA1F7B]
+                                      "
+                                    >
+                                      {prize.type}
+                                    </span>
+
+
+                                    <h4
+                                      className="
+                                        mt-3
+                                        text-lg
+                                        font-black
+                                        text-black
+                                      "
+                                    >
+                                      {prize.title}
+                                    </h4>
+
+
+                                    <p
+                                      className="
+                                        mt-2
+                                        text-xs
+                                        leading-6
+                                        text-black/55
+                                      "
+                                    >
+                                      {
+                                        prize.description
+                                      }
+                                    </p>
+
+                                  </div>
+
+                                </motion.div>
+
+                              )
+                            )}
+
+                          </div>
+
+                        </motion.div>
+
+                      )}
+
+                    </AnimatePresence>
+
+                  </div>
+
+                </>
+
+              ) : (
+
+                /* =================================================
+                   NORMAL ARCHIVE EVENT MODAL
+                ================================================= */
+
+                <>
+
+                  <div
+                    className="
+                      relative
+                      h-64
+                      overflow-hidden
+                      sm:h-80
+                      lg:h-[400px]
+                    "
+                  >
+
+                    <img
+                      src={
+                        selectedEvent.featuredImage
+                      }
+                      alt={
+                        selectedEvent.title
+                      }
+                      className="
+                        h-full
+                        w-full
+                        object-cover
+                      "
+                    />
+
+
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-black/80
+                        via-black/10
+                        to-transparent
+                      "
+                    />
+
+
+                    <div
+                      className="
+                        absolute
+                        bottom-7
+                        left-6
+                        right-16
+                        sm:left-10
+                      "
+                    >
+
+                      <span
+                        className="
+                          inline-flex
+                          rounded-full
+                          bg-[#CA1F7B]
+                          px-4
+                          py-2
+                          text-xs
+                          font-black
+                          text-white
+                        "
+                      >
+                        S.Y. {selectedEvent.schoolYear}
+                      </span>
+
+
+                      <h2
+                        className="
+                          mt-4
+                          text-3xl
+                          font-black
+                          text-white
+                          sm:text-5xl
+                        "
+                      >
+                        {selectedEvent.title}
+                      </h2>
+
+                    </div>
+
+                  </div>
+
+
+                  <div className="p-6 sm:p-10">
+
+                    <div
+                      className="
+                        grid
+                        gap-8
+                        lg:grid-cols-[1.2fr_.8fr]
+                      "
+                    >
+
+                      <div>
+
+                        <span
+                          className="
+                            text-xs
+                            font-black
+                            uppercase
+                            tracking-[2px]
+                            text-[#CA1F7B]
+                          "
+                        >
+                          Event Overview
+                        </span>
+
+
+                        <p
+                          className="
+                            mt-4
+                            text-sm
+                            leading-8
+                            text-black/65
+                            sm:text-base
+                          "
+                        >
+                          {
+                            selectedEvent.description
+                          }
+                        </p>
 
                       </div>
 
 
-                      <div className="flex items-start gap-4">
+                      <div
+                        className="
+                          rounded-2xl
+                          bg-[#FDF0F5]
+                          p-6
+                        "
+                      >
 
-                        <div
+                        <h4
                           className="
-                            flex
-                            h-10
-                            w-10
-                            shrink-0
-                            items-center
-                            justify-center
-                            rounded-xl
-                            bg-[#CA1F7B]
-                            text-white
+                            font-black
+                            text-black
                           "
                         >
-                          <FaMapMarkerAlt />
-                        </div>
+                          Event Details
+                        </h4>
 
 
-                        <div>
+                        <div className="mt-5 space-y-5">
 
-                          <p
-                            className="
-                              text-xs
-                              font-bold
-                              uppercase
-                              tracking-wider
-                              text-black/50
-                            "
-                          >
-                            Location
-                          </p>
+                          <DetailRow
+                            icon={<FaCalendarAlt />}
+                            label="Date"
+                            value={
+                              selectedEvent.date
+                            }
+                          />
 
-                          <p
-                            className="
-                              mt-1
-                              text-sm
-                              font-bold
-                              text-black
-                            "
-                          >
-                            {selectedEvent.location}
-                          </p>
+                          <DetailRow
+                            icon={<FaMapMarkerAlt />}
+                            label="Location"
+                            value={
+                              selectedEvent.location
+                            }
+                          />
 
-                        </div>
-
-                      </div>
-
-
-                      <div className="flex items-start gap-4">
-
-                        <div
-                          className="
-                            flex
-                            h-10
-                            w-10
-                            shrink-0
-                            items-center
-                            justify-center
-                            rounded-xl
-                            bg-[#CA1F7B]
-                            text-white
-                          "
-                        >
-                          <FaUserTie />
-                        </div>
-
-
-                        <div>
-
-                          <p
-                            className="
-                              text-xs
-                              font-bold
-                              uppercase
-                              tracking-wider
-                              text-black/50
-                            "
-                          >
-                            Project Head
-                          </p>
-
-                          <p
-                            className="
-                              mt-1
-                              text-sm
-                              font-bold
-                              text-black
-                            "
-                          >
-                            {selectedEvent.head}
-                          </p>
-
-                        </div>
-
-                      </div>
-
-
-                      <div className="flex items-start gap-4">
-
-                        <div
-                          className="
-                            flex
-                            h-10
-                            w-10
-                            shrink-0
-                            items-center
-                            justify-center
-                            rounded-xl
-                            bg-[#DF79B0]
-                            text-white
-                          "
-                        >
-                          <FaUsersIcon />
-
-                        </div>
-
-
-                        <div>
-
-                          <p
-                            className="
-                              text-xs
-                              font-bold
-                              uppercase
-                              tracking-wider
-                              text-black/50
-                            "
-                          >
-                            Co-Head
-                          </p>
-
-                          <p
-                            className="
-                              mt-1
-                              text-sm
-                              font-bold
-                              text-black
-                            "
-                          >
-                            {selectedEvent.coHead}
-                          </p>
+                          <DetailRow
+                            icon={<FaUserTie />}
+                            label="Project Head"
+                            value={
+                              selectedEvent.head
+                            }
+                          />
 
                         </div>
 
@@ -2797,164 +3522,181 @@ const goToSection = (section) => {
 
                     </div>
 
-                  </div>
 
-                </div>
+                    {/* GALLERY */}
 
+                    <div className="mt-12">
 
-                {/* ==========================================
-                    PHOTO GALLERY
-                ========================================== */}
-
-                <div className="mt-12">
-
-                  <div
-                    className="
-                      flex
-                      flex-col
-                      justify-between
-                      gap-3
-                      sm:flex-row
-                      sm:items-end
-                    "
-                  >
-
-                    <div>
-
-                      <p
+                      <span
                         className="
-                          text-sm
-                          font-bold
+                          text-xs
+                          font-black
                           uppercase
                           tracking-[2px]
                           text-[#CA1F7B]
                         "
                       >
                         Event Gallery
-                      </p>
+                      </span>
 
 
-                      <h3
+                      <div
                         className="
-                          mt-2
-                          text-2xl
-                          font-black
-                          text-[#000000]
+                          mt-5
+                          grid
+                          grid-cols-2
+                          gap-3
+                          sm:grid-cols-3
+                          lg:grid-cols-5
                         "
                       >
-                        Moments & Highlights
-                      </h3>
+
+                        {selectedEvent.galleryImages.map(
+                          (image, index) => (
+
+                            <button
+                              key={index}
+                              type="button"
+                              onClick={() =>
+                                setGalleryImage(
+                                  image
+                                )
+                              }
+                              className="
+                                aspect-square
+                                overflow-hidden
+                                rounded-2xl
+                                border
+                                border-[#C0C0C0]
+                              "
+                            >
+
+                              <img
+                                src={image}
+                                alt={`${selectedEvent.title} ${index + 1}`}
+                                loading="lazy"
+                                className="
+                                  h-full
+                                  w-full
+                                  object-cover
+                                  transition
+                                  duration-500
+                                  hover:scale-105
+                                "
+                              />
+
+                            </button>
+
+                          )
+                        )}
+
+                      </div>
 
                     </div>
 
-
-                    <span
-                      className="
-                        text-sm
-                        font-semibold
-                        text-black/50
-                      "
-                    >
-                      {selectedEvent.galleryImages.length} photos
-                    </span>
-
                   </div>
 
+                </>
 
-                  <div
-                    className="
-                      mt-6
-                      grid
-                      grid-cols-2
-                      gap-3
-                      sm:grid-cols-3
-                      lg:grid-cols-5
-                    "
-                  >
-
-                    {selectedEvent.galleryImages.map(
-                      (image, index) => (
-
-                        <motion.div
-                          key={index}
-                          whileHover={{
-                            scale: 1.03,
-                          }}
-                          className="
-                            aspect-square
-                            overflow-hidden
-                            rounded-2xl
-                            border
-                            border-[#C0C0C0]
-                            bg-white
-                          "
-                        >
-
-                          <img
-                            src={image}
-                            alt={`${selectedEvent.title} gallery ${index + 1}`}
-                            className="
-                              h-full
-                              w-full
-                              object-cover
-                            "
-                          />
-
-                        </motion.div>
-
-                      )
-                    )}
-
-                  </div>
-
-                </div>
-
-
-                {/* ==========================================
-                    MODAL FOOTER
-                ========================================== */}
-
-                <div
-                  className="
-                    mt-10
-                    flex
-                    justify-end
-                    border-t
-                    border-[#C0C0C0]
-                    pt-6
-                  "
-                >
-
-                  <button
-                    type="button"
-                    onClick={closeEvent}
-                    className="
-                      inline-flex
-                      items-center
-                      gap-2
-                      rounded-full
-                      bg-[#CA1F7B]
-                      px-6
-                      py-3
-                      text-sm
-                      font-bold
-                      text-white
-                      transition
-                      hover:bg-[#DF79B0]
-                    "
-                  >
-
-                    Close Preview
-
-                    <FaTimes />
-
-                  </button>
-
-                </div>
-
-              </div>
+              )}
 
             </motion.div>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
+
+
+      {/* =================================================
+          IMAGE LIGHTBOX
+      ================================================= */}
+
+      <AnimatePresence>
+
+        {galleryImage && (
+
+          <motion.div
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            onClick={() =>
+              setGalleryImage(null)
+            }
+            className="
+              fixed
+              inset-0
+              z-[200]
+              flex
+              items-center
+              justify-center
+              bg-black/90
+              p-4
+              backdrop-blur-sm
+            "
+          >
+
+            <button
+              type="button"
+              onClick={() =>
+                setGalleryImage(null)
+              }
+              className="
+                absolute
+                right-5
+                top-5
+                flex
+                h-11
+                w-11
+                items-center
+                justify-center
+                rounded-full
+                bg-white
+                text-black
+                shadow-xl
+                transition
+                hover:bg-[#CA1F7B]
+                hover:text-white
+              "
+              aria-label="Close image"
+            >
+              <FaTimes />
+            </button>
+
+
+            <motion.img
+              initial={{
+                scale: 0.9,
+                opacity: 0,
+              }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+              }}
+              exit={{
+                scale: 0.9,
+                opacity: 0,
+              }}
+              onClick={(e) =>
+                e.stopPropagation()
+              }
+              src={galleryImage}
+              alt="Expanded gallery"
+              className="
+                max-h-[90vh]
+                max-w-[95vw]
+                rounded-2xl
+                object-contain
+                shadow-2xl
+              "
+            />
 
           </motion.div>
 
@@ -2969,32 +3711,66 @@ const goToSection = (section) => {
 
 
 // =====================================================
-// SMALL ICON COMPONENT
-// =====================================================
-//
-// Kept separate so the main import section stays clean.
+// DETAIL ROW
 // =====================================================
 
-function FaUsersIcon() {
+function DetailRow({
+  icon,
+  label,
+  value,
+}) {
 
   return (
 
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="h-4 w-4"
-      aria-hidden="true"
-    >
+    <div className="flex items-start gap-3">
 
-      <path
-        fillRule="evenodd"
-        d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM3.75 20.25a6.75 6.75 0 0113.5 0v.75H3.75v-.75zM17.25 10.5a3 3 0 113.75 2.91 7.74 7.74 0 00-2.34-.81 4.48 4.48 0 00-1.41-2.1zM19.5 20.25v.75h.75v-.75a6.72 6.72 0 00-2.05-4.84c1.03.09 1.96.4 2.8.9a5.25 5.25 0 012.25 3.94h-3.75z"
-        clipRule="evenodd"
-      />
+      <div
+        className="
+          flex
+          h-10
+          w-10
+          shrink-0
+          items-center
+          justify-center
+          rounded-xl
+          bg-[#CA1F7B]
+          text-white
+        "
+      >
+        {icon}
+      </div>
 
-    </svg>
+
+      <div>
+
+        <p
+          className="
+            text-[10px]
+            font-black
+            uppercase
+            tracking-wider
+            text-black/40
+          "
+        >
+          {label}
+        </p>
+
+
+        <p
+          className="
+            mt-1
+            text-sm
+            font-bold
+            leading-6
+            text-black
+          "
+        >
+          {value}
+        </p>
+
+      </div>
+
+    </div>
 
   );
-
 }

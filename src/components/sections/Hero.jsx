@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useState } from "react"
+
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaBullhorn,
   FaCalendarAlt,
@@ -14,6 +16,15 @@ import {
   FaUniversity,
 } from "react-icons/fa";
 
+
+// =====================================================
+// SSCR / SSG GALLERY
+// =====================================================
+
+import ssgGallery1 from "../../assets/gallery/ssg-1.jpg";
+import ssgGallery2 from "../../assets/gallery/ssg-2.jpg";
+import sscrGallery1 from "../../assets/gallery/sscr-1.jpg";
+import sscrGallery2 from "../../assets/gallery/sscr-2.jpg";
 import sscrLogo from "../../assets/logos/sscr-logo.png";
 
 // =====================================================
@@ -41,6 +52,47 @@ const portalFeatures = [
   },
 ];
 
+const institutionalGallery = [
+  {
+    image: ssgGallery1,
+    category: "SSG",
+    title: "Serving the Sebastinian Community",
+
+    description:
+      "The Supreme Student Government serves as an avenue for student representation, leadership, and participation within the Sebastinian community. Through its programs, projects, campaigns, and student-centered initiatives, the SSG works to address student concerns, encourage active participation, and create meaningful opportunities for students to contribute to campus life. Its work is grounded in service, collaboration, accountability, and the development of responsible student leaders.",
+
+  },
+
+  {
+    image: ssgGallery2,
+    category: "SSG",
+    title: "Student Leadership in Action",
+
+    description:
+      "Student leadership goes beyond holding an organizational position. The SSG provides opportunities for students to work together, organize activities, communicate with their fellow Sebastinos, and contribute to the improvement of the school community. Through collaboration with students, administrators, organizations, and different offices, the SSG helps transform student ideas and concerns into meaningful programs and initiatives.",
+
+  },
+
+  {
+    image: sscrGallery1,
+    category: "SSCR",
+    title: "San Sebastian College – Recoletos de Cavite",
+
+    description:
+      "San Sebastian College – Recoletos de Cavite is a Catholic educational institution that forms students through academic learning, community engagement, values formation, and service. As part of the Recollect tradition, the institution seeks to develop students not only in their chosen fields but also as individuals capable of contributing responsibly to society. The Sebastinian experience combines education, formation, community, and service in preparing students for their future roles.",
+
+  },
+
+  {
+    image: sscrGallery2,
+    category: "SSCR",
+    title: "A Community of Learning and Service",
+
+    description:
+      "The Sebastinian community brings together students, faculty, administrators, personnel, and organizations in an environment centered on learning and service. Beyond the classroom, students are encouraged to participate in activities that develop leadership, collaboration, social responsibility, and a deeper sense of community. These experiences help students understand that education is not only about academic achievement but also about becoming responsible members of the community.",
+
+  },
+];
 // =====================================================
 // QUICK DIRECTORY
 // =====================================================
@@ -187,6 +239,12 @@ const directory = [
         shortName: "SSCR School Portal",
         link: "https://www.sscr.edu/SchoolPortal/signin",
       },
+      {
+        icon: <FaGraduationCap />,
+        name: "San Sebastian College – Recoletos de Cavite School Learning Management System",
+        shortName: "SSCR LMS",
+        link: "https://sscr.cerebro.ph/login/index.php",
+      },
     ],
   },
 ];
@@ -199,6 +257,7 @@ export default function Hero({ setActiveSection }) {
   // =====================================================
   // SECTION NAVIGATION
   // =====================================================
+ const [selectedGalleryItem, setSelectedGalleryItem] = useState(null);
 
   const goToSection = (section) => {
     if (setActiveSection) {
@@ -1049,6 +1108,948 @@ export default function Hero({ setActiveSection }) {
           </a>
 
         </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* =====================================================
+    SSG + SSCR INSTITUTIONAL GALLERY
+===================================================== */}
+
+<section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-12">
+
+  <div className="mx-auto max-w-7xl">
+
+    {/* =================================================
+        SECTION HEADER
+    ================================================= */}
+
+    <div className="mx-auto max-w-3xl text-center">
+
+      <span
+        className="
+          inline-flex
+          rounded-full
+          border
+          border-[#DF79B0]
+          bg-[#DF79B0]/10
+          px-5
+          py-2
+          text-xs
+          font-black
+          uppercase
+          tracking-[2px]
+          text-[#8E1457]
+        "
+      >
+        OUR COMMUNITY
+      </span>
+
+      <h2
+        className="
+          mt-5
+          text-3xl
+          font-black
+          leading-tight
+          text-[#000000]
+          sm:text-4xl
+          lg:text-5xl
+        "
+      >
+        One Community.
+        <span className="block text-[#8E1457]">
+          One Sebastinian Spirit.
+        </span>
+      </h2>
+
+      <p
+        className="
+          mt-5
+          text-sm
+          leading-7
+          text-[#000000]/60
+          sm:text-base
+        "
+      >
+        Discover the people, places, and values that make up
+        the Sebastinian community — from student leadership
+        through the SSG to the wider San Sebastian College –
+        Recoletos de Cavite community.
+      </p>
+
+    </div>
+
+
+    {/* =================================================
+        CAROUSEL
+    ================================================= */}
+
+    <div
+      className="
+        mt-12
+        flex
+        snap-x
+        snap-mandatory
+        gap-5
+        overflow-x-auto
+        pb-6
+        scrollbar-hide
+      "
+    >
+
+      {institutionalGallery.map((item, index) => (
+  <motion.button
+    key={index}
+    type="button"
+
+    onClick={() => {
+      setSelectedGalleryItem(item);
+    }}
+
+    initial={{
+      opacity: 0,
+      y: 30,
+    }}
+
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+
+    viewport={{
+      once: true,
+    }}
+
+    transition={{
+      delay: index * 0.1,
+    }}
+
+    whileHover={{
+      y: -6,
+    }}
+
+    whileTap={{
+      scale: 0.98,
+    }}
+
+    className="
+      group
+      min-w-[85%]
+      snap-center
+      overflow-hidden
+      rounded-[28px]
+      border
+      border-[#C0C0C0]/60
+      bg-white
+      text-left
+      shadow-sm
+      transition
+      hover:border-[#DF79B0]
+      hover:shadow-xl
+      focus:outline-none
+      focus:ring-2
+      focus:ring-[#CA1F7B]
+      focus:ring-offset-2
+      sm:min-w-[55%]
+      lg:min-w-[38%]
+    "
+    aria-label={`View more information about ${item.title}`}
+  >
+
+    {/* IMAGE */}
+
+    <div
+      className="
+        relative
+        h-64
+        overflow-hidden
+        sm:h-72
+      "
+    >
+
+      <img
+        src={item.image}
+        alt={item.title}
+        className="
+          h-full
+          w-full
+          object-cover
+          transition
+          duration-700
+          group-hover:scale-105
+        "
+      />
+
+      {/* Overlay */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-black/70
+          via-black/10
+          to-transparent
+        "
+      />
+
+      {/* Category */}
+
+      <span
+        className="
+          absolute
+          left-5
+          top-5
+          rounded-full
+          bg-[#8E1457]
+          px-4
+          py-2
+          text-[10px]
+          font-black
+          uppercase
+          tracking-[1.5px]
+          text-white
+        "
+      >
+        {item.category}
+      </span>
+
+      {/* VIEW INDICATOR */}
+
+      <span
+        className="
+          absolute
+          bottom-5
+          right-5
+          rounded-full
+          bg-white/95
+          px-3
+          py-2
+          text-[10px]
+          font-black
+          uppercase
+          tracking-wider
+          text-[#8E1457]
+          opacity-0
+          transition
+          duration-300
+          group-hover:opacity-100
+        "
+      >
+        View Details
+      </span>
+
+    </div>
+
+
+    {/* CONTENT */}
+
+    <div className="p-6">
+
+      <h3
+        className="
+          text-xl
+          font-black
+          leading-tight
+          text-[#000000]
+        "
+      >
+        {item.title}
+      </h3>
+
+      <p
+        className="
+          mt-3
+          line-clamp-3
+          text-sm
+          leading-7
+          text-[#000000]/60
+        "
+      >
+        {item.description}
+      </p>
+
+      <div
+        className="
+          mt-4
+          text-sm
+          font-black
+          text-[#CA1F7B]
+        "
+      >
+        Learn more →
+      </div>
+
+    </div>
+
+  </motion.button>
+      ))}
+    </div>
+
+    
+
+
+    {/* =================================================
+        SCROLL INDICATOR
+    ================================================= */}
+
+    <AnimatePresence>
+      {selectedGalleryItem && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          exit={{
+            opacity: 0,
+          }}
+          className="
+            fixed
+            inset-0
+            z-[100]
+            flex
+            items-center
+            justify-center
+            bg-black/70
+            p-4
+            backdrop-blur-sm
+            sm:p-6
+          "
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setSelectedGalleryItem(null);
+            }
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="gallery-modal-title"
+        >
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+              scale: 0.97,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              scale: 0.97,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
+            className="
+              relative
+              max-h-[92vh]
+              w-full
+              max-w-5xl
+              overflow-y-auto
+              rounded-[28px]
+              bg-white
+              shadow-2xl
+              sm:rounded-[36px]
+            "
+          >
+            {/* =================================================
+            CLOSE BUTTON
+        ================================================= */}
+
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedGalleryItem(null);
+              }}
+              className="
+            absolute
+            right-4
+            top-4
+            z-20
+            flex
+            h-10
+            w-10
+            items-center
+            justify-center
+            rounded-full
+            bg-black/60
+            text-2xl
+            font-light
+            text-white
+            backdrop-blur-md
+            transition
+            hover:bg-[#CA1F7B]
+            focus:outline-none
+            focus:ring-2
+            focus:ring-white
+          "
+              aria-label="Close gallery details"
+            >
+              ×
+            </button>
+
+            {/* =================================================
+            IMAGE
+        ================================================= */}
+
+            <div
+              className="
+            relative
+            h-[260px]
+            w-full
+            overflow-hidden
+            bg-[#8E1457]
+            sm:h-[400px]
+            lg:h-[500px]
+          "
+            >
+              <img
+                src={selectedGalleryItem.image}
+                alt={selectedGalleryItem.title}
+                className="
+              h-full
+              w-full
+              object-cover
+            "
+              />
+
+              {/* Image overlay */}
+
+              <div
+                className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-black/60
+              via-transparent
+              to-transparent
+            "
+              />
+
+              {/* Category */}
+
+              <span
+                className="
+              absolute
+              bottom-6
+              left-6
+              rounded-full
+              bg-[#CA1F7B]
+              px-4
+              py-2
+              text-xs
+              font-black
+              uppercase
+              tracking-[2px]
+              text-white
+            "
+              >
+                {selectedGalleryItem.category}
+              </span>
+            </div>
+
+            {/* =================================================
+            INFORMATION
+        ================================================= */}
+
+            <div
+              className="
+            p-6
+            sm:p-8
+            lg:p-10
+          "
+            >
+              <div
+                className="
+              h-1
+              w-12
+              rounded-full
+              bg-[#CA1F7B]
+            "
+              />
+
+              <h2
+                id="gallery-modal-title"
+                className="
+              mt-4
+              text-2xl
+              font-black
+              leading-tight
+              text-[#000000]
+              sm:text-3xl
+              lg:text-4xl
+            "
+              >
+                {selectedGalleryItem.title}
+              </h2>
+
+              <p
+                className="
+              mt-5
+              max-w-4xl
+              text-sm
+              leading-7
+              text-[#000000]/65
+              sm:text-base
+              sm:leading-8
+            "
+              >
+                {selectedGalleryItem.description}
+              </p>
+
+              {/* =================================================
+              CATEGORY INFORMATION
+          ================================================= */}
+
+              <div
+                className="
+              mt-7
+              rounded-2xl
+              border
+              border-[#DF79B0]/30
+              bg-[#DF79B0]/10
+              p-5
+            "
+              >
+                <p
+                  className="
+                text-xs
+                font-black
+                uppercase
+                tracking-[2px]
+                text-[#CA1F7B]
+              "
+                >
+                  {selectedGalleryItem.category === "SSG"
+                    ? "Supreme Student Government"
+                    : "San Sebastian College – Recoletos de Cavite"}
+                </p>
+
+                <p
+                  className="
+                mt-2
+                text-sm
+                leading-6
+                text-[#000000]/60
+              "
+                >
+                  {selectedGalleryItem.category === "SSG"
+                    ? "Student leadership, representation, service, and community engagement."
+                    : "Catholic education, holistic formation, community, and service."}
+                </p>
+              </div>
+
+              {/* CLOSE */}
+
+              <div className="mt-7 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedGalleryItem(null);
+                  }}
+                  className="
+                rounded-full
+                bg-[#8E1457]
+                px-6
+                py-3
+                text-sm
+                font-black
+                text-white
+                transition
+                hover:bg-[#CA1F7B]
+                focus:outline-none
+                focus:ring-2
+                focus:ring-[#CA1F7B]
+                focus:ring-offset-2
+              "
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+
+    <div className="mt-2 flex justify-center">
+
+      <div
+        className="
+          flex
+          items-center
+          gap-2
+          text-xs
+          font-semibold
+          text-[#000000]/40
+        "
+      >
+
+        <span
+          className="
+            h-1.5
+            w-8
+            rounded-full
+            bg-[#CA1F7B]
+          "
+        />
+
+        <span>
+          Swipe to explore
+        </span>
+
+      </div>
+
+    </div>
+
+
+    {/* =================================================
+        INFORMATION BLOCKS
+    ================================================= */}
+
+    <div
+      className="
+        mt-16
+        grid
+        gap-6
+        md:grid-cols-2
+      "
+    >
+
+      {/* =================================================
+          ABOUT SSG
+      ================================================= */}
+
+      <div
+        className="
+          rounded-[28px]
+          border
+          border-[#DF79B0]/30
+          bg-[#DF79B0]/8
+          p-7
+          sm:p-9
+        "
+      >
+
+        <span
+          className="
+            text-xs
+            font-black
+            uppercase
+            tracking-[2px]
+            text-[#CA1F7B]
+          "
+        >
+          Student Leadership
+        </span>
+
+        <h3
+          className="
+            mt-3
+            text-2xl
+            font-black
+            text-[#000000]
+            sm:text-3xl
+          "
+        >
+          Supreme Student Government
+        </h3>
+
+        <p
+          className="
+            mt-4
+            text-sm
+            leading-7
+            text-[#000000]/65
+            sm:text-base
+          "
+        >
+          The Supreme Student Government serves as a central
+          student leadership body that represents the student
+          community. Through its programs, activities, and
+          initiatives, the SSG provides opportunities for
+          students to participate, collaborate, lead, and
+          contribute to campus life.
+        </p>
+
+        <button
+          onClick={() => {
+            if (setActiveSection) {
+              setActiveSection("aboutus");
+            }
+
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }}
+          className="
+            mt-6
+            font-bold
+            text-[#CA1F7B]
+            transition
+            hover:text-[#8E1457]
+          "
+        >
+          Learn more about SSG →
+        </button>
+
+      </div>
+
+
+      {/* =================================================
+          ABOUT SSCR
+      ================================================= */}
+
+      <div
+        className="
+          rounded-[28px]
+          border
+          border-[#C0C0C0]/70
+          bg-[#8E1457]
+          p-7
+          text-white
+          sm:p-9
+        "
+      >
+
+        <span
+          className="
+            text-xs
+            font-black
+            uppercase
+            tracking-[2px]
+            text-[#DF79B0]
+          "
+        >
+          Our Institution
+        </span>
+
+        <h3
+          className="
+            mt-3
+            text-2xl
+            font-black
+            sm:text-3xl
+          "
+        >
+          San Sebastian College –
+          <span className="block text-[#DF79B0]">
+            Recoletos de Cavite
+          </span>
+        </h3>
+
+        <p
+          className="
+            mt-4
+            text-sm
+            leading-7
+            text-white/80
+            sm:text-base
+          "
+        >
+          SSCR de Cavite is a Catholic institution committed
+          to quality Christian community-oriented education.
+          Its formative mission seeks to develop members of
+          the Sebastinian community into Christ-centered,
+          professional, and socially responsible leaders.
+        </p>
+
+        <a
+          href="https://sscr.edu/Beta/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            mt-6
+            inline-flex
+            font-bold
+            text-white
+            transition
+            hover:text-[#DF79B0]
+          "
+        >
+          Visit SSCR Official Website →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    {/* =================================================
+        AUGUSTINIAN VALUES
+    ================================================= */}
+
+    <div className="mt-16">
+
+      <div className="text-center">
+
+        <span
+          className="
+            inline-flex
+            rounded-full
+            bg-[#CA1F7B]
+            px-5
+            py-2
+            text-xs
+            font-black
+            uppercase
+            tracking-[2px]
+            text-white
+          "
+        >
+          OUR VALUES
+        </span>
+
+        <h3
+          className="
+            mt-5
+            text-3xl
+            font-black
+            text-[#000000]
+            sm:text-4xl
+          "
+        >
+          Guided by Augustinian Values
+        </h3>
+
+        <p
+          className="
+            mx-auto
+            mt-4
+            max-w-2xl
+            text-sm
+            leading-7
+            text-[#000000]/60
+            sm:text-base
+          "
+        >
+          The Sebastinian community is shaped by values that
+          encourage reflection, truth, freedom, community,
+          friendship, and justice.
+        </p>
+
+      </div>
+
+
+      {/* VALUES */}
+
+      <div
+        className="
+          mt-10
+          grid
+          gap-4
+          sm:grid-cols-2
+          lg:grid-cols-3
+        "
+      >
+
+        {[
+          {
+            title: "Interiority",
+            description:
+              "Taking time for reflection and looking inward in the search for truth.",
+          },
+          {
+            title: "Truth",
+            description:
+              "Seeking and living by truth as a foundation for responsible action.",
+          },
+          {
+            title: "Freedom",
+            description:
+              "Using freedom responsibly while living with purpose and grace.",
+          },
+          {
+            title: "Community",
+            description:
+              "Putting the common good first and building a community founded on cooperation.",
+          },
+          {
+            title: "Friendship",
+            description:
+              "Building meaningful relationships through love, trust, and genuine concern for others.",
+          },
+          {
+            title: "Solidarity & Justice",
+            description:
+              "Standing with others and promoting fairness, compassion, and social responsibility.",
+          },
+        ].map((value, index) => (
+
+          <motion.div
+            key={value.title}
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              delay: index * 0.08,
+            }}
+            className="
+              rounded-2xl
+              border
+              border-[#C0C0C0]/60
+              bg-white
+              p-6
+              transition
+              hover:-translate-y-1
+              hover:border-[#DF79B0]
+              hover:shadow-lg
+            "
+          >
+
+            <div
+              className="
+                mb-4
+                h-1
+                w-10
+                rounded-full
+                bg-[#CA1F7B]
+              "
+            />
+
+            <h4
+              className="
+                text-lg
+                font-black
+                text-[#8E1457]
+              "
+            >
+              {value.title}
+            </h4>
+
+            <p
+              className="
+                mt-2
+                text-sm
+                leading-6
+                text-[#000000]/60
+              "
+            >
+              {value.description}
+            </p>
+
+          </motion.div>
+
+        ))}
 
       </div>
 

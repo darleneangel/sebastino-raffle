@@ -1,30 +1,33 @@
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/ui/LoadingScreen";
-import Home from "./pages/Home";
 import CursorGlow from "./components/ui/CursorGlow";
+import Home from "./pages/Home";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState("hero");
 
-  const [loading,setLoading]=useState(true);
-
-  useEffect(()=>{
-
-    const timer=setTimeout(()=>{
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
-    },2500);
+    }, 2500);
 
-    return ()=>clearTimeout(timer);
+    return () => clearTimeout(timer);
+  }, []);
 
-  },[]);
-
-  return(
+  return (
     <>
-      <LoadingScreen loading={loading}/>
-      <CursorGlow/>
-      {!loading && <Home/>}
-    </>
-  )
+      <LoadingScreen loading={loading} />
+      <CursorGlow />
 
+      {!loading && (
+        <Home
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />
+      )}
+    </>
+  );
 }
 
 export default App;

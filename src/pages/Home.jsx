@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
@@ -12,51 +10,95 @@ import RegistrationSection from "../components/sections/RegistrationSection";
 import HowToJoin from "../components/sections/HowToJoin";
 import PrizeSection from "../components/sections/PrizeSection";
 
-export default function Home() {
-  const [activeSection, setActiveSection] = useState("hero");
+export default function Home({
+  activeSection,
+  setActiveSection,
+}) {
 
   function renderSection() {
     switch (activeSection) {
+
       case "hero":
-  return <Hero setActiveSection={setActiveSection} />;
+        return (
+          <Hero
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "aboutus":
-        return <AboutUs setActiveSection={setActiveSection} />;
+        return (
+          <AboutUs
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "happening-now":
-        return <EventsSection setActiveSection={setActiveSection} />;
+        return (
+          <EventsSection
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "events":
-        return <EventsSection setActiveSection={setActiveSection} />;
+        return (
+          <EventsSection
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "footer":
-        return <Footer setActiveSection={setActiveSection} />;
-
+        return (
+          <Footer
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "gallery":
-        return <EventStats setActiveSection={setActiveSection} />;
+        return (
+          <EventStats
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "contact":
-        return <FacebookSection setActiveSection={setActiveSection} />;
+        return (
+          <FacebookSection
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "registration":
-        return <RegistrationSection setActiveSection={setActiveSection} />;
+        return (
+          <RegistrationSection
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "how-to-join":
-        return <HowToJoin setActiveSection={setActiveSection} />;
+        return (
+          <HowToJoin
+            setActiveSection={setActiveSection}
+          />
+        );
 
       case "prizes":
-        return <PrizeSection setActiveSection={setActiveSection} />;
+        return (
+          <PrizeSection
+            setActiveSection={setActiveSection}
+          />
+        );
 
       default:
-        return <Hero />;
-
-
+        return (
+          <Hero
+            setActiveSection={setActiveSection}
+          />
+        );
     }
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="flex min-h-screen flex-col bg-white">
 
       <Navbar
         activeSection={activeSection}
@@ -67,7 +109,9 @@ export default function Home() {
         {renderSection()}
       </main>
 
-      <Footer />
+      <Footer
+        setActiveSection={setActiveSection}
+      />
 
     </div>
   );

@@ -175,7 +175,7 @@ export default function FacebookSection() {
             <motion.a
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/bastecavitessg?fbclid=IwY2xjawTypzZwZG9mBWV4dG4DYWVtAjEwAGJyaWQRMVZNc2hZdjhKaUxBd01JNFdzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe6nlKMfZ2pas_as7T6vY8K5xYd5YROCHUBB-74o1BVx6BecGJYtEa7sMj_ng_aem_JwEd7Qjqd6WnGOhFmZhl9g"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--primary)] px-8 py-4 font-semibold text-white transition hover:bg-[var(--dark)]"
@@ -215,7 +215,7 @@ export default function FacebookSection() {
               <div>
                 <h4 className="font-bold">Office</h4>
                 <p className="text-sm text-gray-500">
-                  Student Affairs Office
+                  SSG Office, San Sebastian College – Recoletos de Cavite
                 </p>
               </div>
             </div>
