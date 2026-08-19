@@ -47,35 +47,45 @@ export default function Navbar({
   // we DON'T use href="#..." here.
   // =====================================================
 
-  const handleNavigation = (section) => {
-    if (setActiveSection) {
-      setActiveSection(section);
-    }
+  // =====================================================
+// NAVIGATION
+// =====================================================
 
-    setMobileOpen(false);
+const handleNavigation = (section) => {
+  setMobileOpen(false);
 
-    // Always return to top when switching sections
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+  if (setActiveSection) {
+    setActiveSection(section);
+  }
+
+  // Wait for React to render the selected section first,
+  // then move the viewport to the top.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
-  };
+  });
+};
 
-  // =====================================================
-  // CONNECT WITH SSG
-  // =====================================================
+// =====================================================
+// CONNECT WITH SSG
+// =====================================================
 
-  const handleConnect = () => {
-    handleNavigation("contact");
-  };
+const handleConnect = () => {
+  handleNavigation("contact");
+};
 
-  // =====================================================
-  // LOGO / HOME
-  // =====================================================
+// =====================================================
+// LOGO / HOME
+// =====================================================
 
-  const handleLogoClick = () => {
-    handleNavigation("hero");
-  };
+const handleLogoClick = () => {
+  handleNavigation("hero");
+};
+
 
   return (
     <>
