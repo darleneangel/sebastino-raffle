@@ -619,7 +619,7 @@ export default function Hero({ setActiveSection }) {
                         sm:text-3xl
                       "
                     >
-                      Caritas. Veritas. Unitas.
+                      Caritas. Scientia. 
                     </h2>
 
                     <p
@@ -630,8 +630,8 @@ export default function Hero({ setActiveSection }) {
                         text-black/60
                       "
                     >
-                      Forming students through faith,
-                      truth, unity, and meaningful service.
+                      Forming students through love,
+                      knowledge, unity, and meaningful service.
                     </p>
 
                   </div>
@@ -646,15 +646,15 @@ export default function Hero({ setActiveSection }) {
                     mt-7
                     
                     grid
-                    grid-cols-3
+                    grid-cols-2
                     gap-3
                   "
                 >
 
                   {[
                     ["Caritas", "Love"],
-                    ["Veritas", "Truth"],
-                    ["Unitas", "Unity"],
+                    ["Scientia", "Knowledge"],
+                 
                   ].map(([title, subtitle]) => (
 
                     <div
@@ -1002,24 +1002,10 @@ export default function Hero({ setActiveSection }) {
               text-white
             "
           >
-            Veritas
+            Scientia
           </span>
 
-          <span
-            className="
-              rounded-full
-              border
-              border-white/20
-              bg-white/10
-              px-3
-              py-1.5
-              text-xs
-              font-bold
-              text-white
-            "
-          >
-            Unitas
-          </span>
+          
 
         </div>
 

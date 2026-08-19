@@ -13,7 +13,7 @@ export default function FacebookSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[var(--cream)] py-28"
+      className="relative overflow-hidden bg-[#FDF0F5] py-28"
     >
       {/* Background Decorations */}
       <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-pink-200/30 blur-3xl"></div>
